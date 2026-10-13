@@ -1,21 +1,20 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ChevronDown, ChevronRight, Menu, X, Phone, Calendar, ArrowRight } from 'lucide-react';
-import { clinicInfo, conditionCategories } from '../../data/staticData';
-import { Treatment } from '../../types';
+import { clinicInfo, conditionCategories } from '@/data/staticData';
+import { Treatment } from '@/types';
+import { useConsultation } from '@/context/ConsultationContext';
 
 interface NavbarProps {
-  currentView: string;
-  onNavigate: (view: string, extra?: string) => void;
-  onOpenBooking: () => void;
   treatments: Treatment[];
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
-  currentView,
-  onNavigate,
-  onOpenBooking,
-  treatments
-}) => {
+export const Navbar: React.FC<NavbarProps> = ({ treatments }) => {
+  const pathname = usePathname();
+  const { openBooking } = useConsultation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Desktop dropdown hover states
@@ -43,8 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
   }, [mobileMenuOpen]);
 
-  const handleNavClick = (view: string, extra?: string) => {
-    onNavigate(view, extra);
+  const handleNavClick = () => {
     setMobileMenuOpen(false);
     setTreatmentsDropdown(false);
     setConditionsDropdown(false);
@@ -66,12 +64,9 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Brand Image Logo */}
-          <a
+          <Link
             href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('home');
-            }}
+            onClick={handleNavClick}
             className="flex items-center text-left group cursor-pointer focus:outline-none"
             aria-label="Richfeel Vadodara Home"
           >
@@ -80,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               alt="Richfeel Vadodara"
               className="h-10 sm:h-12 w-auto object-contain rounded-md group-hover:opacity-95 transition-all"
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-7">
@@ -90,21 +85,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               onMouseEnter={() => setTreatmentsDropdown(true)}
               onMouseLeave={() => setTreatmentsDropdown(false)}
             >
-              <a
+              <Link
                 href="/treatments"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('treatments');
-                }}
+                onClick={handleNavClick}
                 className={`flex items-center gap-1 text-sm font-semibold transition-colors py-2 cursor-pointer ${
-                  currentView === 'treatments' || currentView === 'treatment-page'
+                  pathname.startsWith('/treatments')
                     ? 'text-[#0a6ebd]'
                     : 'text-slate-700 hover:text-[#0a6ebd]'
                 }`}
               >
                 Treatments
                 <ChevronDown className="w-3.5 h-3.5" />
-              </a>
+              </Link>
 
               {treatmentsDropdown && (
                 <div className="absolute top-full left-0 w-[680px] bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 grid grid-cols-3 gap-6 animate-in fade-in slide-in-from-top-2 duration-150">
@@ -115,17 +107,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </h4>
                     <div className="space-y-2">
                       {hairTreatments.map((t) => (
-                        <a
+                        <Link
                           key={t.id}
                           href={`/treatments/${t.id}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNavClick('treatment-page', t.id);
-                          }}
+                          onClick={handleNavClick}
                           className="w-full text-left text-xs font-medium text-slate-700 hover:text-[#0a6ebd] hover:translate-x-1 transition-all block cursor-pointer"
                         >
                           {t.title}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -137,17 +126,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </h4>
                     <div className="space-y-2">
                       {scalpTreatments.map((t) => (
-                        <a
+                        <Link
                           key={t.id}
                           href={`/treatments/${t.id}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNavClick('treatment-page', t.id);
-                          }}
+                          onClick={handleNavClick}
                           className="w-full text-left text-xs font-medium text-slate-700 hover:text-[#0a6ebd] hover:translate-x-1 transition-all block cursor-pointer"
                         >
                           {t.title}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -159,17 +145,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </h4>
                     <div className="space-y-2">
                       {skinTreatments.map((t) => (
-                        <a
+                        <Link
                           key={t.id}
                           href={`/treatments/${t.id}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNavClick('treatment-page', t.id);
-                          }}
+                          onClick={handleNavClick}
                           className="w-full text-left text-xs font-medium text-slate-700 hover:text-[#0a6ebd] hover:translate-x-1 transition-all block cursor-pointer"
                         >
                           {t.title}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -183,37 +166,31 @@ export const Navbar: React.FC<NavbarProps> = ({
               onMouseEnter={() => setConditionsDropdown(true)}
               onMouseLeave={() => setConditionsDropdown(false)}
             >
-              <a
+              <Link
                 href="/conditions"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('conditions');
-                }}
+                onClick={handleNavClick}
                 className={`flex items-center gap-1 text-sm font-semibold transition-colors py-2 cursor-pointer ${
-                  currentView === 'conditions' || currentView === 'condition-page'
+                  pathname.startsWith('/conditions')
                     ? 'text-[#0a6ebd]'
                     : 'text-slate-700 hover:text-[#0a6ebd]'
                 }`}
               >
                 Condition
                 <ChevronDown className="w-3.5 h-3.5" />
-              </a>
+              </Link>
 
               {conditionsDropdown && (
                 <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-100 p-4 space-y-2 animate-in fade-in slide-in-from-top-2 duration-150">
                   {conditionCategories.map((cond) => (
-                    <a
+                    <Link
                       key={cond.id}
                       href={`/conditions/${cond.id}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavClick('condition-page', cond.id);
-                      }}
+                      onClick={handleNavClick}
                       className="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-[#0a6ebd] transition-colors block cursor-pointer"
                     >
                       <div className="font-semibold text-slate-900">{cond.name}</div>
                       <div className="text-[11px] text-slate-500 truncate">{cond.tagline}</div>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -225,99 +202,76 @@ export const Navbar: React.FC<NavbarProps> = ({
               onMouseEnter={() => setAboutDropdown(true)}
               onMouseLeave={() => setAboutDropdown(false)}
             >
-              <a
+              <Link
                 href="/about"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('about');
-                }}
+                onClick={handleNavClick}
                 className={`flex items-center gap-1 text-sm font-semibold transition-colors py-2 cursor-pointer ${
-                  currentView === 'about' ? 'text-[#0a6ebd]' : 'text-slate-700 hover:text-[#0a6ebd]'
+                  pathname.startsWith('/about') ? 'text-[#0a6ebd]' : 'text-slate-700 hover:text-[#0a6ebd]'
                 }`}
               >
                 About
                 <ChevronDown className="w-3.5 h-3.5" />
-              </a>
+              </Link>
 
               {aboutDropdown && (
                 <div className="absolute top-full left-0 w-64 bg-white rounded-2xl shadow-2xl border border-slate-100 p-3 space-y-1 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <a
+                  <Link
                     href="/about#heritage"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick('about', 'heritage');
-                    }}
+                    onClick={handleNavClick}
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-[#0a6ebd] cursor-pointer block"
                   >
                     Founders (Dr. Apoorva & Sonal Shah)
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="/about#diagnostics"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick('about', 'diagnostics');
-                    }}
+                    onClick={handleNavClick}
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-[#0a6ebd] cursor-pointer block"
                   >
                     Diagnostic Tests (Trichogram & Capilloscopy)
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="/about#awards"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick('about', 'awards');
-                    }}
+                    onClick={handleNavClick}
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-[#0a6ebd] cursor-pointer block"
                   >
                     Awards & Accolades
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
 
             {/* 4. Gallery */}
-            <a
+            <Link
               href="/gallery"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('gallery');
-              }}
+              onClick={handleNavClick}
               className={`text-sm font-semibold transition-colors cursor-pointer ${
-                currentView === 'gallery' ? 'text-[#0a6ebd]' : 'text-slate-700 hover:text-[#0a6ebd]'
+                pathname === '/gallery' ? 'text-[#0a6ebd]' : 'text-slate-700 hover:text-[#0a6ebd]'
               }`}
             >
               Gallery
-            </a>
+            </Link>
 
             {/* 5. Blog */}
-            <a
+            <Link
               href="/blog"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('blog');
-              }}
+              onClick={handleNavClick}
               className={`text-sm font-semibold transition-colors cursor-pointer ${
-                currentView === 'blog' || currentView === 'blog-detail'
-                  ? 'text-[#0a6ebd]'
-                  : 'text-slate-700 hover:text-[#0a6ebd]'
+                pathname.startsWith('/blog') ? 'text-[#0a6ebd]' : 'text-slate-700 hover:text-[#0a6ebd]'
               }`}
             >
               Blog
-            </a>
+            </Link>
 
             {/* 6. Contact */}
-            <a
+            <Link
               href="/contact"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('contact');
-              }}
+              onClick={handleNavClick}
               className={`text-sm font-semibold transition-colors cursor-pointer ${
-                currentView === 'contact' ? 'text-[#0a6ebd]' : 'text-slate-700 hover:text-[#0a6ebd]'
+                pathname === '/contact' ? 'text-[#0a6ebd]' : 'text-slate-700 hover:text-[#0a6ebd]'
               }`}
             >
               Contact
-            </a>
+            </Link>
           </nav>
 
           {/* Right Header CTAs */}
@@ -331,7 +285,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
 
             <button
-              onClick={onOpenBooking}
+              onClick={() => openBooking('Navbar Consultation Button')}
               className="bg-gradient-brand text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-xs hover:opacity-95 transition-all flex items-center gap-1.5 cursor-pointer"
             >
               <Calendar className="w-3.5 h-3.5" />
@@ -342,7 +296,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Mobile Menu Hamburger Button */}
           <div className="flex lg:hidden items-center gap-2">
             <button
-              onClick={onOpenBooking}
+              onClick={() => openBooking('Mobile Header Button')}
               className="bg-gradient-brand text-white text-xs font-semibold px-3 py-1.5 rounded-lg"
             >
               Book
@@ -371,8 +325,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="relative z-10 w-full max-w-[340px] sm:max-w-sm bg-white mobile-full-height shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-300">
             {/* Top Fixed Header with Brand & Close */}
             <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-white shrink-0">
-              <button
-                onClick={() => handleNavClick('home')}
+              <Link
+                href="/"
+                onClick={handleNavClick}
                 className="flex items-center text-left cursor-pointer focus:outline-none"
                 aria-label="Richfeel Vadodara Home"
               >
@@ -381,7 +336,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   alt="Richfeel Vadodara"
                   className="h-9 w-auto object-contain rounded-lg"
                 />
-              </button>
+              </Link>
 
               <button
                 onClick={() => setMobileMenuOpen(false)}
@@ -395,25 +350,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Middle Scrollable Nav List: Clean, Left-Aligned with Mutual-Exclusion Accordions */}
             <div className="flex-1 overflow-y-auto px-5 py-4 space-y-1">
               {/* 1. Home */}
-              <a
+              <Link
                 href="/"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('home');
-                }}
+                onClick={handleNavClick}
                 className={`w-full text-left py-3 px-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer block ${
-                  currentView === 'home' ? 'text-[#0a6ebd] bg-blue-50/70 font-bold' : 'text-slate-800 hover:bg-slate-50'
+                  pathname === '/' ? 'text-[#0a6ebd] bg-blue-50/70 font-bold' : 'text-slate-800 hover:bg-slate-50'
                 }`}
               >
                 Home
-              </a>
+              </Link>
 
               {/* 2. TREATMENTS (Clean label, closes other open sections) */}
               <div className="border-b border-slate-100 pb-1">
                 <button
                   onClick={() => toggleMobileSection('treatments')}
                   className={`w-full flex items-center justify-between text-left py-3 px-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer ${
-                    activeMobileSection === 'treatments'
+                    activeMobileSection === 'treatments' || pathname.startsWith('/treatments')
                       ? 'text-[#0a6ebd] bg-blue-50/50'
                       : 'text-slate-800 hover:bg-slate-50'
                   }`}
@@ -430,17 +382,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {activeMobileSection === 'treatments' && (
                   <div className="pl-3 pr-2 py-2 space-y-1.5 bg-[#f8fafc] rounded-xl my-1 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
                     {/* View All catalog trigger */}
-                    <a
+                    <Link
                       href="/treatments"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavClick('treatments');
-                      }}
+                      onClick={handleNavClick}
                       className="w-full text-left py-2 px-2.5 text-[#0a6ebd] font-bold flex items-center justify-between cursor-pointer hover:underline block"
                     >
                       <span>Explore All Treatments Catalog</span>
                       <ArrowRight className="w-3.5 h-3.5" />
-                    </a>
+                    </Link>
 
                     {/* Sub-Category A: Hair Restoration (Mutual Exclusive Level 2) */}
                     <div>
@@ -461,17 +410,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                       {activeMobileTreatmentSub === 'hair' && (
                         <div className="pl-3 pr-1 py-1.5 space-y-1 bg-white rounded-lg border border-slate-100 mt-1">
                           {hairTreatments.map((t) => (
-                            <a
+                            <Link
                               key={t.id}
                               href={`/treatments/${t.id}`}
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleNavClick('treatment-page', t.id);
-                              }}
+                              onClick={handleNavClick}
                               className="w-full text-left py-1.5 px-2 text-[11px] font-medium text-slate-700 hover:text-[#0a6ebd] block cursor-pointer"
                             >
                               {t.title}
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       )}
@@ -496,17 +442,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                       {activeMobileTreatmentSub === 'scalp' && (
                         <div className="pl-3 pr-1 py-1.5 space-y-1 bg-white rounded-lg border border-slate-100 mt-1">
                           {scalpTreatments.map((t) => (
-                            <a
+                            <Link
                               key={t.id}
                               href={`/treatments/${t.id}`}
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleNavClick('treatment-page', t.id);
-                              }}
+                              onClick={handleNavClick}
                               className="w-full text-left py-1.5 px-2 text-[11px] font-medium text-slate-700 hover:text-[#0a6ebd] block cursor-pointer"
                             >
                               {t.title}
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       )}
@@ -531,17 +474,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                       {activeMobileTreatmentSub === 'skin' && (
                         <div className="pl-3 pr-1 py-1.5 space-y-1 bg-white rounded-lg border border-slate-100 mt-1">
                           {skinTreatments.map((t) => (
-                            <a
+                            <Link
                               key={t.id}
                               href={`/treatments/${t.id}`}
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleNavClick('treatment-page', t.id);
-                              }}
+                              onClick={handleNavClick}
                               className="w-full text-left py-1.5 px-2 text-[11px] font-medium text-slate-700 hover:text-[#0a6ebd] block cursor-pointer"
                             >
                               {t.title}
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       )}
@@ -555,7 +495,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   onClick={() => toggleMobileSection('conditions')}
                   className={`w-full flex items-center justify-between text-left py-3 px-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer ${
-                    activeMobileSection === 'conditions'
+                    activeMobileSection === 'conditions' || pathname.startsWith('/conditions')
                       ? 'text-[#0a6ebd] bg-blue-50/50'
                       : 'text-slate-800 hover:bg-slate-50'
                   }`}
@@ -570,29 +510,23 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                 {activeMobileSection === 'conditions' && (
                   <div className="pl-3 pr-2 py-2 space-y-1 bg-[#f8fafc] rounded-xl my-1 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
-                    <a
+                    <Link
                       href="/conditions"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavClick('conditions');
-                      }}
+                      onClick={handleNavClick}
                       className="w-full text-left py-2 px-2.5 text-[#0a6ebd] font-bold flex items-center justify-between cursor-pointer hover:underline block"
                     >
                       <span>Explore All Condition Guides</span>
                       <ArrowRight className="w-3.5 h-3.5" />
-                    </a>
+                    </Link>
                     {conditionCategories.map((cond) => (
-                      <a
+                      <Link
                         key={cond.id}
                         href={`/conditions/${cond.id}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleNavClick('condition-page', cond.id);
-                        }}
+                        onClick={handleNavClick}
                         className="w-full text-left py-2 px-2.5 text-[11px] font-medium text-slate-700 hover:text-[#0a6ebd] hover:bg-white rounded-md transition-colors block cursor-pointer"
                       >
                         {cond.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}
@@ -603,7 +537,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   onClick={() => toggleMobileSection('about')}
                   className={`w-full flex items-center justify-between text-left py-3 px-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer ${
-                    activeMobileSection === 'about'
+                    activeMobileSection === 'about' || pathname.startsWith('/about')
                       ? 'text-[#0a6ebd] bg-blue-50/50'
                       : 'text-slate-800 hover:bg-slate-50'
                   }`}
@@ -618,83 +552,65 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                 {activeMobileSection === 'about' && (
                   <div className="pl-3 pr-2 py-2 space-y-1 bg-[#f8fafc] rounded-xl my-1 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
-                    <a
+                    <Link
                       href="/about#heritage"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavClick('about', 'heritage');
-                      }}
+                      onClick={handleNavClick}
                       className="w-full text-left py-2 px-2.5 text-[11px] font-medium text-slate-700 hover:text-[#0a6ebd] hover:bg-white rounded-md transition-colors block cursor-pointer"
                     >
                       Founders (Dr. Apoorva & Sonal Shah)
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="/about#diagnostics"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavClick('about', 'diagnostics');
-                      }}
+                      onClick={handleNavClick}
                       className="w-full text-left py-2 px-2.5 text-[11px] font-medium text-slate-700 hover:text-[#0a6ebd] hover:bg-white rounded-md transition-colors block cursor-pointer"
                     >
                       Diagnostic Triad (Trichogram & Capilloscopy)
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="/about#awards"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavClick('about', 'awards');
-                      }}
+                      onClick={handleNavClick}
                       className="w-full text-left py-2 px-2.5 text-[11px] font-medium text-slate-700 hover:text-[#0a6ebd] hover:bg-white rounded-md transition-colors block cursor-pointer"
                     >
                       Awards & Accolades
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>
 
               {/* 5. Clinical Gallery */}
-              <a
+              <Link
                 href="/gallery"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('gallery');
-                }}
+                onClick={handleNavClick}
                 className={`w-full text-left py-3 px-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer block ${
-                  currentView === 'gallery' ? 'text-[#0a6ebd] bg-blue-50/70 font-bold' : 'text-slate-800 hover:bg-slate-50'
+                  pathname === '/gallery' ? 'text-[#0a6ebd] bg-blue-50/70 font-bold' : 'text-slate-800 hover:bg-slate-50'
                 }`}
               >
                 Clinical Gallery
-              </a>
+              </Link>
 
               {/* 6. Blog Knowledge Hub */}
-              <a
+              <Link
                 href="/blog"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('blog');
-                }}
+                onClick={handleNavClick}
                 className={`w-full text-left py-3 px-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer block ${
-                  currentView === 'blog' || currentView === 'blog-detail'
+                  pathname.startsWith('/blog')
                     ? 'text-[#0a6ebd] bg-blue-50/70 font-bold'
                     : 'text-slate-800 hover:bg-slate-50'
                 }`}
               >
                 Blog Knowledge Hub
-              </a>
+              </Link>
 
               {/* 7. Contact Vadodara Clinic */}
-              <a
+              <Link
                 href="/contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('contact');
-                }}
+                onClick={handleNavClick}
                 className={`w-full text-left py-3 px-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer block ${
-                  currentView === 'contact' ? 'text-[#0a6ebd] bg-blue-50/70 font-bold' : 'text-slate-800 hover:bg-slate-50'
+                  pathname === '/contact' ? 'text-[#0a6ebd] bg-blue-50/70 font-bold' : 'text-slate-800 hover:bg-slate-50'
                 }`}
               >
                 Contact Vadodara Clinic
-              </a>
+              </Link>
             </div>
 
             {/* Bottom Actions Bar Matching Uploaded Screenshot */}
@@ -712,7 +628,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  onOpenBooking();
+                  openBooking('Mobile Drawer Consultation');
                 }}
                 className="w-full py-3 px-4 rounded-full bg-[#0a6ebd] hover:bg-[#084f8a] text-white font-bold text-sm shadow-md transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
               >

@@ -40,6 +40,12 @@ export interface Treatment {
   duringProcedure: string[];
   postTreatment: string[];
   benefits: string[];
+  // Compatibility properties
+  duration?: string;
+  idealFor?: string;
+  procedureSteps?: string[];
+  preCare?: string;
+  postCare?: string;
 }
 
 export interface DiagnosticTest {
@@ -49,6 +55,7 @@ export interface DiagnosticTest {
   purpose: string;
   outcome: string;
   clinicalDetail: string;
+  badgeText?: string;
 }
 
 export interface Award {
@@ -73,6 +80,7 @@ export interface ConditionCategory {
   howDiagnose: string;
   preventManagement: string[];
   recommendedTreatmentIds: string[];
+  description?: string;
 }
 
 export interface ConsultationRequest {

@@ -1,7 +1,10 @@
+'use client';
+
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, ArrowRight, Globe2 } from 'lucide-react';
-import { Treatment } from '../../types';
-import { ScrollableFilterContainer } from '../common/ScrollableFilterContainer';
+import Link from 'next/link';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { Treatment } from '@/types';
+import { ScrollableFilterContainer } from '@/components/common/ScrollableFilterContainer';
 
 // Swiper React Components & Modules
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,14 +17,10 @@ import 'swiper/css/pagination';
 
 interface TreatmentsCarouselSectionProps {
   treatments: Treatment[];
-  onSelectTreatment: (treatmentId: string) => void;
-  onOpenBooking: () => void;
 }
 
 export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps> = ({
   treatments,
-  onSelectTreatment,
-  onOpenBooking
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
@@ -65,24 +64,30 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
           </div>
         </div>
 
-        {/* Category Filter Pills with Responsive Edge Blur & Fade */}
-        <ScrollableFilterContainer className="mb-8" bgColor="white">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
-                selectedCategory === cat
-                  ? 'bg-gradient-brand text-white shadow-xs'
-                  : 'bg-[#f6f9fc] text-slate-600 hover:text-[#27448a] border border-slate-200/80'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </ScrollableFilterContainer>
+        {/* Category Filter Pills */}
+        <div className="mb-10">
+          <ScrollableFilterContainer
+            className="w-full sm:w-auto min-w-0"
+            contentClassName="gap-2 p-1"
+            bgColor="white"
+          >
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
+                  selectedCategory === cat
+                    ? 'bg-gradient-brand text-white shadow-xs'
+                    : 'bg-[#f6f9fc] text-slate-600 hover:text-[#27448a] border border-slate-200/80'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </ScrollableFilterContainer>
+        </div>
 
-        {/* Swiper Slider with Touch Drag & Responsive Breakpoints */}
+        {/* Swiper Carousel with Touch Drag & Clean Minimal Cards */}
         <div className="cursor-grab active:cursor-grabbing pb-4">
           <Swiper
             key={selectedCategory}
@@ -103,16 +108,16 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
             breakpoints={{
               640: {
                 slidesPerView: 2.15,
-                spaceBetween: 20
+                spaceBetween: 20,
               },
               1024: {
                 slidesPerView: 3.2,
-                spaceBetween: 24
+                spaceBetween: 24,
               },
               1280: {
                 slidesPerView: 3.5,
-                spaceBetween: 28
-              }
+                spaceBetween: 28,
+              },
             }}
             className="pb-12"
           >
@@ -120,7 +125,7 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
               <SwiperSlide key={item.id} className="h-auto">
                 <div className="h-full bg-[#f6f9fc] rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-[#0a6ebd]/40 transition-all duration-300 flex flex-col justify-between group">
                   <div>
-                    {/* Treatment Image Display (Consistent 4:3 Aspect Ratio) */}
+                    {/* Treatment Image Display (Clean 4:3 Aspect Ratio) */}
                     <div className="w-full aspect-[4/3] relative overflow-hidden bg-slate-200">
                       <img
                         src={item.image}
@@ -129,14 +134,8 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                       />
                       {item.badge && (
-                        <span className="absolute top-3 left-3 bg-[#27448a]/90 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-[10px] font-bold">
+                        <span className="absolute bottom-3 left-3 bg-[#27448a]/90 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-[10px] font-bold">
                           {item.badge}
-                        </span>
-                      )}
-                      {item.countryOfOrigin && (
-                        <span className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm text-[#0a6ebd] px-2 py-0.5 rounded text-[10px] font-semibold flex items-center gap-1 shadow-xs">
-                          <Globe2 className="w-3 h-3" />
-                          {item.countryOfOrigin}
                         </span>
                       )}
                     </div>
@@ -157,13 +156,13 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
 
                   {/* Minimal Action Footer */}
                   <div className="p-5 pt-0 mt-2">
-                    <button
-                      onClick={() => onSelectTreatment(item.id)}
-                      className="w-full py-2.5 px-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#0a6ebd] group-hover:bg-gradient-brand group-hover:text-white group-hover:bg-[#0a6ebd] group-hover:border-transparent transition-all flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                    <Link
+                      href={`/treatments/${item.id}`}
+                      className="w-full py-2.5 px-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#0a6ebd] group-hover:bg-[#0a6ebd] group-hover:text-white group-hover:border-transparent transition-all flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
                     >
                       <span>View Treatment Page</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </SwiperSlide>

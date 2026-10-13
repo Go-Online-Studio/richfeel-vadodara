@@ -1,12 +1,12 @@
+'use client';
+
 import React from 'react';
 import { Microscope, Scan, Activity, ArrowRight } from 'lucide-react';
-import { diagnosticTests } from '../../data/staticData';
+import { diagnosticTests } from '@/data/staticData';
+import { useConsultation } from '@/context/ConsultationContext';
 
-interface DiagnosticsProps {
-  onOpenBooking: () => void;
-}
-
-export const Diagnostics: React.FC<DiagnosticsProps> = ({ onOpenBooking }) => {
+export const Diagnostics: React.FC = () => {
+  const { openBooking } = useConsultation();
   const icons = [Microscope, Scan, Activity];
 
   return (
@@ -25,7 +25,7 @@ export const Diagnostics: React.FC<DiagnosticsProps> = ({ onOpenBooking }) => {
           </p>
         </div>
 
-        {/* 3 Diagnostic Cards matching image.png */}
+        {/* 3 Diagnostic Cards matching OldCodeFiles */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {diagnosticTests.map((test, index) => {
             const Icon = icons[index % icons.length];
@@ -81,7 +81,7 @@ export const Diagnostics: React.FC<DiagnosticsProps> = ({ onOpenBooking }) => {
             </p>
           </div>
           <button
-            onClick={onOpenBooking}
+            onClick={() => openBooking('Scalp Diagnostic Tests')}
             className="bg-gradient-brand text-white font-bold text-xs px-6 py-3 rounded-xl shadow-md hover:opacity-95 transition-all flex items-center gap-2 shrink-0 cursor-pointer"
           >
             <span>Book Scalp Diagnostic</span>

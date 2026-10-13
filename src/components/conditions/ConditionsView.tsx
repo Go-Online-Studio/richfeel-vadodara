@@ -1,31 +1,46 @@
+'use client';
+
 import React, { useState } from 'react';
-import { conditionCategories } from '../../data/staticData';
-import { Treatment } from '../../types';
+import Link from 'next/link';
+import { conditionCategories } from '@/data/staticData';
+import { Treatment } from '@/types';
 import { CheckCircle2, ArrowRight, Sparkles, BookOpen } from 'lucide-react';
+import { useConsultation } from '@/context/ConsultationContext';
 
 interface ConditionsViewProps {
   initialConditionId?: string;
   treatments: Treatment[];
-  onSelectTreatment: (treatmentId: string) => void;
-  onOpenBooking: () => void;
-  onSelectCondition?: (conditionId: string) => void;
 }
+
+// Generate responsive 3/4 vertical (desktop) and 4/3 horizontal (mobile) image sizes
+const getResponsiveConditionImages = (imageUrl: string) => {
+  if (imageUrl && imageUrl.includes('images.unsplash.com')) {
+    const baseUrl = imageUrl.split('?')[0];
+    return {
+      desktop: `${baseUrl}?auto=format&fit=crop&w=900&h=1200&q=85`, // Vertical 3:4 for lg to xl
+      mobile: `${baseUrl}?auto=format&fit=crop&w=800&h=600&q=85`,   // Horizontal 4:3 for small devices
+    };
+  }
+  return {
+    desktop: imageUrl,
+    mobile: imageUrl,
+  };
+};
 
 export const ConditionsView: React.FC<ConditionsViewProps> = ({
   initialConditionId,
   treatments,
-  onSelectTreatment,
-  onOpenBooking,
-  onSelectCondition
 }) => {
   const [selectedCondition, setSelectedCondition] = useState(
     initialConditionId || conditionCategories[0].id
   );
+  const { openBooking } = useConsultation();
 
   const activeCategory =
     conditionCategories.find((c) => c.id === selectedCondition) || conditionCategories[0];
 
-  // Match treatments matching this condition
+  const responsiveActiveImage = getResponsiveConditionImages(activeCategory.image);
+
   const matchedTreatments = treatments.filter((t) =>
     activeCategory.recommendedTreatmentIds.includes(t.id)
   );
@@ -37,7 +52,6 @@ export const ConditionsView: React.FC<ConditionsViewProps> = ({
           <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block mb-2">
             Targeted Diagnosis & Care
           </span>
-          {/* Single H1 */}
           <h1 className="text-3xl sm:text-5xl font-black text-[#27448a] tracking-tight">
             Treatments by Condition
           </h1>
@@ -60,101 +74,173 @@ export const ConditionsView: React.FC<ConditionsViewProps> = ({
                     : 'bg-white text-slate-800 border-slate-200/80 hover:border-[#0a6ebd]/40'
                 }`}
               >
-                <div className="text-xs font-bold leading-snug mb-2">{cond.name}</div>
-                <div
-                  className={`text-[11px] leading-tight line-clamp-2 ${
-                    isSelected ? 'text-cyan-100' : 'text-slate-500'
-                  }`}
-                >
-                  {cond.tagline}
+                <div>
+                  <div className={`text-xs font-bold ${isSelected ? 'text-cyan-200' : 'text-[#0a6ebd]'}`}>
+                    Concern #{cond.id}
+                  </div>
+                  <div className="font-bold text-sm mt-1">{cond.name}</div>
+                </div>
+                <div className={`text-[11px] mt-4 font-semibold ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>
+                  {cond.recommendedTreatmentIds.length} Treatments
                 </div>
               </button>
             );
           })}
         </div>
 
-        {/* Active Condition Details & Matched Treatments */}
-        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/80 shadow-xs mb-12">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-100 mb-8">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd]">
-                Clinical Evaluation
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#27448a] mt-1">
-                {activeCategory.name}
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl">
-                {activeCategory.tagline}
-              </p>
+        {/* Active Condition Overview Card */}
+        <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-sm mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            {/* Text description: bottom on small devices, left on desktop */}
+            <div className="order-2 lg:order-1 lg:col-span-7 space-y-4 sm:space-y-5">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">
+                  Targeted Analysis
+                </span>
+                <span className="text-xs text-slate-500">
+                  Clinical Diagnosis at Vadodara Centre
+                </span>
+              </div>
+
+              <div className="space-y-2">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#27448a] tracking-tight">
+                  Understanding {activeCategory.name}
+                </h2>
+              </div>
+
+              <div className="pt-1 pb-1">
+                <p className="text-sm sm:text-[15px] text-slate-600 leading-relaxed max-w-2xl">
+                  {activeCategory.what || activeCategory.tagline}
+                </p>
+              </div>
+
+              {activeCategory.causes && (
+                <div className="pt-1">
+                  <span className="text-xs font-bold text-slate-800 block mb-2 uppercase tracking-wider">
+                    Underlying Biological Triggers:
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {activeCategory.causes.map((cause, idx) => (
+                      <span
+                        key={idx}
+                        className="text-xs px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 border border-slate-200"
+                      >
+                        {cause}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
-            <div className="flex items-center gap-3">
-              {onSelectCondition && (
-                <button
-                  onClick={() => onSelectCondition(activeCategory.id)}
-                  className="px-4 py-3 rounded-xl bg-blue-50 text-[#0a6ebd] text-xs font-bold hover:bg-blue-100 transition-colors flex items-center gap-1.5 cursor-pointer"
-                >
-                  <BookOpen className="w-4 h-4" />
-                  <span>Full Condition Guide</span>
-                </button>
-              )}
-
-              <button
-                onClick={onOpenBooking}
-                className="bg-gradient-brand text-white text-xs font-bold px-5 py-3 rounded-xl shadow-md hover:opacity-95 transition-all shrink-0 cursor-pointer"
-              >
-                Consult Vadodara Specialist
-              </button>
+            {/* Visual Image: top on small devices, right on desktop */}
+            <div className="order-1 lg:order-2 lg:col-span-5 w-full flex items-center justify-center">
+              <div className="w-full aspect-[4/3] lg:aspect-[3/4] rounded-2xl lg:rounded-3xl overflow-hidden bg-slate-100 shadow-md border border-slate-100">
+                <picture className="w-full h-full block">
+                  {/* Large & Extra-Large screens (>= 1024px): vertical 3/4 aspect ratio */}
+                  <source
+                    media="(min-width: 1024px)"
+                    srcSet={responsiveActiveImage.desktop}
+                  />
+                  {/* Small devices (< 1024px): 4/3 horizontal aspect ratio */}
+                  <source
+                    media="(max-width: 1023px)"
+                    srcSet={responsiveActiveImage.mobile}
+                  />
+                  <img
+                    src={activeCategory.image}
+                    alt={activeCategory.name}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover"
+                  />
+                </picture>
+              </div>
             </div>
           </div>
 
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-6 flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-[#0a6ebd]" />
-            <span>Recommended Protocols at Richfeel Vadodara ({matchedTreatments.length})</span>
-          </h3>
+          <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+            <div className="text-xs text-slate-500">
+              Need a personalized clinical assessment?
+            </div>
+            <div className="flex items-center gap-3">
+              <Link
+                href={`/conditions/${activeCategory.id}`}
+                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors cursor-pointer"
+              >
+                Read Dedicated Guide
+              </Link>
+              <button
+                onClick={() => openBooking(`Concern: ${activeCategory.name}`)}
+                className="px-5 py-2 rounded-xl bg-[#0a6ebd] hover:bg-[#084f8a] text-white text-xs font-bold shadow-sm transition-all cursor-pointer"
+              >
+                Book Trichogram Test
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Prescribed Treatments for this Condition */}
+        <div className="mb-12">
+          <div className="mb-6">
+            <h3 className="text-xl font-bold text-[#27448a]">
+              Prescribed Medical Pathways for {activeCategory.name}
+            </h3>
+            <p className="text-xs text-slate-500 mt-1">
+              Select any procedure below to view clinical steps and before/after details.
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {matchedTreatments.map((t) => (
+            {matchedTreatments.map((treatment) => (
               <div
-                key={t.id}
-                className="bg-[#f8fafc] rounded-2xl p-6 border border-slate-200 flex flex-col justify-between group hover:bg-white hover:shadow-lg transition-all"
+                key={treatment.id}
+                className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Treatment Card Image (Consistent 4:3 Aspect Ratio) */}
-                  <div className="w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-slate-200">
+                  <div className="aspect-[16/10] relative overflow-hidden bg-slate-100">
                     <img
-                      src={t.image}
-                      alt={t.title}
+                      src={treatment.image}
+                      alt={treatment.title}
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
+                    <div className="absolute bottom-3 left-3">
+                      <span className="px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md text-[#0a6ebd] text-xs font-bold shadow-xs">
+                        {treatment.category}
+                      </span>
+                    </div>
                   </div>
-                  <span className="text-[10px] font-bold uppercase text-[#0a6ebd] tracking-wider block mb-1">
-                    {t.category}
-                  </span>
-                  <h4 className="text-base font-bold text-[#27448a] mb-1 group-hover:text-[#0a6ebd] transition-colors">
-                    {t.title}
-                  </h4>
-                  <p className="text-xs font-medium text-slate-600 mb-2">{t.tagline}</p>
-                  <p className="text-xs text-slate-500 line-clamp-2 mb-4 leading-relaxed">
-                    {t.description}
-                  </p>
+
+                  <div className="p-6 space-y-2">
+                    <h4 className="text-base font-bold text-[#27448a] group-hover:text-[#0a6ebd] transition-colors">
+                      {treatment.title}
+                    </h4>
+                    <p className="text-xs font-medium text-[#0a6ebd]">
+                      {treatment.tagline}
+                    </p>
+                    <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
+                      {treatment.description}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
-                  <button
-                    onClick={() => onSelectTreatment(t.id)}
-                    className="text-xs font-bold text-[#0a6ebd] hover:text-[#27448a] flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>View Treatment Page</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                  <button
-                    onClick={onOpenBooking}
-                    className="text-[11px] font-semibold px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 hover:bg-[#0a6ebd] hover:text-white transition-colors cursor-pointer"
-                  >
-                    Book
-                  </button>
+                <div className="p-6 pt-0">
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <Link
+                      href={`/treatments/${treatment.id}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0a6ebd] group-hover:translate-x-1 transition-all"
+                    >
+                      <span>Explore Procedure</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+
+                    <button
+                      onClick={() => openBooking(treatment.title)}
+                      className="px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-[#0a6ebd] hover:text-white text-xs font-bold text-[#0a6ebd] transition-all cursor-pointer"
+                    >
+                      Consult Doctor
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

@@ -1,25 +1,32 @@
+'use client';
+
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Search, Flame, Clock, Calendar, ArrowRight, ShieldCheck, MapPin } from 'lucide-react';
-import { BlogPost } from '../../types';
-import { clinicInfo } from '../../data/staticData';
+import { BlogPost, Treatment } from '@/types';
+import { clinicInfo } from '@/data/staticData';
 
 interface BlogSidebarProps {
-  currentBlogId: string;
+  currentPostId?: string;
+  currentBlogId?: string;
   allBlogs: BlogPost[];
-  onSelectBlog: (slug: string) => void;
+  treatments?: Treatment[];
+  onSelectBlog?: (slug: string) => void;
+  onSelectTreatment?: (id: string) => void;
   onOpenBooking: () => void;
 }
 
 export const BlogSidebar: React.FC<BlogSidebarProps> = ({
+  currentPostId,
   currentBlogId,
   allBlogs,
-  onSelectBlog,
-  onOpenBooking
+  onOpenBooking,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const activeId = currentPostId || currentBlogId || '';
 
-  const popularPosts = allBlogs.filter((b) => b.popular && b.id !== currentBlogId).slice(0, 3);
-  const recentPosts = allBlogs.filter((b) => b.recent && b.id !== currentBlogId).slice(0, 3);
+  const popularPosts = allBlogs.filter((b) => b.popular && b.id !== activeId).slice(0, 3);
+  const recentPosts = allBlogs.filter((b) => b.recent && b.id !== activeId).slice(0, 3);
   const uniqueTopics = Array.from(new Set(allBlogs.map((b) => b.topicTag)));
 
   const searchResults = searchTerm.trim()
@@ -52,17 +59,15 @@ export const BlogSidebar: React.FC<BlogSidebarProps> = ({
           <div className="mt-3 space-y-2 border-t border-slate-100 pt-3">
             {searchResults.length > 0 ? (
               searchResults.slice(0, 4).map((res) => (
-                <button
+                <Link
                   key={res.id}
-                  onClick={() => {
-                    onSelectBlog(res.slug);
-                    setSearchTerm('');
-                  }}
+                  href={`/blog/${res.slug}`}
+                  onClick={() => setSearchTerm('')}
                   className="w-full text-left p-2 rounded-lg hover:bg-slate-50 transition-colors block text-xs cursor-pointer"
                 >
                   <div className="font-semibold text-[#0a6ebd] line-clamp-1">{res.title}</div>
                   <div className="text-[11px] text-slate-500">{res.category}</div>
-                </button>
+                </Link>
               ))
             ) : (
               <p className="text-[11px] text-slate-500 py-1">No articles found.</p>
@@ -111,16 +116,16 @@ export const BlogSidebar: React.FC<BlogSidebarProps> = ({
 
         <div className="space-y-3">
           {popularPosts.map((post) => (
-            <button
+            <Link
               key={post.id}
-              onClick={() => onSelectBlog(post.slug)}
+              href={`/blog/${post.slug}`}
               className="w-full text-left group flex items-start gap-3 p-1.5 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
             >
               <img
                 src={post.coverImage}
                 alt={post.title}
                 referrerPolicy="no-referrer"
-                className="w-14 h-14 rounded-lg object-cover shrink-0 bg-slate-100"
+                className="w-20 aspect-[4/3] rounded-lg object-cover shrink-0 bg-slate-100"
               />
               <div className="flex-1 min-w-0">
                 <span className="text-[10px] font-bold text-[#0a6ebd] uppercase block">
@@ -133,7 +138,7 @@ export const BlogSidebar: React.FC<BlogSidebarProps> = ({
                   {post.readTime}
                 </span>
               </div>
-            </button>
+            </Link>
           ))}
         </div>
       </div>
@@ -166,9 +171,9 @@ export const BlogSidebar: React.FC<BlogSidebarProps> = ({
 
         <div className="space-y-3">
           {recentPosts.map((post) => (
-            <button
+            <Link
               key={post.id}
-              onClick={() => onSelectBlog(post.slug)}
+              href={`/blog/${post.slug}`}
               className="w-full text-left group block p-1.5 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
             >
               <h5 className="text-xs font-semibold text-slate-800 line-clamp-2 group-hover:text-[#0a6ebd] transition-colors mb-1">
@@ -179,7 +184,7 @@ export const BlogSidebar: React.FC<BlogSidebarProps> = ({
                 <span>·</span>
                 <span>{post.readTime}</span>
               </div>
-            </button>
+            </Link>
           ))}
         </div>
       </div>

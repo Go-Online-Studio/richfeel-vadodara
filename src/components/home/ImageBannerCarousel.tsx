@@ -1,5 +1,9 @@
+'use client';
+
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { ChevronLeft, ChevronRight, ArrowRight, Sparkles } from 'lucide-react';
+import { useConsultation } from '@/context/ConsultationContext';
 
 interface BannerSlide {
   id: string;
@@ -14,23 +18,14 @@ interface BannerSlide {
   actionExtra?: string;
 }
 
-interface ImageBannerCarouselProps {
-  onNavigate: (view: string, extra?: string) => void;
-  onOpenBooking: () => void;
-}
-
-export const ImageBannerCarousel: React.FC<ImageBannerCarouselProps> = ({
-  onNavigate,
-  onOpenBooking
-}) => {
+export const ImageBannerCarousel: React.FC = () => {
+  const router = useRouter();
+  const { openBooking } = useConsultation();
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const pauseTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Banner Slides configuration:
-  // - desktopImage recommended size: 1920x700 px (landscape, subject on right side)
-  // - mobileImage recommended size: 750x1000 px or 800x1100 px (portrait, subject on top half)
-  // - To use local assets, place files in public/images/ and use '/images/Banner1.webp' & '/images/BannerMOB1.webp'
+  // Banner Slides configuration matching OldCodeFiles exactly
   const slides: BannerSlide[] = [
     {
       id: 'slide-1',
@@ -38,8 +33,8 @@ export const ImageBannerCarousel: React.FC<ImageBannerCarouselProps> = ({
       title: 'Pioneers of Trichology in India',
       subtitle: 'Dr. Apoorva Shah & Dr. Sonal Shah · India’s 1st Certified Trichologists at Sunpharma Road, Vadodara.',
       mobileSubtitle: 'Dr. Apoorva Shah & Dr. Sonal Shah · India’s 1st Certified Trichologists.',
-      desktopImage: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1920&q=85',
-      mobileImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=1100&q=85',
+      desktopImage: '/images/Banner1.webp',
+      mobileImage: '/images/BannerMob1.webp',
       ctaText: 'Free Assessment',
       actionView: 'booking'
     },
@@ -49,8 +44,8 @@ export const ImageBannerCarousel: React.FC<ImageBannerCarouselProps> = ({
       title: 'Advanced Laser Hair Reduction',
       subtitle: 'Continuous gliding motion with sapphire contact cooling for 90% permanent reduction.',
       mobileSubtitle: 'Sapphire contact cooling for permanent pain-free hair reduction.',
-      desktopImage: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1920&q=85',
-      mobileImage: 'https://images.unsplash.com/photo-1512290900672-1f55b9e02377?auto=format&fit=crop&w=800&h=1100&q=85',
+      desktopImage: '/images/Banner2.webp',
+      mobileImage: '/images/BannerMob2.webp',
       ctaText: 'View Laser Details',
       actionView: 'treatment-page',
       actionExtra: 'laser-hair-reduction'
@@ -61,8 +56,8 @@ export const ImageBannerCarousel: React.FC<ImageBannerCarouselProps> = ({
       title: 'Anagrow & TST+ Scalp Therapy',
       subtitle: 'Austrian MLD detox & Swiss apple stem cells to revive dormant follicles without needles.',
       mobileSubtitle: 'Revive dormant follicles naturally with Swiss stem cells & Austrian detox.',
-      desktopImage: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1920&q=85',
-      mobileImage: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=800&h=1100&q=85',
+      desktopImage: '/images/Banner3.webp',
+      mobileImage: '/images/BannerMob3.webp',
       ctaText: 'Explore Treatments',
       actionView: 'treatments'
     }
@@ -97,9 +92,13 @@ export const ImageBannerCarousel: React.FC<ImageBannerCarouselProps> = ({
 
   const handleActionClick = (slide: BannerSlide) => {
     if (slide.actionView === 'booking') {
-      onOpenBooking();
+      openBooking('Banner Free Assessment');
+    } else if (slide.actionView === 'treatment-page' && slide.actionExtra) {
+      router.push(`/treatments/${slide.actionExtra}`);
+    } else if (slide.actionView === 'treatments') {
+      router.push('/treatments');
     } else {
-      onNavigate(slide.actionView, slide.actionExtra);
+      router.push('/');
     }
   };
 
@@ -177,7 +176,7 @@ export const ImageBannerCarousel: React.FC<ImageBannerCarouselProps> = ({
             </button>
 
             <button
-              onClick={onOpenBooking}
+              onClick={() => openBooking('Hero Banner Consultation')}
               className="px-3.5 sm:px-4 md:px-5 py-2.5 sm:py-2.5 md:py-3 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-xs md:text-sm backdrop-blur-md border border-white/25 transition-all cursor-pointer"
             >
               Consultation

@@ -18,7 +18,7 @@ export const Heritage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#101e3d] from-0% via-[#101e3d]/80 via-20% to-transparent to-40% opacity-85" />
               
-              <div className="absolute bottom-12 left-6 right-6 text-white">
+              <div className="absolute bottom-6 sm:bottom-12 left-6 right-6 text-white">
                 <span className="text-[11px] font-bold uppercase tracking-widest text-[#4ecdc4] block mb-1">
                   Limca Book of Records Entry
                 </span>

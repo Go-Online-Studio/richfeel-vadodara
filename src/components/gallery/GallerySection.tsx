@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Sparkles, Eye, ShieldCheck, Calendar, ArrowRight } from 'lucide-react';
 import { ScrollableFilterContainer } from '../common/ScrollableFilterContainer';
@@ -138,7 +140,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenBooking })
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute top-3 left-3 bg-[#27448a]/90 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-[11px] font-bold">
+                <div className="absolute bottom-3 left-3 bg-[#27448a]/90 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-[11px] font-bold">
                   {item.badge}
                 </div>
                 <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-[#0a6ebd] px-2.5 py-0.5 rounded text-[10px] font-semibold">

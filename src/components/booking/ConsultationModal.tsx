@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { X, Calendar, Phone, MessageSquare, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { clinicInfo } from '../../data/staticData';

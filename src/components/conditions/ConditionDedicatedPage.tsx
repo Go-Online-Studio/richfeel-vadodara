@@ -1,23 +1,39 @@
+'use client';
+
 import React from 'react';
+import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, ShieldCheck, AlertCircle, Sparkles, ArrowRight, Calendar, Phone, MessageSquare } from 'lucide-react';
-import { ConditionCategory, Treatment } from '../../types';
-import { clinicInfo } from '../../data/staticData';
+import { ConditionCategory, Treatment } from '@/types';
+import { clinicInfo } from '@/data/staticData';
+import { useConsultation } from '@/context/ConsultationContext';
 
 interface ConditionDedicatedPageProps {
   condition: ConditionCategory;
-  onBack: () => void;
-  onSelectTreatment: (treatmentId: string) => void;
-  onOpenBooking: () => void;
   allTreatments: Treatment[];
 }
 
+// Generate responsive 3/4 vertical (desktop) and 4/3 horizontal (mobile) image sizes
+const getResponsiveConditionImages = (imageUrl: string) => {
+  if (imageUrl && imageUrl.includes('images.unsplash.com')) {
+    const baseUrl = imageUrl.split('?')[0];
+    return {
+      desktop: `${baseUrl}?auto=format&fit=crop&w=900&h=1200&q=85`, // Vertical 3:4 for lg to xl
+      mobile: `${baseUrl}?auto=format&fit=crop&w=800&h=600&q=85`,   // Horizontal 4:3 for small devices
+    };
+  }
+  return {
+    desktop: imageUrl,
+    mobile: imageUrl,
+  };
+};
+
 export const ConditionDedicatedPage: React.FC<ConditionDedicatedPageProps> = ({
   condition,
-  onBack,
-  onSelectTreatment,
-  onOpenBooking,
-  allTreatments
+  allTreatments,
 }) => {
+  const { openBooking } = useConsultation();
+  const responsiveImages = getResponsiveConditionImages(condition.image);
+
   // Matched treatments from our portfolio
   const matchedTreatments = allTreatments.filter((t) =>
     condition.recommendedTreatmentIds.includes(t.id)
@@ -28,269 +44,235 @@ export const ConditionDedicatedPage: React.FC<ConditionDedicatedPageProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb & Back */}
         <div className="mb-6">
-          <button
-            onClick={onBack}
+          <Link
+            href="/conditions"
             className="inline-flex items-center gap-2 text-xs font-bold text-[#0a6ebd] hover:text-[#27448a] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to All Conditions</span>
-          </button>
+          </Link>
         </div>
 
-        {/* Condition Hero Header (Image on top on mobile, text on bottom) */}
-        <div className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm mb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
-            {/* Visual Image (On top on mobile, 5 cols on desktop, consistent 4:3 aspect ratio) */}
-            <div className="order-1 lg:order-2 lg:col-span-5 w-full aspect-[4/3] relative overflow-hidden bg-slate-100">
-              <img
-                src={condition.image}
-                alt={condition.name}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Content (On bottom on mobile, 7 cols on desktop) */}
-            <div className="order-2 lg:order-1 lg:col-span-7 p-6 sm:p-10 lg:p-12 space-y-4">
+        {/* Condition Hero Header */}
+        <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-8 lg:p-10 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            {/* Content (7 cols on desktop) */}
+            <div className="order-2 lg:order-1 lg:col-span-7 space-y-4 sm:space-y-5">
               <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] bg-blue-50 px-3 py-1 rounded-md border border-blue-100">
                 Clinical Dermatology & Trichology Guide
               </span>
 
-              {/* Single H1 for the page */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#27448a] tracking-tight leading-tight">
-                {condition.name}
-              </h1>
+              {/* Title */}
+              <div className="space-y-2">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#27448a] tracking-tight leading-tight">
+                  {condition.name} Treatment & Causes
+                </h1>
+              </div>
 
-              <p className="text-sm sm:text-base font-semibold text-[#0a6ebd]">
-                {condition.tagline}
-              </p>
+              {/* Description with proper spacing */}
+              <div className="pt-1 pb-1">
+                <p className="text-sm sm:text-[15px] text-slate-600 leading-relaxed max-w-2xl">
+                  {condition.what || condition.tagline}
+                </p>
+              </div>
 
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                {condition.what}
-              </p>
+              {/* Biological Causes */}
+              {condition.causes && (
+                <div className="pt-1">
+                  <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
+                    Primary Biological Triggers:
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {condition.causes.map((cause, idx) => (
+                      <span
+                        key={idx}
+                        className="text-xs font-medium px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 border border-slate-200"
+                      >
+                        {cause}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-              <div className="pt-2 flex flex-wrap items-center gap-3">
+              {/* CTAs */}
+              <div className="pt-3 flex flex-wrap items-center gap-3">
                 <button
-                  onClick={onOpenBooking}
-                  className="bg-gradient-brand text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-md hover:opacity-95 transition-all flex items-center gap-2 cursor-pointer"
+                  onClick={() => openBooking(`Evaluation for ${condition.name}`)}
+                  className="px-6 py-3 rounded-xl bg-gradient-brand text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer"
                 >
-                  <Calendar className="w-4 h-4" />
-                  <span>Consult Vadodara Specialist</span>
+                  <Calendar className="w-4 h-4 text-[#4ecdc4]" />
+                  <span>Book Diagnostic Evaluation</span>
                 </button>
+
                 <a
                   href={`tel:${clinicInfo.rawPhones[0]}`}
-                  className="px-5 py-3.5 rounded-xl bg-slate-100 text-slate-800 font-bold text-xs hover:bg-slate-200 transition-colors flex items-center gap-2"
+                  className="px-5 py-3 rounded-xl border border-blue-200 text-[#0a6ebd] hover:bg-blue-50/50 font-bold text-xs sm:text-sm transition-colors flex items-center gap-2"
                 >
-                  <Phone className="w-3.5 h-3.5 text-[#0a6ebd]" />
-                  <span>Call: {clinicInfo.phones[0]}</span>
+                  <Phone className="w-4 h-4 text-[#0a6ebd]" />
+                  <span>Call {clinicInfo.phones[0]}</span>
                 </a>
+              </div>
+            </div>
+
+            {/* Visual Image with responsive <picture> tag: 3/4 vertical on lg/xl, 4/3 on small devices */}
+            <div className="order-1 lg:order-2 lg:col-span-5 w-full flex items-center justify-center">
+              <div className="w-full aspect-[4/3] lg:aspect-[3/4] relative rounded-2xl lg:rounded-3xl overflow-hidden bg-slate-100 shadow-md border border-slate-100">
+                <picture className="w-full h-full block">
+                  {/* Large & Extra-Large screens (>= 1024px): vertical 3/4 aspect ratio */}
+                  <source
+                    media="(min-width: 1024px)"
+                    srcSet={responsiveImages.desktop}
+                  />
+                  {/* Small devices (< 1024px): 4/3 horizontal aspect ratio */}
+                  <source
+                    media="(max-width: 1023px)"
+                    srcSet={responsiveImages.mobile}
+                  />
+                  <img
+                    src={condition.image}
+                    alt={condition.name}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover"
+                  />
+                </picture>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Detailed Condition Narrative Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Main Details (8 cols) */}
-          <div className="lg:col-span-8 space-y-8">
-            {/* 1. Why does it happen */}
-            <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block">
-                01. Biological Mechanism
-              </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-[#27448a]">
-                Why Does {condition.name} Happen?
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                {condition.why}
-              </p>
-            </section>
-
-            {/* 2. Clinical Types & Stages */}
-            <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block">
-                02. Clinical Classification
-              </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-[#27448a]">
-                Clinical Types & Manifestations
-              </h2>
-              <div className="space-y-2 pt-1">
-                {condition.types.map((type, i) => (
-                  <div key={i} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs sm:text-sm text-slate-700">
-                    <CheckCircle2 className="w-4 h-4 text-[#0a6ebd] shrink-0 mt-0.5" />
-                    <span>{type}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* 3. Causes & Triggers */}
-            <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block">
-                03. Etiology & Risk Factors
-              </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-[#27448a]">
-                Root Causes & Triggers
-              </h2>
-              <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
-                {condition.causes.map((cause, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0a6ebd] shrink-0 mt-2" />
-                    <span>{cause}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            {/* 4. Symptoms & Warning Signs */}
-            <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block">
-                04. Clinical Signs
-              </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-[#27448a]">
-                Symptoms & Warning Signs
-              </h2>
-              <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
-                {condition.symptoms.map((sym, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <AlertCircle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-                    <span>{sym}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            {/* 5. How Richfeel Diagnoses It */}
-            <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block">
-                05. Diagnostic Precision
-              </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-[#27448a]">
-                How Richfeel Vadodara Diagnoses This Condition
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                {condition.howDiagnose}
-              </p>
-            </section>
-
-            {/* 6. Prevention & Management */}
-            <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block">
-                06. Care Protocol
-              </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-[#27448a]">
-                Prevention & Long-Term Management
-              </h2>
-              <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
-                {condition.preventManagement.map((prev, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="w-5 h-5 rounded-full bg-blue-50 text-[#0a6ebd] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                      {i + 1}
-                    </span>
-                    <span>{prev}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            {/* 7. Treatment Options (Our Treatments) */}
-            <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-4">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-[#0a6ebd]" />
-                <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd]">
-                  07. Solutions at Richfeel Vadodara
-                </span>
-              </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-[#27448a]">
-                Our Clinically Prescribed Treatment Protocols
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600">
-                Click on any protocol below to view its complete step-by-step clinical breakdown.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                {matchedTreatments.map((treatment) => (
-                  <div
-                    key={treatment.id}
-                    className="p-5 rounded-2xl bg-[#f8fafc] border border-slate-200 hover:border-[#0a6ebd]/50 hover:bg-white hover:shadow-md transition-all flex flex-col justify-between group"
-                  >
-                    <div>
-                      {/* Treatment Image (Consistent 4:3 Aspect Ratio) */}
-                      <div className="w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-slate-200">
-                        <img
-                          src={treatment.image}
-                          alt={treatment.title}
-                          referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                        />
-                      </div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#0a6ebd] block mb-1">
-                        {treatment.category}
-                      </span>
-                      <h3 className="text-base font-bold text-[#27448a] group-hover:text-[#0a6ebd] transition-colors mb-1">
-                        {treatment.title}
-                      </h3>
-                      <p className="text-xs text-slate-500 line-clamp-2">
-                        {treatment.tagline}
-                      </p>
-                    </div>
-
-                    <div className="pt-4 mt-3 border-t border-slate-200/70 flex items-center justify-between">
-                      <button
-                        onClick={() => onSelectTreatment(treatment.id)}
-                        className="text-xs font-bold text-[#0a6ebd] flex items-center gap-1 cursor-pointer"
-                      >
-                        <span>View Procedure</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
-                      <button
-                        onClick={onOpenBooking}
-                        className="text-[11px] font-semibold px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 hover:bg-[#0a6ebd] hover:text-white transition-colors cursor-pointer"
-                      >
-                        Book
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
+        {/* Symptoms & Trichology Diagnostic Flow */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+          {/* Key Symptoms & Clinical Indicators (6 cols) */}
+          <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-4">
+            <h2 className="text-xl font-bold text-[#27448a] flex items-center gap-2">
+              <AlertCircle className="w-5 h-5 text-[#0a6ebd]" />
+              <span>Recognize the Warning Signs</span>
+            </h2>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Early detection prevents irreversible miniaturization. Look for these key diagnostic indicators of {condition.name}:
+            </p>
+            <div className="space-y-3 pt-2">
+              {condition.symptoms?.map((symptom, idx) => (
+                <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-[#f6f9fc] border border-slate-100">
+                  <CheckCircle2 className="w-4 h-4 text-[#0a6ebd] shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm text-slate-700 font-medium">
+                    {symptom}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Sticky Consultation Sidebar (4 cols) */}
-          <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-28">
-            <div className="bg-gradient-brand text-white rounded-3xl p-6 shadow-md space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#4ecdc4] block">
-                Vadodara In-Clinic Assessment
-              </span>
-              <h3 className="text-lg font-bold text-white">
-                Book Diagnostic Check for {condition.name}
-              </h3>
-              <p className="text-xs text-cyan-100 leading-relaxed">
-                Includes Capilloscopy & Trichogram analysis at Marvel Square, Sunpharma Road, Vadodara.
-              </p>
+          {/* Diagnostic Methodology at Vadodara (6 cols) */}
+          <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-4">
+            <h2 className="text-xl font-bold text-[#27448a] flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-[#4ecdc4]" />
+              <span>How We Diagnose at Vadodara Centre</span>
+            </h2>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Unlike generic clinics that guess, Richfeel utilizes clinical hardware to identify root causes:
+            </p>
 
-              <button
-                onClick={onOpenBooking}
-                className="w-full py-3 rounded-xl bg-white text-[#27448a] font-bold text-xs shadow-sm hover:bg-cyan-50 transition-colors flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Calendar className="w-4 h-4" />
-                <span>Schedule Consultation</span>
-              </button>
+            <div className="space-y-4 pt-2">
+              <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-1">
+                <div className="text-xs font-bold text-[#0a6ebd]">
+                  1. Digital Capilloscopy Analysis
+                </div>
+                <p className="text-xs text-slate-600">
+                  High-magnification dermatoscope examining micro-circulation, sebum plugs, and scalp erythema.
+                </p>
+              </div>
 
-              <a
-                href={clinicInfo.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-2.5 rounded-xl bg-[#25D366] text-white font-bold text-xs flex items-center justify-center gap-2 hover:opacity-95 transition-all"
-              >
-                <MessageSquare className="w-4 h-4" />
-                <span>WhatsApp Clinical Desk</span>
-              </a>
+              <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-1">
+                <div className="text-xs font-bold text-[#0a6ebd]">
+                  2. Trichogram A/T Ratio Test
+                </div>
+                <p className="text-xs text-slate-600">
+                  Scientific measurement calculating anagen to telogen follicle proportions.
+                </p>
+              </div>
 
-              <div className="pt-2 text-center text-xs text-cyan-100">
-                Call Clinic: <a href={`tel:${clinicInfo.rawPhones[0]}`} className="font-bold underline text-white">{clinicInfo.phones[0]}</a>
+              <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-1">
+                <div className="text-xs font-bold text-[#0a6ebd]">
+                  3. Internal Tricho-Nutritional Profiling
+                </div>
+                <p className="text-xs text-slate-600">
+                  Screening for systemic hormonal imbalances, vitamin D/B12 deficiencies, and ferritin levels.
+                </p>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Recommended Clinical Treatments */}
+        <div className="mb-14">
+          <div className="max-w-2xl mb-8">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block mb-1">
+              Targeted Medical Solutions
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#27448a]">
+              Recommended Procedures for {condition.name}
+            </h2>
+            <p className="text-xs text-slate-600 mt-2">
+              These procedures are scientifically indicated for this condition based on international trichology guidelines:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {matchedTreatments.map((treatment) => (
+              <div
+                key={treatment.id}
+                className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="aspect-[4/3] relative overflow-hidden bg-slate-100">
+                    <img
+                      src={treatment.image}
+                      alt={treatment.title}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute bottom-3 left-3">
+                      <span className="px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md text-[#0a6ebd] text-xs font-bold shadow-xs">
+                        {treatment.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-6 space-y-2">
+                    <h3 className="text-lg font-bold text-[#27448a] group-hover:text-[#0a6ebd] transition-colors">
+                      {treatment.title}
+                    </h3>
+                    <p className="text-xs font-medium text-[#0a6ebd]">
+                      {treatment.tagline}
+                    </p>
+                    <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
+                      {treatment.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 pt-0">
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <Link
+                      href={`/treatments/${treatment.id}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0a6ebd] group-hover:translate-x-1 transition-all"
+                    >
+                      <span>Explore Procedure</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+
+                    <button
+                      onClick={() => openBooking(treatment.title)}
+                      className="px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-[#0a6ebd] hover:text-white text-xs font-bold text-[#0a6ebd] transition-all cursor-pointer"
+                    >
+                      Consult Doctor
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

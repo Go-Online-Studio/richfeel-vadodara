@@ -1,23 +1,24 @@
+'use client';
+
 import React from 'react';
-import { ArrowLeft, ShieldCheck, FileText, Lock } from 'lucide-react';
-import { clinicInfo } from '../../data/staticData';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 
 interface LegalPagesProps {
   page: 'terms' | 'privacy';
-  onBack: () => void;
 }
 
-export const LegalPages: React.FC<LegalPagesProps> = ({ page, onBack }) => {
+export const LegalPages: React.FC<LegalPagesProps> = ({ page }) => {
   return (
     <div className="py-12 bg-[#f6f9fc] min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <button
-          onClick={onBack}
+        <Link
+          href="/"
           className="inline-flex items-center gap-2 text-xs font-bold text-[#0a6ebd] hover:text-[#27448a] transition-colors cursor-pointer mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Home</span>
-        </button>
+        </Link>
 
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/90 shadow-xs space-y-8 text-slate-700">
           {page === 'terms' ? (
@@ -26,7 +27,6 @@ export const LegalPages: React.FC<LegalPagesProps> = ({ page, onBack }) => {
                 <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block mb-2">
                   Legal Agreement
                 </span>
-                {/* Single H1 */}
                 <h1 className="text-2xl sm:text-4xl font-black text-[#27448a] tracking-tight">
                   Terms & Conditions
                 </h1>
@@ -59,7 +59,7 @@ export const LegalPages: React.FC<LegalPagesProps> = ({ page, onBack }) => {
               <section className="space-y-3 text-xs sm:text-sm leading-relaxed">
                 <h2 className="text-lg font-bold text-[#27448a]">4. Package Validity & Rescheduling</h2>
                 <p>
-                  Treatment sessions and packages are valid for the designated clinical treatment period agreed upon at enrollment. Patients requesting rescheduling are requested to provide at least 24 hours prior notice to facilitate scheduling adjustments.
+                  Clinical treatment packages purchased for laser reduction or stem cell maintenance sessions remain valid for the stipulated clinical duration from the date of first enrollment. Patients may reschedule sessions with a minimum 24-hour advance intimation to the front desk team.
                 </p>
               </section>
             </>
@@ -67,47 +67,34 @@ export const LegalPages: React.FC<LegalPagesProps> = ({ page, onBack }) => {
             <>
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block mb-2">
-                  Patient Confidentiality
+                  Patient Data Security
                 </span>
-                {/* Single H1 */}
                 <h1 className="text-2xl sm:text-4xl font-black text-[#27448a] tracking-tight">
-                  Privacy Policy
+                  Privacy Policy & Confidentiality
                 </h1>
                 <p className="text-xs text-slate-500 mt-2">
-                  Last Updated: October 2026 · Committed to Patient Health Information Privacy
+                  Last Updated: October 2026 · Committed to Patient Health Information (PHI) Protection
                 </p>
               </div>
 
               <section className="space-y-3 text-xs sm:text-sm leading-relaxed">
                 <h2 className="text-lg font-bold text-[#27448a]">1. Patient Information Confidentiality</h2>
                 <p>
-                  Richfeel Vadodara places supreme importance on patient medical confidentiality. Any diagnostic imagery, Trichogram records, Capilloscopy data, contact phone numbers, or clinical notes collected are stored securely and accessed exclusively by our treating clinical team.
+                  Richfeel Vadodara collects patient demographic information, medical histories, video-capilloscopy microscopic captures, and contact details exclusively for diagnosing hair, scalp, and skin disorders, customizing trichology plans, and communicating appointment notifications.
                 </p>
               </section>
 
               <section className="space-y-3 text-xs sm:text-sm leading-relaxed">
-                <h2 className="text-lg font-bold text-[#27448a]">2. Information We Collect</h2>
+                <h2 className="text-lg font-bold text-[#27448a]">2. Medical Imagery Privacy</h2>
                 <p>
-                  When you submit appointment requests, inquire via WhatsApp, or undergo diagnostic tests, we collect:
-                </p>
-                <ul className="list-disc pl-5 space-y-1">
-                  <li>Full name, telephone contact number, and email address</li>
-                  <li>Primary hair or skin clinical symptoms and health history</li>
-                  <li>Diagnostic microscopic scalp photographs taken during clinic visits</li>
-                </ul>
-              </section>
-
-              <section className="space-y-3 text-xs sm:text-sm leading-relaxed">
-                <h2 className="text-lg font-bold text-[#27448a]">3. Third-Party Sharing Prohibition</h2>
-                <p>
-                  We strictly never sell, trade, or rent patient personal or medical contact details to commercial third-party marketing companies. Patient data is utilized solely for clinical treatment scheduling, progress tracking, and emergency clinical contact.
+                  Diagnostic Trichogram imaging, baseline clinical photographs, and follicular counts recorded during your consultations are stored on encrypted internal clinic systems. Photographic records are never published in marketing or clinical literature without explicit, signed informed consent.
                 </p>
               </section>
 
               <section className="space-y-3 text-xs sm:text-sm leading-relaxed">
-                <h2 className="text-lg font-bold text-[#27448a]">4. Contact Our Privacy Officer</h2>
+                <h2 className="text-lg font-bold text-[#27448a]">3. Third-Party Sharing</h2>
                 <p>
-                  For any inquiries regarding your health records or data protection, please contact our Vadodara clinic at <a href={`mailto:${clinicInfo.email}`} className="text-[#0a6ebd] underline">{clinicInfo.email}</a> or call <a href={`tel:${clinicInfo.rawPhones[0]}`} className="text-[#0a6ebd] underline">{clinicInfo.phones[0]}</a>.
+                  We strictly do not sell, rent, or lease patient contact directories to third-party telemarketers or external entities. Contact details are strictly used for in-clinic appointment confirmations, prescription reminders, and WhatsApp support.
                 </p>
               </section>
             </>

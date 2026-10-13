@@ -1,13 +1,13 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, ZoomIn, Sparkles, Calendar } from 'lucide-react';
-import { GalleryItem } from '../../types';
-import { ScrollableFilterContainer } from '../common/ScrollableFilterContainer';
+import { GalleryItem } from '@/types';
+import { ScrollableFilterContainer } from '@/components/common/ScrollableFilterContainer';
+import { useConsultation } from '@/context/ConsultationContext';
 
-interface FancyGalleryProps {
-  onOpenBooking: () => void;
-}
-
-export const FancyGallery: React.FC<FancyGalleryProps> = ({ onOpenBooking }) => {
+export const FancyGallery: React.FC = () => {
+  const { openBooking } = useConsultation();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
 
@@ -61,80 +61,65 @@ export const FancyGallery: React.FC<FancyGalleryProps> = ({ onOpenBooking }) => 
     },
     {
       id: 'gal-6',
-      title: 'Capilloscopy & Trichogram Diagnostic Suite',
-      subtitle: 'Microscopic root anchorage & density analysis',
-      category: 'Clinic',
-      image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80',
-      fullImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1600&q=90',
-      description: 'High-precision diagnostic cameras examining follicle unit density per square cm and the anagen/telogen growth ratio.'
-    },
-    {
-      id: 'gal-7',
-      title: 'Vortex Hydra Facial & Dermal Glow',
-      subtitle: 'Deep pore purification and radiant bridal tone',
-      category: 'Skin Aesthetics',
-      image: 'https://images.unsplash.com/photo-1512290900672-1f5be572d4ff?auto=format&fit=crop&w=800&q=80',
-      fullImage: 'https://images.unsplash.com/photo-1512290900672-1f5be572d4ff?auto=format&fit=crop&w=1600&q=90',
-      description: 'Immediate post-procedure glow after vortex pore cleansing and clinical antioxidant super-serum infusion.'
-    },
-    {
-      id: 'gal-8',
-      title: 'Swiss Lace Non-Surgical Hair System',
-      subtitle: 'Second-skin permeable derma base fitting',
+      title: 'Biotin-Enriched PRP Crown Densification',
+      subtitle: 'Reactivation of sleeping follicles',
       category: 'Hair Restoration',
-      image: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80',
-      fullImage: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=90',
-      description: 'Breathable Swiss derma base tailored for extensive male pattern baldness, offering total lifestyle freedom.'
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+      fullImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=90',
+      description: 'Marked thickening of vertex thinning after 4 sessions of autologous PRP enriched with micronized pharmaceutical biotin.'
     }
   ];
 
-  const filtered = items.filter(
-    (item) => selectedCategory === 'All' || item.category === selectedCategory
-  );
+  const filteredItems = selectedCategory === 'All'
+    ? items
+    : items.filter((item) => item.category === selectedCategory);
 
-  // Keyboard navigation for Lightbox
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (lightboxIdx === null) return;
       if (e.key === 'Escape') setLightboxIdx(null);
-      if (e.key === 'ArrowRight') setLightboxIdx((lightboxIdx + 1) % filtered.length);
-      if (e.key === 'ArrowLeft') setLightboxIdx((lightboxIdx - 1 + filtered.length) % filtered.length);
+      if (e.key === 'ArrowRight') {
+        setLightboxIdx((prev) => (prev !== null ? (prev + 1) % filteredItems.length : null));
+      }
+      if (e.key === 'ArrowLeft') {
+        setLightboxIdx((prev) => (prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : null));
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [lightboxIdx, filtered.length]);
+  }, [lightboxIdx, filteredItems.length]);
 
   return (
     <div className="py-12 bg-[#f6f9fc] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8">
+        <div className="max-w-3xl mb-10">
           <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block mb-2">
-            Clinical Visual Evidence
+            Clinical Evidence & Results
           </span>
-          {/* Single H1 on this page */}
           <h1 className="text-3xl sm:text-5xl font-black text-[#27448a] tracking-tight">
-            From Bald to Bold
+            Before & After Regrowth Gallery
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
-            #wepledgebaldfreeindia · Real patient transformations and our world-class clinic infrastructure at Marvel Square, Sunpharma Road, Vadodara. Click any image to view in high resolution.
+          <p className="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
+            Real patient outcomes from Richfeel's patented hair restoration, Austrian scalp detox, and advanced laser aesthetics. Click any image to view high-resolution clinical documentation.
           </p>
         </div>
 
-        {/* Category Filter Pills with Responsive Edge Fade */}
-        <div className="mb-10 max-w-5xl mx-auto">
+        {/* Categories Bar */}
+        <div className="mb-10">
           <ScrollableFilterContainer
-            centerWhenFits={true}
+            className="w-full sm:w-auto min-w-0"
+            contentClassName="gap-2 p-1"
             bgColor="slate-tint"
           >
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
                   selectedCategory === cat
-                    ? 'bg-gradient-brand text-white shadow-xs'
-                    : 'bg-white text-slate-600 hover:text-[#27448a] border border-slate-200'
+                    ? 'bg-[#27448a] text-white shadow-md'
+                    : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200/80'
                 }`}
               >
                 {cat}
@@ -143,121 +128,129 @@ export const FancyGallery: React.FC<FancyGalleryProps> = ({ onOpenBooking }) => 
           </ScrollableFilterContainer>
         </div>
 
-        {/* Gallery Grid (Card with primarily images and minimal text) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filtered.map((item, idx) => (
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredItems.map((item, idx) => (
             <div
               key={item.id}
               onClick={() => setLightboxIdx(idx)}
-              className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-xl hover:border-[#0a6ebd]/40 transition-all duration-300 cursor-pointer group flex flex-col justify-between"
+              className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer group"
             >
-              {/* Gallery Image Container (Consistent 4:3 Aspect Ratio) */}
-              <div className="w-full aspect-[4/3] relative overflow-hidden bg-slate-100">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/30 transition-colors flex items-center justify-center">
-                  <div className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-[#0a6ebd] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:scale-105">
-                    <ZoomIn className="w-5 h-5" />
+              <div>
+                <div className="aspect-[4/3] relative overflow-hidden bg-slate-100">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-slate-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="p-3 rounded-full bg-white/90 text-slate-800 shadow-lg">
+                      <ZoomIn className="w-5 h-5" />
+                    </span>
+                  </div>
+                  <div className="absolute top-3 left-3">
+                    <span className="px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md text-[#0a6ebd] text-xs font-bold shadow-xs">
+                      {item.category}
+                    </span>
                   </div>
                 </div>
-                <div className="absolute bottom-2.5 right-2.5 bg-black/60 backdrop-blur-sm text-white px-2 py-0.5 rounded text-[10px] font-semibold">
-                  {item.category}
+
+                <div className="p-6 space-y-2">
+                  <h3 className="text-lg font-bold text-[#27448a] group-hover:text-[#0a6ebd] transition-colors leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs font-semibold text-[#0a6ebd]">
+                    {item.subtitle}
+                  </p>
+                  <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               </div>
 
-              <div className="p-4">
-                <h3 className="text-sm font-bold text-[#27448a] line-clamp-1 group-hover:text-[#0a6ebd] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
-                  {item.subtitle}
-                </p>
+              <div className="p-6 pt-0">
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-[#0a6ebd] font-bold">
+                  <span>View Case Study</span>
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Booking CTA Banner */}
-        <div className="mt-16 bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center sm:text-left">
-            <h3 className="text-lg font-bold text-[#27448a]">
-              Start Your Own Transformation at Richfeel Vadodara
+        {/* Bottom CTA */}
+        <div className="mt-16 bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/90 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="max-w-xl space-y-2 text-center md:text-left">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd]">
+              #WePledgeBaldFreeIndia
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black text-[#27448a]">
+              Start Your Hair Transformation Today
             </h3>
-            <p className="text-xs text-slate-500">
-              Personalized treatment plans tailored to your hair density and scalp health.
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Book a video-microscopic Trichogram consultation with certified trichologists at Marvel Square, Sunpharma Road, Vadodara.
             </p>
           </div>
+
           <button
-            onClick={onOpenBooking}
-            className="bg-gradient-brand text-white text-xs font-bold px-6 py-3.5 rounded-xl shadow-md hover:opacity-95 transition-all flex items-center gap-2 cursor-pointer shrink-0"
+            onClick={() => openBooking('Gallery Assessment')}
+            className="px-6 py-3.5 rounded-2xl bg-gradient-brand text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all whitespace-nowrap cursor-pointer shrink-0"
           >
-            <Calendar className="w-4 h-4" />
-            <span>Book Consultation</span>
+            Book Free Hair Analysis
           </button>
         </div>
       </div>
 
-      {/* Fancybox-Style Lightbox Modal */}
-      {lightboxIdx !== null && (
-        <div
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
-          onClick={() => setLightboxIdx(null)}
-        >
-          {/* Close button */}
+      {/* Lightbox Modal */}
+      {lightboxIdx !== null && filteredItems[lightboxIdx] && (
+        <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
           <button
             onClick={() => setLightboxIdx(null)}
-            className="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer z-10"
+            className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
             aria-label="Close lightbox"
           >
             <X className="w-6 h-6" />
           </button>
 
-          {/* Previous Arrow */}
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setLightboxIdx((lightboxIdx - 1 + filtered.length) % filtered.length);
-            }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer z-10"
+            onClick={() => setLightboxIdx((lightboxIdx - 1 + filteredItems.length) % filteredItems.length)}
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer hidden sm:block"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
 
-          {/* Next Arrow */}
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setLightboxIdx((lightboxIdx + 1) % filtered.length);
-            }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer z-10"
+            onClick={() => setLightboxIdx((lightboxIdx + 1) % filteredItems.length)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer hidden sm:block"
             aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          {/* Image & Caption Container */}
-          <div
-            className="max-w-4xl w-full max-h-[85vh] flex flex-col items-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={filtered[lightboxIdx].fullImage}
-              alt={filtered[lightboxIdx].title}
-              referrerPolicy="no-referrer"
-              className="max-h-[65vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl"
-            />
-            <div className="mt-4 text-center text-white max-w-2xl px-4">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#4ecdc4] block mb-1">
-                {filtered[lightboxIdx].category}
-              </span>
-              <h4 className="text-xl font-bold">{filtered[lightboxIdx].title}</h4>
-              <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                {filtered[lightboxIdx].description}
+          <div className="max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl">
+            <div className="aspect-[16/10] bg-slate-900 relative">
+              <img
+                src={filteredItems[lightboxIdx].fullImage || filteredItems[lightboxIdx].image}
+                alt={filteredItems[lightboxIdx].title}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="p-6 sm:p-8 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-[#0a6ebd] uppercase tracking-wider">
+                  {filteredItems[lightboxIdx].category}
+                </span>
+                <span className="text-xs text-slate-400">
+                  {lightboxIdx + 1} of {filteredItems.length}
+                </span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#27448a]">
+                {filteredItems[lightboxIdx].title}
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                {filteredItems[lightboxIdx].description}
               </p>
             </div>
           </div>

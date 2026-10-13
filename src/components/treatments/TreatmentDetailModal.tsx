@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Globe2, CheckCircle2, ShieldCheck, Phone, Calendar, ArrowLeft } from 'lucide-react';
+import { X, CheckCircle2, ShieldCheck, Phone, Calendar, ArrowLeft } from 'lucide-react';
 import { Treatment } from '../../types';
 import { clinicInfo } from '../../data/staticData';
 
@@ -24,12 +24,6 @@ export const TreatmentDetailModal: React.FC<TreatmentDetailProps> = ({
               <span className="text-xs font-bold uppercase tracking-wider text-[#4ecdc4]">
                 {treatment.category}
               </span>
-              {treatment.countryOfOrigin && (
-                <span className="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 rounded bg-white/10 text-white border border-white/20">
-                  <Globe2 className="w-3 h-3 text-[#4ecdc4]" />
-                  <span>{treatment.countryOfOrigin}</span>
-                </span>
-              )}
             </div>
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
               {treatment.title}
