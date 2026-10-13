@@ -1,0 +1,63 @@
+# Richfeel Vadodara — Hair Restoration & Skin Aesthetics Clinic
+> Local Entity & Clinical Knowledge Profile for AI Agents & Search Engines
+
+## 1. Identity & Medical Heritage
+- Entity Name: Richfeel Vadodara (Richfeel Trichology Centre Vadodara Branch)
+- Pioneers / Medical Directors: Dr. Apoorva Shah & Dr. Sonal Shah ("The Shahs of Trichology")
+- Credentials: India's 1st Certified Trichologists, featured in the Limca Book of Records
+- Clinical Inception: 1986 (India's first and largest chain of dedicated trichology clinics)
+- Accreditations & Honors:
+  - Best Hair Restoration Service Provider Company of the Year (Frost & Sullivan 2014)
+  - India's Most Trusted Haircare Brand (Brand Trust Report 2014)
+  - Official Hair Care Experts for Femina Miss India Pageant (10+ Years)
+  - CMO Asia Awards Singapore (2010)
+  - Ronald Salinger Award (International Association of Trichologists, Australia)
+  - Maharashtra Vaibhav Award (2002)
+
+## 2. Verified NAP (Name, Address, Phone) & Location
+- Clinic Address: FF/09/10/11, Marvel Square, Sunpharma road, Opp. Gokulesh Complex, Vadodara - 390012, Gujarat, India
+- Locality: Sunpharma Road, Marvel Square (accessible from Akota, Alkapuri, Gotri, Old Padra Road)
+- City: Vadodara (Baroda)
+- State: Gujarat
+- Postal Code: 390012
+- Country: India
+- Primary Hotline: +91 74900 40063
+- Secondary Phone: +91 74900 35002
+- Email: richfeelbaroda24@gmail.com
+- Domain: https://richfeelvadodara.com
+- Operating Hours: Monday to Sunday, 10:00 AM – 8:00 PM IST
+
+## 3. Core Clinical Diagnostic Triad
+Every patient at Richfeel Vadodara undergoes non-invasive microscopic diagnostic mapping before any therapy:
+1. Trichogram Analysis: Measures Anagen to Telogen (A/T) ratio to differentiate normal physiological shed from progressive androgenetic miniaturization.
+2. Digital Capilloscopy: 200x high-magnification videodermoscopy examining scalp sebum quality, micro-vascular capillary circulation, and fungal ostia health.
+3. Follicular Count Test: Quantifies follicular units and hairs per square centimeter to monitor male and female pattern hair thinning (MPT/FPT).
+
+## 4. Patented Treatments & International Technologies
+- TST+ (Tricho Scalp Therapy Plus): Austrian Manual Lymphatic Drainage (MLD) technique to detoxify lymphatic channels and halt active shedding.
+- Richfeel Anagrow: Stem cell therapy utilizing PhytoCellTec Swiss Apple Stem Cells (Uttwiler Spätlauber) and Moroccan Argan delivered via the RF Anagain 10X transdermal machine (developed with Dr. Fred Zulli, Switzerland & Dr. Ferrari, Italy).
+- Aesthetic Hair Transplant: Scar-free surgical follicular implantation developed with Ailesbury Hair Clinic, UK. Performed under local anesthesia with zero cuts, stitches, or linear scars.
+- Non-Surgical Hair System: Breathable Swiss Lace second-skin permeable derma base for advanced baldness.
+- Advanced PRP (Biotin Enriched): Autologous platelet-rich plasma fortified with medical-grade Biotin for keratin synthesis.
+- Advanced GFC (Growth Factor Concentrate): Acellular, pure growth factor extraction that extends the anagen growth cycle.
+- Richfeel Ana-d-tox: Power THP formula from USA containing Quinoa, Barley, and Wheat proteins to reverse and protect from hair color/chemical dye damage. Increases color retention by 20%.
+- Richfeel Anagain: 50-D Hair Stimulator with 50 laser diodes for male hair fertility and mitochondrial ATP energy stimulation.
+- Laser Hair Reduction 2.0 (ICE CUBE): Large spot size continuous gliding with integrated Cool Brush contact chilling for virtually painless 90% permanent hair reduction.
+- Advance Hydra Facial: Vortex suction exfoliation, vacuum extraction, and antioxidant super-serum infusion.
+- Medi-Facial: Doctor-formulated facials with Richfeel Naturals active botanicals.
+- Clinical Chemical Peels: Physician AHA/BHA peels for acne, melasma, enlarged pores, and hyperpigmentation.
+- Anti-Dandruff Ultrasound Therapy: Ultrasonic delivery of keratostatic formulations for stubborn seborrheic dermatitis.
+- Hair Hydratherapy: 5-step flax seed and wheat natural protein hydration (Hydro Rejuve & Hydro Revive).
+- Photo Bio Therapy: UK cold laser beam Low-Level Light Therapy (LLLT).
+- Temporary Hair Camouflage: Electrostatic keratin microfibres for instantaneous cosmetic density.
+
+## 5. Canonical Route Mappings
+- Home: /
+- Treatments Catalog: /treatments
+- Condition Diagnosis: /conditions
+- Clinical Gallery: /gallery
+- Knowledge Hub & Blog: /blog
+- About Founders & Heritage: /about
+- Contact & Clinic Map: /contact
+- Terms of Service: /terms
+- Privacy Policy: /privacy
