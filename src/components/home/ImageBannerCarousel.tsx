@@ -169,15 +169,15 @@ export const ImageBannerCarousel: React.FC = () => {
           <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
             <button
               onClick={() => handleActionClick(active)}
-              className="bg-gradient-brand text-white font-bold text-xs sm:text-xs md:text-sm px-4 sm:px-5 md:px-6 py-2.5 sm:py-2.5 md:py-3 rounded-xl shadow-lg hover:brightness-110 transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer"
+              className="group bg-gradient-brand text-white font-bold text-xs sm:text-xs md:text-sm px-4 sm:px-5 md:px-6 py-2.5 sm:py-2.5 md:py-3 rounded-xl shadow-lg hover:shadow-cyan-500/30 hover:shadow-xl hover:scale-[1.03] hover:brightness-115 active:scale-[0.98] transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer"
             >
               <span>{active.ctaText}</span>
-              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
             </button>
 
             <button
               onClick={() => openBooking('Hero Banner Consultation')}
-              className="px-3.5 sm:px-4 md:px-5 py-2.5 sm:py-2.5 md:py-3 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-xs md:text-sm backdrop-blur-md border border-white/25 transition-all cursor-pointer"
+              className="px-3.5 sm:px-4 md:px-5 py-2.5 sm:py-2.5 md:py-3 rounded-xl bg-white/15 hover:bg-white/30 hover:border-white/50 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] text-white font-bold text-xs sm:text-xs md:text-sm backdrop-blur-md border border-white/25 transition-all cursor-pointer"
             >
               Consultation
             </button>
@@ -186,9 +186,9 @@ export const ImageBannerCarousel: React.FC = () => {
       </div>
 
       {/* Slide Navigation Controls & Indicators: Positioned at bottom-left */}
-      <div className="absolute bottom-3 sm:bottom-5 left-4 sm:left-6 lg:left-8 z-30 flex items-center gap-2 sm:gap-3 bg-slate-950/50 backdrop-blur-md px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full border border-white/10">
+      <div className="absolute bottom-3 sm:bottom-5 left-4 sm:left-6 lg:left-8 z-30 flex items-center gap-2 sm:gap-3 bg-slate-950/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15 shadow-lg">
         {/* Indicators */}
-        <div className="flex items-center gap-1 sm:gap-1.5">
+        <div className="flex items-center gap-1.5">
           {slides.map((_, i) => (
             <button
               key={i}
@@ -196,8 +196,8 @@ export const ImageBannerCarousel: React.FC = () => {
                 setCurrentIdx(i);
                 handleInteraction();
               }}
-              className={`h-1.5 sm:h-2 rounded-full transition-all cursor-pointer ${
-                i === currentIdx ? 'w-5 sm:w-7 bg-[#4ecdc4]' : 'w-1.5 sm:w-2 bg-white/40 hover:bg-white/70'
+              className={`h-2 rounded-full transition-all cursor-pointer ${
+                i === currentIdx ? 'w-6 sm:w-8 bg-[#4ecdc4] shadow-xs' : 'w-2 bg-white/40 hover:bg-white/90 hover:scale-125'
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />
@@ -205,16 +205,16 @@ export const ImageBannerCarousel: React.FC = () => {
         </div>
 
         {/* Divider */}
-        <div className="w-px h-3 sm:h-3.5 bg-white/20 mx-0.5" />
+        <div className="w-px h-3.5 bg-white/20 mx-0.5" />
 
         {/* Prev & Next Arrows */}
-        <div className="flex items-center gap-0.5 sm:gap-1">
+        <div className="flex items-center gap-1">
           <button
             onClick={() => {
               prevSlide();
               handleInteraction();
             }}
-            className="p-0.5 sm:p-1 rounded-full hover:bg-white/20 text-white transition-colors cursor-pointer"
+            className="p-1 sm:p-1.5 rounded-full hover:bg-white/25 hover:scale-110 active:scale-95 text-white transition-all cursor-pointer"
             aria-label="Previous banner slide"
           >
             <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -224,7 +224,7 @@ export const ImageBannerCarousel: React.FC = () => {
               nextSlide();
               handleInteraction();
             }}
-            className="p-0.5 sm:p-1 rounded-full hover:bg-white/20 text-white transition-colors cursor-pointer"
+            className="p-1 sm:p-1.5 rounded-full hover:bg-white/25 hover:scale-110 active:scale-95 text-white transition-all cursor-pointer"
             aria-label="Next banner slide"
           >
             <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />

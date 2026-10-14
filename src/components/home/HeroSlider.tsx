@@ -86,17 +86,43 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
     },
   ];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 7000);
-    return () => clearInterval(timer);
+  const [isPaused, setIsPaused] = useState(false);
+  const pauseTimerRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const nextSlide = React.useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
   }, [slides.length]);
+
+  const prevSlide = React.useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  }, [slides.length]);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isPaused, nextSlide]);
+
+  const handleInteraction = () => {
+    setIsPaused(true);
+    if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    pauseTimerRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 4000);
+  };
 
   const slide = slides[currentSlide];
 
   return (
-    <div className="relative min-h-[580px] sm:min-h-[620px] bg-slate-900 overflow-hidden flex items-center">
+    <div
+      className="relative min-h-[580px] sm:min-h-[620px] bg-slate-900 overflow-hidden flex items-center"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleInteraction}
+      onTouchEnd={handleInteraction}
+    >
       {/* Dynamic Background Image */}
       <div className="absolute inset-0 z-0">
         <img
@@ -186,7 +212,10 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             {slides.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setCurrentSlide(i)}
+                onClick={() => {
+                  setCurrentSlide(i);
+                  handleInteraction();
+                }}
                 className={`h-2 rounded-full transition-all cursor-pointer ${
                   i === currentSlide ? 'w-8 bg-[#4ecdc4]' : 'w-2 bg-white/30 hover:bg-white/60'
                 }`}
@@ -197,14 +226,20 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
 
           <div className="flex items-center gap-2">
             <button
-              onClick={() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)}
+              onClick={() => {
+                prevSlide();
+                handleInteraction();
+              }}
               className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
-              onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
+              onClick={() => {
+                nextSlide();
+                handleInteraction();
+              }}
               className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
               aria-label="Next slide"
             >

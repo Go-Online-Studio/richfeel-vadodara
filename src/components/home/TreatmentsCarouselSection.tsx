@@ -8,7 +8,7 @@ import { ScrollableFilterContainer } from '@/components/common/ScrollableFilterC
 
 // Swiper React Components & Modules
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, A11y } from 'swiper/modules';
+import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 
 // Swiper Styles
 import 'swiper/css';
@@ -50,13 +50,13 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
           {/* Swiper Arrow Buttons */}
           <div className="flex items-center gap-2 self-start md:self-end">
             <button
-              className="treatments-swiper-prev p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 shadow-xs transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+              className="treatments-swiper-prev p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-[#0a6ebd] hover:text-white hover:border-[#0a6ebd] hover:shadow-md hover:scale-105 active:scale-95 text-slate-800 shadow-xs transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-white disabled:hover:text-slate-800"
               aria-label="Previous treatment slide"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
-              className="treatments-swiper-next p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 shadow-xs transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+              className="treatments-swiper-next p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-[#0a6ebd] hover:text-white hover:border-[#0a6ebd] hover:shadow-md hover:scale-105 active:scale-95 text-slate-800 shadow-xs transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-white disabled:hover:text-slate-800"
               aria-label="Next treatment slide"
             >
               <ChevronRight className="w-5 h-5" />
@@ -77,8 +77,8 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
                   selectedCategory === cat
-                    ? 'bg-gradient-brand text-white shadow-xs'
-                    : 'bg-[#f6f9fc] text-slate-600 hover:text-[#27448a] border border-slate-200/80'
+                    ? 'bg-gradient-brand text-white shadow-md scale-[1.02]'
+                    : 'bg-[#f6f9fc] text-slate-600 hover:text-[#27448a] hover:bg-white hover:border-[#0a6ebd]/50 hover:shadow-xs hover:scale-[1.02] border border-slate-200/80 active:scale-[0.98]'
                 }`}
               >
                 {cat}
@@ -91,7 +91,16 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
         <div className="cursor-grab active:cursor-grabbing pb-4">
           <Swiper
             key={selectedCategory}
-            modules={[Navigation, Pagination, A11y]}
+            modules={[Navigation, Pagination, A11y, Autoplay]}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            onTouchEnd={(swiper) => {
+              swiper.autoplay?.resume?.();
+              swiper.autoplay?.start?.();
+            }}
             navigation={{
               prevEl: '.treatments-swiper-prev',
               nextEl: '.treatments-swiper-next',
@@ -123,7 +132,7 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
           >
             {filtered.map((item) => (
               <SwiperSlide key={item.id} className="h-auto">
-                <div className="h-full bg-[#f6f9fc] rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-[#0a6ebd]/40 transition-all duration-300 flex flex-col justify-between group">
+                <div className="h-full bg-[#f6f9fc] rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-2xl hover:border-[#0a6ebd] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer">
                   <div>
                     {/* Treatment Image Display (Clean 4:3 Aspect Ratio) */}
                     <div className="w-full aspect-[4/3] relative overflow-hidden bg-slate-200">
