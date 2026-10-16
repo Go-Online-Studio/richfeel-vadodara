@@ -17,17 +17,19 @@ export const FloatingActionButtons: React.FC = () => {
 
   return (
     <div
-      className="fixed z-40 flex flex-col items-end gap-3 fab-safe-bottom"
+      className="fixed z-40 flex flex-col items-end gap-3 fab-safe-bottom pointer-events-none"
       style={{
         bottom: 'max(72px, calc(env(safe-area-inset-bottom, 0px) + 38px))',
         right: 'max(20px, calc(env(safe-area-inset-right, 0px) + 16px))',
+        contain: 'layout style',
       }}
     >
       {/* Scroll to Top */}
       {showScrollTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="w-10 h-10 rounded-full bg-white text-slate-700 shadow-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all cursor-pointer"
+          style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+          className="w-10 h-10 rounded-full bg-white text-slate-700 shadow-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all cursor-pointer pointer-events-auto"
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-5 h-5" />
@@ -37,7 +39,8 @@ export const FloatingActionButtons: React.FC = () => {
       {/* Direct Call FAB: Circle button, icon only */}
       <a
         href={`tel:${clinicInfo.rawPhones[0]}`}
-        className="w-12 h-12 rounded-full bg-[#0a6ebd] hover:bg-[#084f8a] text-white shadow-xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer"
+        style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+        className="w-12 h-12 rounded-full bg-[#0a6ebd] hover:bg-[#084f8a] text-white shadow-xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer pointer-events-auto"
         aria-label="Call clinic directly (+91 74900 40063)"
         title="Call Vadodara Clinic"
       >
@@ -49,7 +52,8 @@ export const FloatingActionButtons: React.FC = () => {
         href={clinicInfo.whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-12 h-12 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer"
+        style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+        className="w-12 h-12 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer pointer-events-auto"
         aria-label="Chat on WhatsApp"
         title="WhatsApp Vadodara Clinic"
       >

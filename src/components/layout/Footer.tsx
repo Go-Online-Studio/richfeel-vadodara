@@ -8,6 +8,7 @@ import { Treatment } from '@/types';
 
 interface FooterProps {
   treatments: Treatment[];
+  onNavigate?: (view: string, extra?: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ treatments }) => {
@@ -148,16 +149,6 @@ export const Footer: React.FC<FooterProps> = ({ treatments }) => {
                   Clinic Location & Parking
                 </Link>
               </li>
-              <li>
-                <Link href="/terms" className="hover:text-white transition-colors">
-                  Terms & Clinical Policies
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
             </ul>
 
             <div className="p-3.5 rounded-xl bg-white/5 border border-white/10">
@@ -175,7 +166,7 @@ export const Footer: React.FC<FooterProps> = ({ treatments }) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-center gap-4 text-xs text-slate-400">
           <div>
             © <span className="year">{new Date().getFullYear()}</span> All Rights Reserved by Richfeel Vadodara | Developed by{' '}
             <a
@@ -186,17 +177,6 @@ export const Footer: React.FC<FooterProps> = ({ treatments }) => {
             >
               <b>Shriii&nbsp;Tracking&nbsp;Solution</b>
             </a>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link href="/terms" className="hover:text-white transition-colors">
-              Terms of Use
-            </Link>
-            <span>·</span>
-            <Link href="/privacy" className="hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <span>·</span>
-            <span>Limca Book of Records Pioneers</span>
           </div>
         </div>
       </div>

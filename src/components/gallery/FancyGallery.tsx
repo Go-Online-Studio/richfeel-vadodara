@@ -6,7 +6,11 @@ import { GalleryItem } from '@/types';
 import { ScrollableFilterContainer } from '@/components/common/ScrollableFilterContainer';
 import { useConsultation } from '@/context/ConsultationContext';
 
-export const FancyGallery: React.FC = () => {
+interface FancyGalleryProps {
+  onOpenBooking?: () => void;
+}
+
+export const FancyGallery: React.FC<FancyGalleryProps> = () => {
   const { openBooking } = useConsultation();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);

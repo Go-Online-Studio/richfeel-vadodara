@@ -10,6 +10,9 @@ import { useConsultation } from '@/context/ConsultationContext';
 interface ConditionDedicatedPageProps {
   condition: ConditionCategory;
   allTreatments: Treatment[];
+  onBack?: () => void;
+  onSelectTreatment?: (id: string) => void;
+  onOpenBooking?: () => void;
 }
 
 // Generate responsive 3/4 vertical (desktop) and 4/3 horizontal (mobile) image sizes

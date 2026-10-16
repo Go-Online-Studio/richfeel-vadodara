@@ -39,9 +39,8 @@ Every patient at Richfeel Vadodara undergoes non-invasive microscopic diagnostic
 - Aesthetic Hair Transplant: Scar-free surgical follicular implantation developed with Ailesbury Hair Clinic, UK. Performed under local anesthesia with zero cuts, stitches, or linear scars.
 - Non-Surgical Hair System: Breathable Swiss Lace second-skin permeable derma base for advanced baldness.
 - Advanced PRP (Biotin Enriched): Autologous platelet-rich plasma fortified with medical-grade Biotin for keratin synthesis.
-- Advanced GFC (Growth Factor Concentrate): Acellular, pure growth factor extraction that extends the anagen growth cycle.
+- Advanced Exosome GFC (Growth Factor Concentrate): A cellular, pure growth factor extraction that extends the anagen growth cycle.
 - Richfeel Ana-d-tox: Power THP formula from USA containing Quinoa, Barley, and Wheat proteins to reverse and protect from hair color/chemical dye damage. Increases color retention by 20%.
-- Richfeel Anagain: 50-D Hair Stimulator with 50 laser diodes for male hair fertility and mitochondrial ATP energy stimulation.
 - Laser Hair Reduction 2.0 (ICE CUBE): Large spot size continuous gliding with integrated Cool Brush contact chilling for virtually painless 90% permanent hair reduction.
 - Advance Hydra Facial: Vortex suction exfoliation, vacuum extraction, and antioxidant super-serum infusion.
 - Medi-Facial: Doctor-formulated facials with Richfeel Naturals active botanicals.
@@ -49,7 +48,6 @@ Every patient at Richfeel Vadodara undergoes non-invasive microscopic diagnostic
 - Anti-Dandruff Ultrasound Therapy: Ultrasonic delivery of keratostatic formulations for stubborn seborrheic dermatitis.
 - Hair Hydratherapy: 5-step flax seed and wheat natural protein hydration (Hydro Rejuve & Hydro Revive).
 - Photo Bio Therapy: UK cold laser beam Low-Level Light Therapy (LLLT).
-- Temporary Hair Camouflage: Electrostatic keratin microfibres for instantaneous cosmetic density.
 
 ## 5. Canonical Route Mappings
 - Home: /
@@ -59,5 +57,3 @@ Every patient at Richfeel Vadodara undergoes non-invasive microscopic diagnostic
 - Knowledge Hub & Blog: /blog
 - About Founders & Heritage: /about
 - Contact & Clinic Map: /contact
-- Terms of Service: /terms
-- Privacy Policy: /privacy

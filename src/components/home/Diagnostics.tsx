@@ -5,7 +5,11 @@ import { Microscope, Scan, Activity, ArrowRight } from 'lucide-react';
 import { diagnosticTests } from '@/data/staticData';
 import { useConsultation } from '@/context/ConsultationContext';
 
-export const Diagnostics: React.FC = () => {
+interface DiagnosticsProps {
+  onOpenBooking?: () => void;
+}
+
+export const Diagnostics: React.FC<DiagnosticsProps> = () => {
   const { openBooking } = useConsultation();
   const icons = [Microscope, Scan, Activity];
 
@@ -77,7 +81,7 @@ export const Diagnostics: React.FC = () => {
               Schedule Your Scalp Capilloscopy & Trichogram in Vadodara
             </h4>
             <p className="text-xs text-slate-500 mt-1">
-              Direct microscopic diagnosis at Marvel Square, Sunpharma Road.
+              Direct microscopic diagnosis at Richfeel Vadodara.
             </p>
           </div>
           <button

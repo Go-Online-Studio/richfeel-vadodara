@@ -10,6 +10,9 @@ import { useConsultation } from '@/context/ConsultationContext';
 
 interface NavbarProps {
   treatments: Treatment[];
+  currentView?: string;
+  onNavigate?: (view: string, extra?: string) => void;
+  onOpenBooking?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ treatments }) => {

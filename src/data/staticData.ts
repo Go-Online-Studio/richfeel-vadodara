@@ -170,7 +170,7 @@ export const conditionCategories: ConditionCategory[] = [
       'Scalp micro-circulation stimulation to preserve oxygenation to the dermal papilla',
       'Avoiding harsh heating and chemical stress on fragile thinning strands'
     ],
-    recommendedTreatmentIds: ['anagrow', 'hair-transplant', 'advanced-gfc', 'anagain', 'non-surgical-hair-system', 'photo-bio-therapy']
+    recommendedTreatmentIds: ['anagrow', 'hair-transplant', 'advanced-gfc', 'non-surgical-hair-system', 'photo-bio-therapy']
   },
   {
     id: 'dandruff',
@@ -323,11 +323,11 @@ export const whyChooseUsReasons = [
     description: 'Founded by Dr. Apoorva Shah & Dr. Sonal Shah, India’s 1st certified trichologists featured in the Limca Book of Records.'
   },
   {
-    title: 'Scientific Diagnostic Triad',
-    description: 'We never guess: our Trichogram, Capilloscopy, and Follicular Count Test pinpoint the microscopic root causes of hair and scalp issues.'
+    title: 'Scientific Diagnosis',
+    description: 'Our Trichogram, Capilloscopy, and Follicular Count Test pinpoint the microscopic root causes of hair and scalp issues.'
   },
   {
-    title: 'Global Innovations (UK, Austria, Italy, USA)',
+    title: 'Global Innovations (Italy, Switzerland, USA)',
     description: 'Exclusive access to patented international protocols: Austrian MLD, Swiss Stem Cells, Biotec Italia laser diodes, and Ailesbury UK hair transplants.'
   },
   {

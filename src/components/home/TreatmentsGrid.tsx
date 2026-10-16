@@ -175,10 +175,16 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
             >
               {filtered.map((item) => (
                 <SwiperSlide key={item.id} className="h-auto">
-                  <div className="h-full bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-2xl hover:border-[#0a6ebd] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer">
+                  <div
+                    style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+                    className="h-full bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-2xl hover:border-[#0a6ebd] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative z-10"
+                  >
                     <div>
                       {/* Image Display */}
-                      <div className="aspect-[4/3] relative overflow-hidden bg-slate-100">
+                      <div
+                        style={{ transform: 'translateZ(0)' }}
+                        className="aspect-[4/3] relative overflow-hidden bg-slate-100"
+                      >
                         <img
                           src={item.image}
                           alt={item.title}
@@ -226,7 +232,7 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
                     </div>
 
                     {/* Card Actions Footer */}
-                    <div className="p-5 pt-0 mt-2 flex items-center gap-2.5">
+                    <div className="p-5 pt-0 mt-2 flex items-center gap-2.5 relative z-20 pointer-events-auto">
                       <Link
                         href={`/treatments/${item.id}`}
                         onClick={(e) => {
@@ -235,7 +241,8 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
                             onSelectTreatment(item.id);
                           }
                         }}
-                        className="flex-1 py-2.5 px-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#0a6ebd] group-hover:bg-[#0a6ebd] group-hover:text-white group-hover:border-transparent group-hover:shadow-md transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer text-center"
+                        style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+                        className="flex-1 py-2.5 px-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#0a6ebd] group-hover:bg-[#0a6ebd] group-hover:text-white group-hover:border-transparent group-hover:shadow-md transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer text-center pointer-events-auto"
                       >
                         <span>View Procedure</span>
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -250,7 +257,8 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
                             openBooking(item.title);
                           }
                         }}
-                        className="py-2.5 px-3.5 rounded-xl bg-[#f6f9fc] hover:bg-[#27448a] hover:text-white hover:border-[#27448a] hover:shadow-md hover:scale-105 active:scale-95 border border-slate-200 text-slate-700 text-xs font-bold transition-all cursor-pointer shadow-xs whitespace-nowrap"
+                        style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+                        className="py-2.5 px-3.5 rounded-xl bg-[#f6f9fc] hover:bg-[#27448a] hover:text-white hover:border-[#27448a] hover:shadow-md hover:scale-105 active:scale-95 border border-slate-200 text-slate-700 text-xs font-bold transition-all cursor-pointer shadow-xs whitespace-nowrap pointer-events-auto"
                       >
                         Book Session
                       </button>

@@ -40,7 +40,6 @@
     "dist",
     "out",
     "OldCodeFiles",
-    "src/App.tsx",
     "src/main.tsx",
     "vite.config.ts"
   ]

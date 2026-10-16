@@ -6,10 +6,16 @@ import { ArrowLeft, CheckCircle2, ShieldCheck, Clock, Calendar, Phone, MessageSq
 import { Treatment } from '@/types';
 import { clinicInfo } from '@/data/staticData';
 import { useConsultation } from '@/context/ConsultationContext';
+import { AnagrowBrochureSection } from './brochures/AnagrowBrochureSection';
+import { TstPlusBrochureSection } from './brochures/TstPlusBrochureSection';
+import { AnadtoxBrochureSection } from './brochures/AnadtoxBrochureSection';
 
 interface TreatmentDedicatedPageProps {
   treatment: Treatment;
   allTreatments: Treatment[];
+  onBack?: () => void;
+  onSelectTreatment?: (id: string) => void;
+  onOpenBooking?: () => void;
 }
 
 export const TreatmentDedicatedPage: React.FC<TreatmentDedicatedPageProps> = ({
@@ -118,6 +124,25 @@ export const TreatmentDedicatedPage: React.FC<TreatmentDedicatedPageProps> = ({
             </div>
           </div>
         </div>
+
+        {/* Signature Clinical Technology Sections for Anagrow, TST+, and Ana-d-tox */}
+        {treatment.id === 'anagrow' && (
+          <div className="mb-12">
+            <AnagrowBrochureSection onOpenBooking={openBooking} />
+          </div>
+        )}
+
+        {treatment.id === 'tst-plus' && (
+          <div className="mb-12">
+            <TstPlusBrochureSection onOpenBooking={openBooking} />
+          </div>
+        )}
+
+        {treatment.id === 'ana-d-tox' && (
+          <div className="mb-12">
+            <AnadtoxBrochureSection onOpenBooking={openBooking} />
+          </div>
+        )}
 
         {/* Detailed Procedure Sections */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">

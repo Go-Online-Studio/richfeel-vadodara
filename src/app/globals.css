@@ -39,6 +39,21 @@
   border: 1px solid rgba(10, 110, 189, 0.08);
 }
 
+@keyframes bannerTextEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-banner-text {
+  animation: bannerTextEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* Swiper Pagination Styling */
 .treatmentHome .swiper-pagination {
   position: relative !important;
@@ -95,3 +110,40 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Chrome Local Rendering & GPU Layer Promotion Fixes */
+@layer utilities {
+  .gpu-layer {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+
+  .hit-test-safe {
+    contain: layout style;
+    min-width: 0;
+    min-height: 0;
+  }
+}
+
+/* Ensure interactive elements and cards maintain layer promotion during hover/transitions */
+button,
+a,
+[role="button"],
+.group,
+.swiper-slide {
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Ensure decorative overlays never intercept hit-testing */
+.pointer-events-none {
+  pointer-events: none !important;
+}
+
+.pointer-events-auto {
+  pointer-events: auto !important;
+}
+

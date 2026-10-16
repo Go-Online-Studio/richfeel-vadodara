@@ -66,14 +66,6 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       description =
         'Book your consultation at FF/09/10/11, Marvel Square, Sunpharma road, Opp. Gokulesh Complex, Vadodara. Hotline: +91 74900 40063.';
       canonicalUrl = 'https://richfeelvadodara.com/contact';
-    } else if (currentView === 'terms') {
-      title = 'Terms & Conditions | Richfeel Vadodara';
-      description = 'Clinical appointment policies, patient guidelines, and medical disclaimers.';
-      canonicalUrl = 'https://richfeelvadodara.com/terms';
-    } else if (currentView === 'privacy') {
-      title = 'Privacy Policy | Richfeel Vadodara';
-      description = 'Strict patient health data privacy, confidentiality, and record security policies.';
-      canonicalUrl = 'https://richfeelvadodara.com/privacy';
     }
 
     // Set DOM Title

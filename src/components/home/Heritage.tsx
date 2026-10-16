@@ -11,7 +11,7 @@ export const Heritage: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
               <img
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80"
+                src="/images/HomeAbout.webp"
                 alt="Clinical Trichology Consultation"
                 referrerPolicy="no-referrer"
                 className="w-full h-[460px] object-cover object-center filter saturate-90"

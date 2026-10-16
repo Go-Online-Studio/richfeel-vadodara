@@ -16,9 +16,9 @@ import { FancyGallery } from './components/gallery/FancyGallery';
 import { BlogHub } from './components/blog/BlogHub';
 import { BlogDetail } from './components/blog/BlogDetail';
 import { ContactSection } from './components/contact/ContactSection';
-import { LegalPages } from './components/legal/LegalPages';
 import { ConsultationModal } from './components/booking/ConsultationModal';
 import { SEOHead } from './components/seo/SEOHead';
+import type { BlogPost } from './types';
 
 import { treatmentsData } from './data/treatments';
 import { conditionCategories, clinicInfo } from './data/staticData';
@@ -36,8 +36,6 @@ export const getPathForRoute = (view: string, extra?: string): string => {
   if (view === 'about') return extra ? `/about#${extra}` : '/about';
   if (view === 'gallery') return '/gallery';
   if (view === 'contact') return '/contact';
-  if (view === 'terms') return '/terms';
-  if (view === 'privacy') return '/privacy';
   return '/';
 };
 
@@ -62,8 +60,6 @@ export const parsePathFromUrl = (pathname: string): { view: string; extra?: stri
   }
   if (cleanPath === '/gallery') return { view: 'gallery' };
   if (cleanPath === '/contact') return { view: 'contact' };
-  if (cleanPath === '/terms') return { view: 'terms' };
-  if (cleanPath === '/privacy') return { view: 'privacy' };
   return { view: 'home' };
 };
 
@@ -216,7 +212,7 @@ export default function App() {
             {/* 3. All Treatments Section with Filter and Carousel */}
             <TreatmentsCarouselSection
               treatments={treatmentsData}
-              onSelectTreatment={(id) => handleNavigate('treatment-page', id)}
+              onSelectTreatment={(id: string) => handleNavigate('treatment-page', id)}
               onOpenBooking={() => setIsBookingOpen(true)}
             />
 
@@ -233,13 +229,13 @@ export default function App() {
             <section className="py-16 bg-gradient-brand text-white text-center">
               <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
                 <span className="text-xs font-bold uppercase tracking-widest text-[#4ecdc4]">
-                  Sunpharma Road, Vadodara
+                  Richfeel Vadodara
                 </span>
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
                   Invest In Your Hair, It's The Crown You Never Take Off
                 </h2>
                 <p className="text-xs sm:text-sm text-cyan-100 max-w-2xl mx-auto leading-relaxed">
-                  Join thousands of satisfied patients across Gujarat who restored their hair density with India's most trusted trichology team.
+                  Join thousands of satisfied patients across India who restored their hair density with India's most trusted trichology team.
                 </p>
                 <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
                   <button
@@ -267,7 +263,7 @@ export default function App() {
               treatment={currentTreatment}
               allTreatments={treatmentsData}
               onBack={() => handleNavigate('treatments')}
-              onSelectTreatment={(id) => handleNavigate('treatment-page', id)}
+              onSelectTreatment={(id: string) => handleNavigate('treatment-page', id)}
               onOpenBooking={() => setIsBookingOpen(true)}
             />
           </main>
@@ -279,7 +275,7 @@ export default function App() {
             <div className="pt-6">
               <TreatmentsGrid
                 treatments={treatmentsData}
-                onSelectTreatment={(id) => handleNavigate('treatment-page', id)}
+                onSelectTreatment={(id: string) => handleNavigate('treatment-page', id)}
                 onOpenBooking={() => setIsBookingOpen(true)}
               />
             </div>
@@ -293,7 +289,7 @@ export default function App() {
               condition={currentCondition}
               allTreatments={treatmentsData}
               onBack={() => handleNavigate('conditions')}
-              onSelectTreatment={(id) => handleNavigate('treatment-page', id)}
+              onSelectTreatment={(id: string) => handleNavigate('treatment-page', id)}
               onOpenBooking={() => setIsBookingOpen(true)}
             />
           </main>
@@ -305,7 +301,7 @@ export default function App() {
             <ConditionsView
               initialConditionId={activeConditionId}
               treatments={treatmentsData}
-              onSelectTreatment={(id) => handleNavigate('treatment-page', id)}
+              onSelectTreatment={(id: string) => handleNavigate('treatment-page', id)}
               onOpenBooking={() => setIsBookingOpen(true)}
             />
           </main>
@@ -333,7 +329,7 @@ export default function App() {
           <main>
             <BlogHub
               blogs={blogs}
-              onSelectBlog={(slug) => {
+              onSelectBlog={(slug: string) => {
                 setActiveBlogSlug(slug);
                 setCurrentView('blog-detail');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -351,11 +347,11 @@ export default function App() {
               allBlogs={blogs}
               treatments={treatmentsData}
               onBackToHub={() => setCurrentView('blog')}
-              onSelectBlog={(slug) => {
+              onSelectBlog={(slug: string) => {
                 setActiveBlogSlug(slug);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              onSelectTreatment={(id) => handleNavigate('treatment-page', id)}
+              onSelectTreatment={(id: string) => handleNavigate('treatment-page', id)}
               onOpenBooking={() => setIsBookingOpen(true)}
             />
           </main>
@@ -365,19 +361,6 @@ export default function App() {
         {currentView === 'contact' && (
           <main>
             <ContactSection />
-          </main>
-        )}
-
-        {/* LEGAL PAGES (Terms of Service & Privacy Policy) */}
-        {currentView === 'terms' && (
-          <main>
-            <LegalPages page="terms" onBack={() => handleNavigate('home')} />
-          </main>
-        )}
-
-        {currentView === 'privacy' && (
-          <main>
-            <LegalPages page="privacy" onBack={() => handleNavigate('home')} />
           </main>
         )}
       </div>

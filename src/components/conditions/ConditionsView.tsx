@@ -10,6 +10,8 @@ import { useConsultation } from '@/context/ConsultationContext';
 interface ConditionsViewProps {
   initialConditionId?: string;
   treatments: Treatment[];
+  onSelectTreatment?: (id: string) => void;
+  onOpenBooking?: () => void;
 }
 
 // Generate responsive 3/4 vertical (desktop) and 4/3 horizontal (mobile) image sizes

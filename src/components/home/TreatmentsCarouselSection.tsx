@@ -17,6 +17,8 @@ import 'swiper/css/pagination';
 
 interface TreatmentsCarouselSectionProps {
   treatments: Treatment[];
+  onSelectTreatment?: (id: string) => void;
+  onOpenBooking?: () => void;
 }
 
 export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps> = ({
@@ -132,10 +134,16 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
           >
             {filtered.map((item) => (
               <SwiperSlide key={item.id} className="h-auto">
-                <div className="h-full bg-[#f6f9fc] rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-2xl hover:border-[#0a6ebd] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer">
+                <div
+                  style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+                  className="h-full bg-[#f6f9fc] rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-2xl hover:border-[#0a6ebd] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative z-10"
+                >
                   <div>
                     {/* Treatment Image Display (Clean 4:3 Aspect Ratio) */}
-                    <div className="w-full aspect-[4/3] relative overflow-hidden bg-slate-200">
+                    <div
+                      style={{ transform: 'translateZ(0)' }}
+                      className="w-full aspect-[4/3] relative overflow-hidden bg-slate-200"
+                    >
                       <img
                         src={item.image}
                         alt={item.title}
@@ -143,7 +151,7 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                       />
                       {item.badge && (
-                        <span className="absolute bottom-3 left-3 bg-[#27448a]/90 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-[10px] font-bold">
+                        <span className="absolute bottom-3 left-3 bg-[#27448a]/90 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-[10px] font-bold pointer-events-none">
                           {item.badge}
                         </span>
                       )}
@@ -164,10 +172,11 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
                   </div>
 
                   {/* Minimal Action Footer */}
-                  <div className="p-5 pt-0 mt-2">
+                  <div className="p-5 pt-0 mt-2 relative z-20 pointer-events-auto">
                     <Link
                       href={`/treatments/${item.id}`}
-                      className="w-full py-2.5 px-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#0a6ebd] group-hover:bg-[#0a6ebd] group-hover:text-white group-hover:border-transparent transition-all flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                      style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+                      className="w-full py-2.5 px-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#0a6ebd] group-hover:bg-[#0a6ebd] group-hover:text-white group-hover:border-transparent transition-all flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer pointer-events-auto"
                     >
                       <span>View Treatment Page</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

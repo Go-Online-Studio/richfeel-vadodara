@@ -9,6 +9,8 @@ import { useConsultation } from '@/context/ConsultationContext';
 
 interface BlogHubProps {
   blogs: BlogPost[];
+  onSelectBlog?: (slug: string) => void;
+  onOpenBooking?: () => void;
 }
 
 export const BlogHub: React.FC<BlogHubProps> = ({ blogs }) => {

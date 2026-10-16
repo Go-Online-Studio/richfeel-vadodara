@@ -12,13 +12,13 @@ export const ConsultationCtaBanner: React.FC = () => {
     <section className="py-16 bg-gradient-brand text-white text-center">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         <span className="text-xs font-bold uppercase tracking-widest text-[#4ecdc4]">
-          Sunpharma Road, Vadodara
+          Richfeel Vadodara
         </span>
         <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
           Invest In Your Hair, It's The Crown You Never Take Off
         </h2>
         <p className="text-xs sm:text-sm text-cyan-100 max-w-2xl mx-auto leading-relaxed">
-          Join thousands of satisfied patients across Gujarat who restored their hair density with India's most trusted trichology team.
+          Join thousands of satisfied patients across India who restored their hair density with India's most trusted trichology team.
         </p>
         <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
           <button

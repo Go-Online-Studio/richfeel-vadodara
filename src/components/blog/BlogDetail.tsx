@@ -12,6 +12,10 @@ interface BlogDetailProps {
   post: BlogPost;
   allBlogs: BlogPost[];
   treatments: Treatment[];
+  onBackToHub?: () => void;
+  onSelectBlog?: (slug: string) => void;
+  onSelectTreatment?: (id: string) => void;
+  onOpenBooking?: () => void;
 }
 
 export const BlogDetail: React.FC<BlogDetailProps> = ({

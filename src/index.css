@@ -96,3 +96,39 @@
   scrollbar-width: none;
 }
 
+/* Chrome Local Rendering & GPU Layer Promotion Fixes */
+@layer utilities {
+  .gpu-layer {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+
+  .hit-test-safe {
+    contain: layout style;
+    min-width: 0;
+    min-height: 0;
+  }
+}
+
+/* Ensure interactive elements and cards maintain layer promotion during hover/transitions */
+button,
+a,
+[role="button"],
+.group,
+.swiper-slide {
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Ensure decorative overlays never intercept hit-testing */
+.pointer-events-none {
+  pointer-events: none !important;
+}
+
+.pointer-events-auto {
+  pointer-events: auto !important;
+}
+
