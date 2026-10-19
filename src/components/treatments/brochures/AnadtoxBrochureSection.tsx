@@ -79,7 +79,7 @@ export const AnadtoxBrochureSection: React.FC<AnadtoxBrochureSectionProps> = ({ 
               alt="Abstract, premium 3D microscopic render of a damaged hair cuticle being repaired and smoothed by a glowing golden clinical serum"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent flex items-end p-4 sm:p-6">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent hidden  md:flex items-end p-4 sm:p-6">
               <div className="w-xs md:w-sm xl:w-md">
                 <div>
                   <span className="text-xs sm:text-sm font-bold text-[#4ecdc4] block">

@@ -137,25 +137,13 @@ export const ConditionsView: React.FC<ConditionsViewProps> = ({
 
             {/* Visual Image: top on small devices, right on desktop */}
             <div className="order-1 lg:order-2 lg:col-span-5 w-full flex items-center justify-center">
-              <div className="w-full aspect-[4/3] lg:aspect-[3/4] rounded-2xl lg:rounded-3xl overflow-hidden bg-slate-100 shadow-md border border-slate-100">
-                <picture className="w-full h-full block">
-                  {/* Large & Extra-Large screens (>= 1024px): vertical 3/4 aspect ratio */}
-                  <source
-                    media="(min-width: 1024px)"
-                    srcSet={responsiveActiveImage.desktop}
-                  />
-                  {/* Small devices (< 1024px): 4/3 horizontal aspect ratio */}
-                  <source
-                    media="(max-width: 1023px)"
-                    srcSet={responsiveActiveImage.mobile}
-                  />
-                  <img
-                    src={activeCategory.image}
-                    alt={activeCategory.name}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover"
-                  />
-                </picture>
+              <div className="w-full aspect-[4/3] rounded-2xl lg:rounded-3xl overflow-hidden bg-slate-100 shadow-md border border-slate-100">
+                <img
+                  src={activeCategory.image}
+                  alt={activeCategory.name}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover object-center"
+                />
               </div>
             </div>
           </div>

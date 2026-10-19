@@ -119,7 +119,7 @@ export const TreatmentDedicatedPage: React.FC<TreatmentDedicatedPageProps> = ({
                     src={treatment.image}
                     alt={treatment.title}
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
               </div>

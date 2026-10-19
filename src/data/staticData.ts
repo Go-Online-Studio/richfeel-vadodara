@@ -107,7 +107,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: 'hair-fall',
     name: 'Active Hair Fall & Shedding',
     tagline: 'Acute & Chronic Telogen Effluvium, Weak Anchorage, Diffuse Shedding',
-    image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80',
+    image: '/images/conditions/hair_fall.webp',
     what: 'Active hair fall (clinically termed Telogen Effluvium or diffuse shedding) is a condition where a significantly higher percentage of hair follicles abruptly transition from the active growing Anagen phase into the resting Telogen phase, leading to excessive daily shedding exceeding 100 strands per day.',
     why: 'Hair follicles have an intense metabolic requirement. When triggered by physiological stressors, high fevers, thyroid or hormonal imbalances, post-viral illness, rapid weight changes, or scalp lymphatic congestion, the anchorage sheath around the hair bulb loosens, causing premature expulsion of the hair shaft.',
     types: [
@@ -142,7 +142,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: 'baldness',
     name: 'Baldness & Pattern Thinning',
     tagline: 'Androgenetic Alopecia (Male & Female Pattern Hair Loss), Crown Miniaturization',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80',
+    image: '/images/conditions/baldness.webp',
     what: 'Pattern Baldness (Androgenetic Alopecia) is a genetically predetermined progressive disorder where terminal hair follicles gradually shrink (miniaturize) under the enzymatic action of Dihydrotestosterone (DHT), producing progressively thinner, shorter, and less pigmented hairs until the follicle becomes dormant or permanently inactive.',
     why: 'Hair follicles on the frontal hairline, temples, and crown possess androgen receptors. In genetically susceptible individuals, the 5-alpha reductase enzyme converts testosterone to DHT, which constricts the dermal papilla blood vessels, choking off cellular nutrient supplies and shortening the hair growth cycle.',
     types: [
@@ -176,7 +176,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: 'dandruff',
     name: 'Dandruff & Scalp Disorders',
     tagline: 'Seborrheic Dermatitis, Pityriasis Capitis, Stubborn Flaking, Scalp Pruritus',
-    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80',
+    image: '/images/conditions/dandruff.webp',
     what: 'Dandruff and scalp disorders are chronic inflammatory conditions characterized by excessive flaking of dead epidermal cells, abnormal sebum secretion, and microbial colonization of the scalp skin barrier.',
     why: 'The human scalp is naturally colonized by the lipophilic fungus Malassezia globosa. When the scalp overproduces sebum, Malassezia breaks down triglycerides into irritating oleic acids, triggering epidermal hyper-proliferation, cellular inflammation, and persistent flaking.',
     types: [
@@ -211,7 +211,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: 'acne-skin',
     name: 'Acne, Texture & Dull Skin',
     tagline: 'Clogged Pores, Melasma, Hyperpigmentation, Early Photoaging',
-    image: 'https://images.unsplash.com/photo-1512290900672-1f5be572d4ff?auto=format&fit=crop&w=800&q=80',
+    image: '/images/conditions/acne_skin.webp',
     what: 'Dermatological skin concerns encompass active acne vulgaris, comedones (blackheads/whiteheads), post-inflammatory hyperpigmentation, uneven dermal texture, and environmental pollution-induced dullness.',
     why: 'When dead skin cells fail to shed naturally, they combine with excess sebum to form keratin plugs inside hair follicles. Propionibacterium acnes bacteria proliferate in these clogged pores, sparking inflammation and triggering melanocytes to release uneven melanin pigment.',
     types: [
@@ -256,7 +256,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: 'unwanted-hair',
     name: 'Unwanted Body & Facial Hair',
     tagline: 'Hirsutism, Coarse Facial Hair, Recurrent Ingrown Hairs, Folliculitis',
-    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80',
+    image: '/images/conditions/unwanted_hair.webp',
     what: 'Unwanted hair growth (including Hirsutism and Hypertrichosis) refers to excess dark, coarse terminal hair appearing in androgen-dependent areas such as the upper lip, chin, jawline, chest, arms, legs, or bikini zone.',
     why: 'Hair growth is regulated by testosterone and DHEA acting on hair follicle androgen receptors. Hormonal imbalances like Polycystic Ovary Syndrome (PCOS), insulin resistance, or genetic traits convert fine vellus hairs into thick, deeply rooted terminal follicles.',
     types: [
@@ -290,7 +290,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: 'color-damage',
     name: 'Chemical Color & Heat Damage',
     tagline: 'Bleached Strands, Porous Broken Cuticles, Split Ends, Shaft Breakage',
-    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80',
+    image: '/images/conditions/color_damage.webp',
     what: 'Chemical and thermal damage refers to structural breakdown of the hair shaft cuticle and cortex caused by chemical hair coloring, bleach developers, chemical straightening, and frequent high-heat styling irons.',
     why: 'Permanent hair dyes use ammonia and hydrogen peroxide to swell and force open the protective cuticle scales, oxidizing natural melanin. This breaks disulfide cystine bonds within the cortex, stripping natural moisture and leaving the hair shaft hollow, brittle, and fragile.',
     types: [

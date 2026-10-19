@@ -188,7 +188,7 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
                           src={item.image}
                           alt={item.title}
                           referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                         />
                         {item.badge && (
                           <span className="absolute bottom-3 left-3 bg-[#27448a]/90 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-[10px] font-bold">

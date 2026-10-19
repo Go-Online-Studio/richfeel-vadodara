@@ -48,11 +48,11 @@ export default function AboutPage() {
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
                 <img
-                  src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80"
+                  src="/images/DoctorsProfilePic.webp"
                   alt="Clinical Trichology Consultation at Richfeel"
                   className="w-full h-[480px] object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101e3d] via-[#101e3d]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#101e3d] via-[#101e3d]/30 to-transparent"></div>
                 <div className="absolute bottom-6 sm:bottom-12 left-6 right-6 text-white space-y-1">
                   <span className="text-[11px] font-bold uppercase tracking-widest text-[#4ecdc4]">
                     Limca Book of Records Honorees
