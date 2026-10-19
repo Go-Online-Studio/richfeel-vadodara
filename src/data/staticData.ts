@@ -25,7 +25,7 @@ export const foundersInfo = {
   title: "India's First Certified Trichologists",
   accolade: 'Featured in the Limca Book of Records',
   inceptionYear: '1986',
-  bio: `Dr. Sonal Shah and Dr. Apoorva Shah are names synonymous with hair and scalp care, not only in India but across the world. Featured in the Limca Book of Records as India's first certified Trichologist, they are considered to be the Pioneers of Trichology in India and are popularly referred to as the 'Shahs of Trichology'. At a time when India was witnessing a revolution in healthcare, they ventured into the profession in 1986 to pioneer the Richfeel Trichology Centre — India's first and only dedicated chain of hair & scalp clinics.`
+  bio: `Dr. Apoorva Shah and Dr. Sonal Shah are names synonymous with hair and scalp care, not only in India but across the world. Featured in the Limca Book of Records as India's first certified Trichologist, they are considered to be the Pioneers of Trichology in India and are popularly referred to as the 'Shahs of Trichology'. At a time when India was witnessing a revolution in healthcare, they ventured into the profession in 1986 to pioneer the Richfeel Trichology Centre — India's first and only dedicated chain of hair & scalp clinics.`
 };
 
 export const diagnosticTests: DiagnosticTest[] = [
@@ -241,7 +241,16 @@ export const conditionCategories: ConditionCategory[] = [
       'Avoid picking or squeezing acne blemishes to prevent permanent scarring',
       'Schedule clinical medical exfoliation (Chemical Peels or Hydra Facial) every 4-6 weeks'
     ],
-    recommendedTreatmentIds: ['advance-hydra-facial', 'medi-facial', 'chemical-peels']
+    recommendedTreatmentIds: [
+      'hydra-facial',
+      'carbon-facial',
+      'acne-treatment',
+      'skin-brightening-treatment',
+      'darma-korean-treatment',
+      'korean-glass-skin-treatment',
+      'medi-facial',
+      'chemical-peels'
+    ]
   },
   {
     id: 'unwanted-hair',

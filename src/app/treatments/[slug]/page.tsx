@@ -8,14 +8,22 @@ interface TreatmentPageProps {
 }
 
 export async function generateStaticParams() {
-  return treatmentsData.map((t) => ({
-    slug: t.id,
-  }));
+  return [
+    ...treatmentsData.map((t) => ({ slug: t.id })),
+    { slug: 'advance-hydra-facial' },
+    { slug: 'derma-korean-treatment' },
+  ];
 }
 
 export async function generateMetadata({ params }: TreatmentPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const treatment = treatmentsData.find((t) => t.id === slug);
+  const treatment = treatmentsData.find(
+    (t) =>
+      t.id === slug ||
+      t.slug === slug ||
+      (slug === 'advance-hydra-facial' && t.id === 'hydra-facial') ||
+      (slug === 'derma-korean-treatment' && t.id === 'darma-korean-treatment')
+  );
 
   if (!treatment) {
     return {
@@ -55,7 +63,13 @@ export async function generateMetadata({ params }: TreatmentPageProps): Promise<
 
 export default async function TreatmentDetailPage({ params }: TreatmentPageProps) {
   const { slug } = await params;
-  const treatment = treatmentsData.find((t) => t.id === slug);
+  const treatment = treatmentsData.find(
+    (t) =>
+      t.id === slug ||
+      t.slug === slug ||
+      (slug === 'advance-hydra-facial' && t.id === 'hydra-facial') ||
+      (slug === 'derma-korean-treatment' && t.id === 'darma-korean-treatment')
+  );
 
   if (!treatment) {
     notFound();

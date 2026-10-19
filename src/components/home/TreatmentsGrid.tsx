@@ -93,11 +93,10 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
-                  activeCategory === cat
+                className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer shrink-0 ${activeCategory === cat
                     ? 'bg-gradient-brand text-white shadow-md scale-[1.02]'
                     : 'bg-[#f6f9fc] text-slate-600 hover:text-[#27448a] hover:bg-white hover:border-[#0a6ebd]/50 hover:shadow-xs hover:scale-[1.02] border border-slate-200/80 active:scale-[0.98]'
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -183,7 +182,7 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
                       {/* Image Display */}
                       <div
                         style={{ transform: 'translateZ(0)' }}
-                        className="aspect-[4/3] relative overflow-hidden bg-slate-100"
+                        className="aspect-[4/3] rounded-3xl relative overflow-hidden bg-slate-100"
                       >
                         <img
                           src={item.image}

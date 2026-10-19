@@ -39,7 +39,6 @@
   border: 1px solid rgba(10, 110, 189, 0.08);
 }
 
-/* Swiper Pagination Styling */
 .treatmentHome .swiper-pagination {
   position: relative !important;
   bottom: 0 !important;
@@ -72,6 +71,9 @@
   border-radius: 9999px !important;
   opacity: 1 !important;
 }
+.treatmentHome .swiper {
+  padding-top: 30px !important;
+}
 
 .mobile-full-height {
   height: 100vh;
@@ -86,7 +88,6 @@
   right: max(20px, calc(env(safe-area-inset-right, 0px) + 16px));
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -96,7 +97,6 @@
   scrollbar-width: none;
 }
 
-/* Chrome Local Rendering & GPU Layer Promotion Fixes */
 @layer utilities {
   .gpu-layer {
     transform: translateZ(0);
@@ -112,7 +112,6 @@
   }
 }
 
-/* Ensure interactive elements and cards maintain layer promotion during hover/transitions */
 button,
 a,
 [role="button"],

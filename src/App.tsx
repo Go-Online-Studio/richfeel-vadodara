@@ -170,7 +170,14 @@ export default function App() {
     setCurrentView(view);
   };
 
-  const currentTreatment = treatmentsData.find((t) => t.id === activeTreatmentId) || treatmentsData[0];
+  const currentTreatment =
+    treatmentsData.find(
+      (t) =>
+        t.id === activeTreatmentId ||
+        t.slug === activeTreatmentId ||
+        (activeTreatmentId === 'advance-hydra-facial' && t.id === 'hydra-facial') ||
+        (activeTreatmentId === 'derma-korean-treatment' && t.id === 'darma-korean-treatment')
+    ) || treatmentsData[0];
   const currentCondition = conditionCategories.find((c) => c.id === activeConditionId) || conditionCategories[0];
   const currentBlogPost = activeBlogSlug ? getBlogBySlug(activeBlogSlug) : null;
 

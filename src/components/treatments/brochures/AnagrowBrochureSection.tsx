@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, Dna, Activity, ShieldCheck, CheckCircle2, Zap, ArrowRight, Layers, Eye, RefreshCw, Award } from 'lucide-react';
+import { Sparkles, Dna, Activity, CheckCircle2, Zap, ArrowRight, ShieldCheck, Cpu, Calendar, Phone } from 'lucide-react';
 
 interface AnagrowBrochureSectionProps {
   onOpenBooking: (concern?: string) => void;
@@ -9,143 +9,162 @@ interface AnagrowBrochureSectionProps {
 
 export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ onOpenBooking }) => {
   return (
-    <div className="space-y-10 sm:space-y-12">
-      {/* 1. HERO CALLOUT: World's First Plant Stem Cell Treatment */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#102a5c] via-[#27448a] to-[#0a6ebd] text-white p-6 sm:p-8 lg:p-10 shadow-xl border border-white/10">
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-7 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#4ecdc4] text-xs font-bold uppercase tracking-wider">
+    <div className="space-y-12 sm:space-y-16">
+      {/* 1. HERO CALLOUT: 50/50 Flexbox Split with Macro Hair Image */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0c1f44] via-[#1c3872] to-[#0a6ebd] text-white p-6 sm:p-10 lg:p-12 shadow-xl border border-white/10">
+        <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          {/* Left Column (50% on Desktop) */}
+          <div className="w-full lg:w-1/2 space-y-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#4ecdc4] text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Clinical Innovation · PCT Rejuve MAX</span>
             </div>
             
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
               Fight Hair Thinning With <span className="text-[#4ecdc4]">Richfeel Anagrow</span>
-            </h2>
+            </h1>
 
-            <p className="text-sm sm:text-base text-cyan-100 font-medium leading-relaxed max-w-2xl">
-              World's First Hair Thinning Treatment With Plant Stem Cell Extracts (PCT Rejuve MAX). Developed in scientific collaboration with Swiss scientist <strong>Dr. Fred Zülli</strong> (Mibelle Group Biochemistry, Switzerland) and Italian biomedical engineers <strong>Dr. Ferrari & Dr. Beatrix Ferrari</strong> (Milan, Italy).
+            <p className="text-sm sm:text-base text-cyan-100 font-medium leading-relaxed">
+              World's First Hair Thinning Treatment With Plant Stem Cell Extracts (PCT Rejuve MAX). Developed in scientific collaboration with Swiss scientist <strong>Dr. Fred Zülli</strong> (Mibelle Group Biochemistry, Switzerland) and Italian biomedical engineers <strong>Dr. Ferrari &amp; Dr. Beatrix Ferrari</strong> (Milan, Italy).
             </p>
 
-            <div className="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-white/90">
-              <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-xl border border-white/10">
-                <CheckCircle2 className="w-4 h-4 text-[#4ecdc4]" />
+            <div className="pt-2 flex flex-wrap gap-3 text-xs font-semibold text-white/90">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-xs px-3.5 py-2 rounded-xl border border-white/15">
+                <CheckCircle2 className="w-4 h-4 text-[#4ecdc4] shrink-0" />
                 <span>Zero Needles · 100% Painless</span>
               </div>
-              <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-xl border border-white/10">
-                <CheckCircle2 className="w-4 h-4 text-[#4ecdc4]" />
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-xs px-3.5 py-2 rounded-xl border border-white/15">
+                <CheckCircle2 className="w-4 h-4 text-[#4ecdc4] shrink-0" />
                 <span>Swiss Stem Cell Science</span>
               </div>
-              <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-xl border border-white/10">
-                <CheckCircle2 className="w-4 h-4 text-[#4ecdc4]" />
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-xs px-3.5 py-2 rounded-xl border border-white/15">
+                <CheckCircle2 className="w-4 h-4 text-[#4ecdc4] shrink-0" />
                 <span>+80% Stem Cell Colony Growth</span>
               </div>
             </div>
+
+            {/* Quick Action CTAs */}
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <button
+                onClick={() => onOpenBooking('Richfeel Anagrow Consultation')}
+                className="px-6 py-3 rounded-xl bg-gradient-brand text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer border border-white/20"
+              >
+                <Calendar className="w-4 h-4 text-[#4ecdc4]" />
+                <span>Book In-Clinic Consultation</span>
+              </button>
+
+              <a
+                href="tel:+917490040063"
+                className="px-5 py-3 rounded-xl border border-white/30 text-white hover:bg-white/10 font-bold text-xs sm:text-sm transition-colors flex items-center gap-2"
+              >
+                <Phone className="w-4 h-4 text-[#4ecdc4]" />
+                <span>Call Vadodara Clinic</span>
+              </a>
+            </div>
           </div>
 
-          <div className="lg:col-span-5 flex flex-col items-center justify-center gap-3">
-            <div className="relative rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl bg-black/40 max-w-xs w-full aspect-[4/5]">
+          {/* Right Column (50% on Desktop): Photorealistic Macro Hair Photography Container */}
+          <div className="w-full lg:w-1/2 flex flex-col items-center justify-center">
+            <div className="relative w-full max-w-lg aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-slate-900 group">
               <img
-                src="/images/treatments/anagrow/anagrow_hero.webp"
-                alt="Richfeel Anagrow plant stem cell breakthrough"
-                className="w-full h-full object-cover"
+                src="/images/treatments/anagrow/anagrow_macro_hair.webp"
+                alt="Photorealistic macro photography of a healthy, thick hair strand against a clean clinical white background"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent flex items-end p-4">
-                <div className="text-center w-full">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-[#4ecdc4] block">+80%</span>
-                  <p className="text-[11px] text-white/90 leading-tight">
-                    Increase in human hair follicle stem cell colony-forming efficiency
-                  </p>
-                </div>
-              </div>
             </div>
-            <span className="text-[11px] text-cyan-200/80 font-medium tracking-wide">
-              Swiss & Italian Biomedical Collaboration
+            <span className="text-xs text-cyan-200/90 font-medium tracking-wide mt-3 text-center">
+              Dr. Fred Zülli (Switzerland) &amp; Dr. Ferrari (Milan, Italy) Collaboration
             </span>
           </div>
         </div>
       </div>
 
-      {/* 2. THE 4 POWERFUL BIO-ACTIVES & STEM CELL EXTRACTS (Exact Clinical Table) */}
+      {/* 2. THE 4 POWERFUL BIO-ACTIVES: CSS Grid (repeat(4, 1fr)) with Uniform Studio Images */}
       <div className="space-y-6">
         <div className="text-center max-w-3xl mx-auto space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-[#0a6ebd]">
             Nature Meets Biotechnology
           </span>
           <h3 className="text-2xl sm:text-3xl font-black text-[#27448a] tracking-tight">
-            The 4 Powerful Bio-Actives & Stem Cell Extracts
+            The 4 Powerful Bio-Actives &amp; Stem Cell Extracts
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
             PCT Rejuve MAX combines internationally researched plant stem cell extracts and nano-emulsions to awaken dormant follicles, reverse regression, and rebuild thinning hair density:
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {/* Extract 1: Swiss Apple */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-5 hover:border-blue-200 transition-all">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600">
-                  <Dna className="w-6 h-6" />
-                </div>
+          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-5 hover:border-emerald-300 hover:shadow-md transition-all">
+            <div className="space-y-4">
+              {/* Standard Uniform Image Container */}
+              <div className="w-full aspect-[4/3] rounded-2xl bg-white border border-slate-100 p-2 overflow-hidden shadow-xs flex items-center justify-center">
                 <img
-                  src="/images/treatments/anagrow/anagrow_apple.webp"
-                  alt="Swiss Apple"
-                  className="w-10 h-8 object-contain rounded-md bg-emerald-50 p-0.5 border border-emerald-100"
+                  src="/images/treatments/anagrow/anagrow_apple.jpg"
+                  alt="Swiss Apple Stem Cells (Uttwiler Spätlauber)"
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 block">
-                Switzerland · Mibelle Biochemistry
-              </span>
-              <h4 className="text-lg font-bold text-[#27448a]">
-                Swiss Apple Stem Cells <span className="text-xs font-normal text-slate-500 block">(Uttwiler Spätlauber)</span>
-              </h4>
+
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 block">
+                  Switzerland · Mibelle Biochemistry
+                </span>
+                <h4 className="text-base sm:text-lg font-bold text-[#27448a] mt-0.5">
+                  Swiss Apple Stem Cells <span className="text-xs font-normal text-slate-500 block">(Uttwiler Spätlauber)</span>
+                </h4>
+              </div>
+
               <p className="text-xs text-slate-600 leading-relaxed">
                 Extracted from the rare 18th-century Swiss apple tree celebrated for extraordinary cellular longevity and resistance to decay.
               </p>
             </div>
-            <div className="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-100 text-xs space-y-2.5">
+
+            <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-100 text-xs space-y-2.5">
               <div>
                 <strong className="text-emerald-950 block font-bold text-[11px] uppercase tracking-wide">Findings:</strong>
-                <span className="text-slate-700 leading-relaxed">Helps the epidermal stem cells to maintain their characteristics and replenish dying cells.</span>
+                <span className="text-slate-700 leading-relaxed">Helps epidermal stem cells maintain characteristics and replenish dying cells.</span>
               </div>
               <div className="pt-2 border-t border-emerald-200/60">
                 <strong className="text-emerald-950 block font-bold text-[11px] uppercase tracking-wide">Results:</strong>
                 <ul className="text-emerald-800 font-semibold space-y-1 mt-1">
                   <li>• Delays ageing by 50%</li>
-                  <li>• Lowers down hair follicle regression by 50%</li>
+                  <li>• Lowers hair follicle regression by 50%</li>
                 </ul>
               </div>
             </div>
           </div>
 
           {/* Extract 2: Argan Tree */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-5 hover:border-blue-200 transition-all">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600">
-                  <Sparkles className="w-6 h-6" />
-                </div>
+          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-5 hover:border-amber-300 hover:shadow-md transition-all">
+            <div className="space-y-4">
+              {/* Standard Uniform Image Container */}
+              <div className="w-full aspect-[4/3] rounded-2xl bg-white border border-slate-100 p-2 overflow-hidden shadow-xs flex items-center justify-center">
                 <img
-                  src="/images/treatments/anagrow/anagrow_argan.webp"
-                  alt="Argan tree fruit"
-                  className="w-10 h-8 object-contain rounded-md bg-amber-50 p-0.5 border border-amber-100"
+                  src="/images/treatments/anagrow/anagrow_argan.jpg"
+                  alt="Argan Tree Stem Cells (Argania Spinosa)"
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-600 block">
-                Morocco · Ancient Flora
-              </span>
-              <h4 className="text-lg font-bold text-[#27448a]">
-                Argan Tree Stem Cells <span className="text-xs font-normal text-slate-500 block">(Argania Spinosa)</span>
-              </h4>
+
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-amber-600 block">
+                  Morocco · Ancient Flora
+                </span>
+                <h4 className="text-base sm:text-lg font-bold text-[#27448a] mt-0.5">
+                  Argan Tree Stem Cells <span className="text-xs font-normal text-slate-500 block">(Argania Spinosa)</span>
+                </h4>
+              </div>
+
               <p className="text-xs text-slate-600 leading-relaxed">
                 Extracted from the drought-resistant Moroccan Argan tree, one of the oldest surviving plant species in the world.
               </p>
             </div>
-            <div className="p-4 rounded-2xl bg-amber-50/60 border border-amber-100 text-xs space-y-2.5">
+
+            <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-100 text-xs space-y-2.5">
               <div>
                 <strong className="text-amber-950 block font-bold text-[11px] uppercase tracking-wide">Findings:</strong>
-                <span className="text-slate-700 leading-relaxed">Induces the formation of new hair follicles.</span>
+                <span className="text-slate-700 leading-relaxed">Induces the biological formation of new hair follicles.</span>
               </div>
               <div className="pt-2 border-t border-amber-200/60">
                 <strong className="text-amber-950 block font-bold text-[11px] uppercase tracking-wide">Results:</strong>
@@ -158,34 +177,37 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
           </div>
 
           {/* Extract 3: Pea Sprout */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-5 hover:border-blue-200 transition-all">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-[#0a6ebd]">
-                  <Activity className="w-6 h-6" />
-                </div>
+          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-5 hover:border-cyan-300 hover:shadow-md transition-all">
+            <div className="space-y-4">
+              {/* Standard Uniform Image Container */}
+              <div className="w-full aspect-[4/3] rounded-2xl bg-white border border-slate-100 p-2 overflow-hidden shadow-xs flex items-center justify-center">
                 <img
-                  src="/images/treatments/anagrow/anagrow_pea.webp"
-                  alt="Pea sprout extract"
-                  className="w-10 h-8 object-contain rounded-md bg-cyan-50 p-0.5 border border-cyan-100"
+                  src="/images/treatments/anagrow/anagrow_pea.jpg"
+                  alt="Pea Sprout Extracts (Pisum Sativum)"
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#0a6ebd] block">
-                Organic Phytonutrients
-              </span>
-              <h4 className="text-lg font-bold text-[#27448a]">
-                Pea Sprout Extracts <span className="text-xs font-normal text-slate-500 block">(Pisum Sativum)</span>
-              </h4>
+
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#0a6ebd] block">
+                  Organic Phytonutrients
+                </span>
+                <h4 className="text-base sm:text-lg font-bold text-[#27448a] mt-0.5">
+                  Pea Sprout Extracts <span className="text-xs font-normal text-slate-500 block">(Pisum Sativum)</span>
+                </h4>
+              </div>
+
               <p className="text-xs text-slate-600 leading-relaxed">
                 Contains concentrated secondary plant metabolites and natural growth activators that reactivate hair signaling.
               </p>
             </div>
-            <div className="p-4 rounded-2xl bg-cyan-50/60 border border-cyan-100 text-xs space-y-2.5">
+
+            <div className="p-4 rounded-2xl bg-cyan-50/70 border border-cyan-100 text-xs space-y-2.5">
               <div>
                 <strong className="text-cyan-950 block font-bold text-[11px] uppercase tracking-wide">Findings:</strong>
                 <ul className="text-slate-700 space-y-1 mt-1">
                   <li>• Stimulates dermal papilla to induce new hair</li>
-                  <li>• Reduces telogen shedding & stimulates anagen</li>
+                  <li>• Reduces telogen shedding &amp; stimulates anagen</li>
                 </ul>
               </div>
               <div className="pt-2 border-t border-cyan-200/60">
@@ -199,34 +221,44 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
             </div>
           </div>
 
-          {/* Extract 4: Nano-Lipobelle Q10 */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-5 hover:border-purple-200 transition-all">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 mb-2">
-                <Zap className="w-6 h-6" />
+          {/* Extract 4: Generic Plant Stem Cells & Nano-Lipobelle Q10 */}
+          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-5 hover:border-purple-300 hover:shadow-md transition-all">
+            <div className="space-y-4">
+              {/* Standard Uniform Image Container */}
+              <div className="w-full aspect-[4/3] rounded-2xl bg-white border border-slate-100 p-2 overflow-hidden shadow-xs flex items-center justify-center">
+                <img
+                  src="/images/treatments/anagrow/anagrow_stemcells.jpg"
+                  alt="Generic Plant Stem Cells & Nano-Lipobelle Q10"
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-purple-600 block">
-                Biomedical Nano-Emulsion
-              </span>
-              <h4 className="text-lg font-bold text-[#27448a]">
-                Nano - Lipobelle Q 10 <span className="text-xs font-normal text-slate-500 block">(Using Nano Emulsions)</span>
-              </h4>
+
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-purple-600 block">
+                  Biomedical Nano-Emulsion
+                </span>
+                <h4 className="text-base sm:text-lg font-bold text-[#27448a] mt-0.5">
+                  Nano - Lipobelle Q 10 <span className="text-xs font-normal text-slate-500 block">(Using Nano Emulsions)</span>
+                </h4>
+              </div>
+
               <p className="text-xs text-slate-600 leading-relaxed">
                 Advanced antioxidant co-enzyme Q10 encapsulated in nano-lipid carriers for ultra-deep cellular penetration into the dermal papilla.
               </p>
             </div>
-            <div className="p-4 rounded-2xl bg-purple-50/60 border border-purple-100 text-xs space-y-2.5">
+
+            <div className="p-4 rounded-2xl bg-purple-50/70 border border-purple-100 text-xs space-y-2.5">
               <div>
                 <strong className="text-purple-950 block font-bold text-[11px] uppercase tracking-wide">Findings:</strong>
                 <ul className="text-slate-700 space-y-1 mt-1">
-                  <li>• Growth of dermal papilla cells</li>
-                  <li>• Stimulates hair follicle growth in vitro</li>
+                  <li>• Stimulates growth of dermal papilla cells</li>
+                  <li>• Stimulates hair follicle proliferation in vitro</li>
                 </ul>
               </div>
               <div className="pt-2 border-t border-purple-200/60">
                 <strong className="text-purple-950 block font-bold text-[11px] uppercase tracking-wide">Results:</strong>
                 <ul className="text-purple-900 font-semibold space-y-1 mt-1">
-                  <li>• Re-energises hair follicle cells to boost growth, volume & density</li>
+                  <li>• Re-energises follicle cells to boost volume &amp; density</li>
                   <li>• Clinically prevents premature greying of hair</li>
                 </ul>
               </div>
@@ -237,27 +269,16 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
 
       {/* 3. STEM CELL SCIENCE: Epidermal vs Dermal Stem Cells */}
       <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-xs space-y-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8 space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd]">
-              Trichological Biology
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-black text-[#27448a] tracking-tight">
-              How Hair Follicle Stem Cells Work
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              The true biological key to hair thinning lies inside the hair follicle's two distinct stem cell populations:
-            </p>
-          </div>
-          <div className="lg:col-span-4 flex justify-start lg:justify-end">
-            <div className="p-2 bg-slate-50 rounded-2xl border border-slate-200">
-              <img
-                src="/images/treatments/anagrow/anagrow_follicle_layers.webp"
-                alt="Hair follicle layers stem cell niches"
-                className="w-28 h-20 object-contain rounded-xl bg-white p-1"
-              />
-            </div>
-          </div>
+        <div className="space-y-2">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd]">
+            Trichological Biology
+          </span>
+          <h3 className="text-2xl sm:text-3xl font-black text-[#27448a] tracking-tight">
+            How Hair Follicle Stem Cells Work
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
+            The biological secret to combating hair thinning lies inside the follicle's two distinct stem cell populations:
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -293,86 +314,86 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
             </p>
             <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#087f7b]">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>Targeted by Argan Tree, Pea Sprout & Nano-Lipobelle Q10</span>
+              <span>Targeted by Argan Tree, Pea Sprout &amp; Nano-Lipobelle Q10</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 4. RF ANAGAIN 10X: THE TRANSDERMAL PENETRATION MACHINE */}
-      <div className="bg-[#101e3d] text-white rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-slate-800 space-y-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#4ecdc4]">
-              Italian Biomedical Engineering
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              RF Anagain 10X: World's First Transdermal Penetration Machine
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl">
-              The real clinical breakthrough was introducing high-potency plant stem cell peptides deep into the human scalp in a 100% non-invasive, needle-free manner. Developed in Milan, Italy with Dr. Ferrari & Dr. Beatrix Ferrari, the RF Anagain 10X achieves deep transdermal delivery across 3 distinct processes:
-            </p>
+      {/* 4. TRANSDERMAL MACHINE SECTION: Technical Showcase Layout */}
+      <div className="bg-[#0b172e] text-white rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl border border-slate-800 space-y-8">
+        <div className="space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 text-[#4ecdc4] text-xs font-bold uppercase tracking-wider border border-cyan-500/30">
+            <Cpu className="w-3.5 h-3.5" />
+            <span>Technical Showcase · Milan, Italy</span>
           </div>
-          <div className="lg:col-span-4 flex justify-start lg:justify-end">
-            <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/10 border border-white/20">
-              <img
-                src="/images/treatments/anagrow/anagrow_machine.webp"
-                alt="RF Anagain 10X Transdermal Machine"
-                className="w-20 h-14 object-contain rounded-lg bg-white/10 p-1"
-              />
-              <div className="text-left">
-                <span className="text-[11px] uppercase tracking-wider text-[#4ecdc4] font-bold block">RF Anagain 10X</span>
-                <span className="text-xs text-white font-medium">Patented Needle-Free</span>
-              </div>
-            </div>
-          </div>
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+            RF Anagain 10X: World's First Transdermal Penetration Machine
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-3xl">
+            The clinical breakthrough of Richfeel Anagrow was introducing high-potency plant stem cell peptides deep into the human scalp in a 100% needle-free, non-invasive manner. Developed in Milan, Italy by biomedical engineers Dr. Ferrari &amp; Dr. Beatrix Ferrari, the RF Anagain 10X achieves cellular delivery through 3 synchronized processes:
+          </p>
         </div>
 
-        {/* 3 Processes Visual Diagram & Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center pt-2">
-          <div className="lg:col-span-3 flex justify-center">
-            <div className="p-3 bg-white/10 rounded-2xl border border-white/15 max-w-[140px] text-center space-y-1">
+        {/* Technical Showcase: Machine Render + 3-Process Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2">
+          {/* Machine Product Showcase (5 cols) */}
+          <div className="lg:col-span-5 flex flex-col items-center">
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-black/60 group">
               <img
-                src="/images/treatments/anagrow/anagrow_machine_processes.webp"
-                alt="Machine 3 processes schematic"
-                className="w-full h-auto object-contain rounded-lg max-h-36 mx-auto"
+                src="/images/treatments/anagrow/anagrow_machine.jpg"
+                alt="High-end 3D industrial product render of clinical transdermal hair treatment machine"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <span className="text-[10px] text-cyan-200 block">3-Phase Action</span>
+              <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10 text-[11px] font-bold text-[#4ecdc4]">
+                Patented RF Electroporation
+              </div>
+            </div>
+            <div className="w-full mt-3 flex items-center justify-between text-[11px] text-cyan-200/80 px-1">
+              <span>Non-Invasive · Zero Downtime</span>
+              <span>100% Needle-Free Scalp Delivery</span>
             </div>
           </div>
 
-          <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Process 1: Detoxification */}
-            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2.5">
-              <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-[#4ecdc4] flex items-center justify-center font-black text-xs">
+          {/* 3 Synchronized Processes (7 cols) */}
+          <div className="lg:col-span-7 space-y-4">
+            {/* Process 1 */}
+            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400/40 transition-colors flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-[#4ecdc4] flex items-center justify-center font-black text-sm shrink-0 mt-0.5 border border-blue-400/30">
                 01
               </div>
-              <h4 className="text-sm font-bold text-white">Detoxification</h4>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Gentle vacuum-assisted lymphatic drainage purges clogged sebum, dead cells, and scalp micro-toxins, preparing the follicle entry points.
-              </p>
+              <div className="space-y-1">
+                <h4 className="text-sm sm:text-base font-bold text-white">Process 1: Detoxification</h4>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Gentle vacuum-assisted lymphatic drainage purges clogged sebum, dead cellular debris, and scalp micro-toxins, preparing unobstructed follicle entry points.
+                </p>
+              </div>
             </div>
 
-            {/* Process 2: Rejuvenation */}
-            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2.5">
-              <div className="w-8 h-8 rounded-lg bg-teal-500/20 text-[#4ecdc4] flex items-center justify-center font-black text-xs">
+            {/* Process 2 */}
+            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400/40 transition-colors flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-teal-500/20 text-[#4ecdc4] flex items-center justify-center font-black text-sm shrink-0 mt-0.5 border border-teal-400/30">
                 02
               </div>
-              <h4 className="text-sm font-bold text-white">Rejuvenation</h4>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Radiofrequency electroporation temporarily opens nano-aqueous micro-channels to deliver PCT Rejuve MAX directly into the follicular stem cell niche.
-              </p>
+              <div className="space-y-1">
+                <h4 className="text-sm sm:text-base font-bold text-white">Process 2: Rejuvenation</h4>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Radiofrequency electroporation temporarily opens nano-aqueous micro-channels to deliver PCT Rejuve MAX directly into the follicular stem cell niche without pain.
+                </p>
+              </div>
             </div>
 
-            {/* Process 3: Vascularization */}
-            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2.5">
-              <div className="w-8 h-8 rounded-lg bg-indigo-500/20 text-[#4ecdc4] flex items-center justify-center font-black text-xs">
+            {/* Process 3 */}
+            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400/40 transition-colors flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/20 text-[#4ecdc4] flex items-center justify-center font-black text-sm shrink-0 mt-0.5 border border-indigo-400/30">
                 03
               </div>
-              <h4 className="text-sm font-bold text-white">Vascularization</h4>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Stimulates micro-capillary vasodilation, flooding re-awakened follicle bulbs with oxygen, amino acids, and vital nutrients for sustained growth.
-              </p>
+              <div className="space-y-1">
+                <h4 className="text-sm sm:text-base font-bold text-white">Process 3: Vascularization</h4>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Stimulates micro-capillary vasodilation, flooding re-awakened follicle bulbs with oxygen, amino acids, and vital nutrients for sustained accelerated growth.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -392,46 +413,41 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-          {/* Reference Column Graphic (3 cols) */}
-          <div className="lg:col-span-3 flex justify-center">
-            <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200 max-w-[180px] text-center space-y-1">
-              <img
-                src="/images/treatments/anagrow/anagrow_5signs.webp"
-                alt="5 signs of hair thinning reference"
-                className="w-full h-auto object-contain rounded-xl max-h-64 mx-auto"
-              />
-              <span className="text-[10px] text-slate-500 font-medium block">Clinical Evaluation</span>
-            </div>
-          </div>
-
-          {/* 5 Cards (9 cols) */}
-          <div className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              { num: '1', title: 'Scanty Hair', desc: 'Widening part line & visible white scalp' },
-              { num: '2', title: 'Decreased Volume', desc: 'Thinner ponytail & flat crown structure' },
-              { num: '3', title: 'Lack Of Growth', desc: 'Stunted cycle & delayed follicle regrowth' },
-              { num: '4', title: 'Decreased Density', desc: 'Progressive miniaturization of follicles' },
-              { num: '5', title: 'Active Hair Loss', desc: 'Excessive daily root bulb shedding' },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="p-4 rounded-2xl bg-[#f6f9fc] border border-slate-200/80 space-y-1.5 hover:bg-blue-50/50 transition-colors"
-              >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {[
+            { num: '1', title: 'Scanty Hair', desc: 'Widening part line & visible scalp skin', img: '/images/treatments/anagrow/sign1.webp' },
+            { num: '2', title: 'Decreased Volume', desc: 'Thinner ponytail & flat crown structure', img: '/images/treatments/anagrow/sign2.webp' },
+            { num: '3', title: 'Lack Of Growth', desc: 'Stunted cycle & delayed follicle regrowth', img: '/images/treatments/anagrow/sign3.webp' },
+            { num: '4', title: 'Decreased Density', desc: 'Progressive miniaturization of follicles', img: '/images/treatments/anagrow/sign4.webp' },
+            { num: '5', title: 'Active Hair Loss', desc: 'Excessive daily root bulb shedding', img: '/images/treatments/anagrow/sign5.webp' },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="p-4 rounded-2xl bg-[#f6f9fc] border border-slate-200/80 space-y-3 hover:bg-blue-50/50 hover:border-blue-200 hover:shadow-sm transition-all flex flex-col justify-between group"
+            >
+              <div className="space-y-3">
+                {/* Visual Image Container */}
+                <div className="w-full aspect-[4/3] rounded-xl overflow-hidden bg-white flex items-center justify-center shadow-2xs group-hover:scale-105 transition-transform duration-300">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 rounded-full bg-gradient-brand text-white font-black text-xs flex items-center justify-center shrink-0">
                     {item.num}
                   </div>
-                  <div className="text-xs sm:text-sm font-bold text-[#27448a]">
+                  <div className="text-sm font-bold text-[#27448a]">
                     {item.title}
                   </div>
                 </div>
-                <div className="text-[11px] text-slate-500 leading-tight pl-8">
-                  {item.desc}
-                </div>
               </div>
-            ))}
-          </div>
+              <div className="text-xs text-slate-500 leading-snug">
+                {item.desc}
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="pt-4 text-center">
@@ -447,3 +463,4 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
     </div>
   );
 };
+

@@ -142,7 +142,7 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
                     {/* Treatment Image Display (Clean 4:3 Aspect Ratio) */}
                     <div
                       style={{ transform: 'translateZ(0)' }}
-                      className="w-full aspect-[4/3] relative overflow-hidden bg-slate-200"
+                      className="w-full rounded-3xl aspect-[4/3] relative overflow-hidden bg-slate-200"
                     >
                       <img
                         src={item.image}

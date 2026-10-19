@@ -321,41 +321,43 @@ export const treatmentsData: Treatment[] = [
     ]
   },
   {
-    id: 'advance-hydra-facial',
-    slug: 'advance-hydra-facial',
-    title: 'Advanced Hydra Facial',
+    id: 'hydra-facial',
+    slug: 'hydra-facial',
+    title: 'Hydra Facial',
     category: 'Skin Aesthetics',
-    tagline: 'Multi-Step Clinical Hydration & Dermal Resurfacing',
-    technology: 'Vortex Dermal Infusion & Vacuum Extraction Technology',
-    description: 'Combines medical exfoliation, deep pore extraction, intense hydration, and clinical super-serums for an immediate glow.',
-    image: 'https://images.unsplash.com/photo-1512290900672-1f5be572d4ff?auto=format&fit=crop&w=800&q=80',
-    badge: 'Instant Glow & Hydration',
-    conditions: ['Dull Skin', 'Clogged Pores', 'Uneven Skin Tone', 'Early Wrinkles'],
-    what: 'Advanced Hydra Facial is a clinical medical-grade facial that combines non-invasive mechanical exfoliation, deep vortex vacuum pore extraction, and high-pressure antioxidant serum infusion to rejuvenate facial skin.',
-    why: 'Environmental pollution in industrial cities like Vadodara clogs facial pores and oxidizes dermal collagen. Hydra Facial cleanses sebum plugs, extracts blackheads painlessly, and drenches the skin in hyaluronic acid and peptides for an immediate luminous red-carpet radiance.',
-    beforeAfter: 'Instant bridal glow immediately upon completing the 45-minute procedure. Complexion appears noticeably brighter, pores look tightened, and texture feels silky smooth with zero downtime.',
-    howDiagnose: 'Digital dermal hydration mapping and sebum level assessment by our cosmetologist.',
+    tagline: 'Multi-Step Clinical Hydration, Vortex Extraction & Dermal Resurfacing',
+    countryOfOrigin: 'USA',
+    technology: 'Vortex Dermal Infusion & Negative-Pressure Vacuum Extraction Technology',
+    description: 'Clinical medical-grade facial combining deep exfoliation, painless vortex extraction of blackheads, and high-pressure infusion of hyaluronic acid and antioxidant super-serums.',
+    image: '/images/treatments/skin-aesthetics/hydra_facial.webp',
+    badge: 'Instant Dewy Glow',
+    conditions: ['Dull Skin', 'Clogged Pores', 'Uneven Skin Tone', 'Dehydrated Skin', 'Early Fine Lines'],
+    what: 'Hydra Facial is a patented multi-step dermatological procedure that merges mechanical hydro-dermabrasion, chemical peeling, painless vortex suction, and dermal infusion of medical-grade antioxidants, hyaluronic acid, and peptides.',
+    why: 'Urban environmental pollution, dust, and hard water in Vadodara clog pores and oxidize dermal collagen. Traditional parlor facials push debris deeper into pores; Hydra Facial extracts impurities painlessly using negative vortex pressure while simultaneously quenching dehydrated cells with restorative nutrients.',
+    beforeAfter: 'Instant luminous red-carpet radiance immediately after the 45-minute clinical session. Skin appears visibly plumper, blackheads are completely cleared, and dermal texture feels petal-soft with zero peeling or downtime.',
+    howDiagnose: 'Digital dermal hydration analysis and sebum mapping using high-resolution polarising skin sensors.',
     preTreatment: [
-      'Discontinue retinol or exfoliating acids 3 days prior',
-      'Avoid facial waxing or threading 48 hours prior'
+      'Discontinue retinol, AHA/BHA exfoliants, and benzoyl peroxide 3 days prior',
+      'Avoid facial bleaching, waxing, or threading for 48 hours',
+      'Arrive free of heavy cosmetic foundation'
     ],
     duringProcedure: [
-      'Exfoliation and dead skin resurfacing',
-      'Gentle glycolic/salicylic peeling solution to loosen pore congestion',
-      'Vortex vacuum extraction of stubborn blackheads and sebum',
-      'Targeted infusion of super serums containing hyaluronic acid and antioxidants',
-      'LED photo-rejuvenation therapy to calm redness and boost collagen'
+      'Step 1: Gentle vortex cleansing and dead keratin exfoliation',
+      'Step 2: Non-irritating salicylic and glycolic acid peel infusion to loosen sebum plugs',
+      'Step 3: Painless vortex vacuum extraction of stubborn blackheads and sebum deposits',
+      'Step 4: Targeted delivery of antioxidant, hyaluronic acid, and peptide super-serums',
+      'Step 5: Calming LED photo-rejuvenation light to reduce transient redness and boost cellular collagen'
     ],
     postTreatment: [
-      'Avoid makeup for at least 12 hours to let super serums absorb',
-      'Apply broad-spectrum sunscreen daily',
-      'Enjoy your fresh radiant glow immediately'
+      'Avoid wearing makeup for at least 12 hours to permit deep serum absorption',
+      'Apply broad-spectrum non-comedogenic SPF 50 sunscreen daily',
+      'Drink adequate water and maintain daily moisturizing routine'
     ],
     benefits: [
-      'Zero downtime with immediate visible luminous glow',
-      'Painless vacuum extraction of stubborn blackheads',
-      'Deep hydration and fine line smoothing',
-      'Tailored serum cocktails for sensitive, dry, or oily skin'
+      'Immediate, camera-ready bridal radiance with zero downtime',
+      'Painless extraction of stubborn blackheads and whiteheads',
+      'Deep cellular hydration plumping fine dehydration lines',
+      'Safe and customizable across all Indian skin types and tones'
     ]
   },
   {
@@ -432,6 +434,212 @@ export const treatmentsData: Treatment[] = [
       'Unclogs pores and calms active acne outbreaks',
       'Diminishes fine wrinkles and refines rough skin texture',
       'Administered under strict medical supervision'
+    ]
+  },
+  {
+    id: 'carbon-facial',
+    slug: 'carbon-facial',
+    title: 'Carbon Laser Facial',
+    category: 'Skin Aesthetics',
+    tagline: 'The Celebrated Hollywood Laser Peel with Q-Switched Nd:YAG Laser & Liquid Carbon',
+    countryOfOrigin: 'South Korea & USA',
+    technology: 'Q-Switched Nd:YAG Laser (1064nm) & Micronized Activated Bamboo Charcoal',
+    description: 'Celebrity-favorite non-invasive laser facial using medical carbon lotion and nanosecond laser pulses to vaporize deep impurities, tighten enlarged pores, and restore porcelain radiance.',
+    image: '/images/treatments/skin-aesthetics/carbon_facial.webp',
+    badge: 'Hollywood Laser Peel',
+    conditions: ['Enlarged Pores', 'Oily Congested Skin', 'Stubborn Blackheads', 'Dull Complexion', 'Mild Pigmentation'],
+    what: 'The Carbon Laser Facial (also renowned globally as the Hollywood Peel or China Doll Facial) applies a medical liquid carbon suspension onto the facial skin. The carbon particles penetrate deep into pores where a Q-Switched Nd:YAG laser photo-acoustically shatters the carbon along with trapped sebum, dead cells, and pigment.',
+    why: 'Overactive sebaceous glands and environmental grime cause stubbornly dilated pores and persistent shine. The carbon laser treatment creates a controlled photothermal shockwave that shrinks sebaceous gland activity, vaporizes epidermal debris, and promotes neocollagenesis for tightened, poreless skin.',
+    beforeAfter: 'Pores appear dramatically minimized, oily shine is replaced with an airbrushed matte luminescence, and skin tone looks noticeably brighter from the very first session.',
+    howDiagnose: 'Sebum excretion measurement, pore diameter assessment, and Fitzpatrick phototype safety screening.',
+    preTreatment: [
+      'Avoid excessive sun exposure and tanning beds for 1 week prior',
+      'Do not use active retinoids or chemical peels for 4 days before procedure',
+      'Men should shave 12-24 hours prior if treating the beard zone'
+    ],
+    duringProcedure: [
+      'Application of medical-grade activated bamboo carbon lotion allowed to set for 10-15 minutes',
+      'Short-pulse laser warming pass to drive carbon particles deep into follicular ostia',
+      'Q-Switched 1064nm laser acoustic pass with snap sounds as carbon particles vaporize instantly',
+      'Gentle soothing toner cleanse to remove residual micro-particles',
+      'Application of cooling peptide sheet mask and broad-spectrum physical sunscreen'
+    ],
+    postTreatment: [
+      'Avoid hot saunas, steam rooms, and vigorous sweaty workouts for 24 hours',
+      'Use gentle non-foaming cleanser and avoid gritty exfoliating scrubs for 5 days',
+      'Strict application of broad-spectrum SPF 50 sunscreen every 3-4 hours'
+    ],
+    benefits: [
+      'Visibly tightens and refines enlarged pores within 1 session',
+      'Vaporizes blackheads and eliminates surface dead skin cells',
+      'Controls chronic oily shine without drying out the skin barrier',
+      '100% painless, non-invasive protocol with instant porcelain finish'
+    ]
+  },
+  {
+    id: 'acne-treatment',
+    slug: 'acne-treatment',
+    title: 'Clinical Acne Treatment',
+    category: 'Skin Aesthetics',
+    tagline: 'Doctor-Supervised Acne Eradication, Salicylic Therapy & Blue Light Sterilization',
+    technology: 'Medical High-Frequency Ozone, 415nm Blue Light LED & Keratolytic Extraction',
+    description: 'Comprehensive dermatological acne protocol designed to neutralize P. acnes bacteria, dissolve comedones, calm cystic inflammation, and prevent permanent scarring.',
+    image: '/images/treatments/skin-aesthetics/acne_treatment.webp',
+    badge: 'Clinical Blemish Control',
+    conditions: ['Active Acne Vulgaris', 'Cystic Breakouts', 'Blackheads & Whiteheads', 'Post-Acne Redness', 'Excess Sebum'],
+    what: 'Our Clinical Acne Treatment is an evidence-based multi-tier dermatological therapy that targets all four pathophysiological stages of acne: follicular hyperkeratinization, microbial proliferation (Cutibacterium acnes), sebum overproduction, and inflammatory mediator release.',
+    why: 'Self-treating acne with OTC creams or popping pimples pushes infection into deep dermal tissues, creating dark post-inflammatory hyperpigmentation (PIH) and pitted scars. Our doctor-supervised protocol treats active blemishes without damaging adjacent healthy skin, halting recurrence.',
+    beforeAfter: 'Painful cystic inflammation subsides within 48 to 72 hours. A scheduled course of 4 to 6 sessions yields clear, blemish-free skin with up to an 85% decrease in active breakouts.',
+    howDiagnose: 'Clinical acne staging (Leeds acne grading system), digital Wood’s lamp bacterial porphyrin fluorescing, and hormonal profile evaluation.',
+    preTreatment: [
+      'Avoid squeezing or picking active acne lesions for at least 1 week',
+      'Stop benzoyl peroxide and topical antibiotic gels 24 hours prior to appointment',
+      'Stay well-hydrated and disclose any oral medications (e.g. isotretinoin)'
+    ],
+    duringProcedure: [
+      'Antiseptic medical cleanse with clarifying botanical extracts',
+      'Aseptic comedone extraction under sterile clinical magnification',
+      'High-frequency ozone sterilizing electrode pass to eliminate anaerobic bacteria',
+      'Targeted application of doctor-calibrated lipophilic beta-hydroxy peel solution',
+      '415nm medical blue light phototherapy to suppress bacterial porphyrin',
+      'Calming anti-inflammatory zinc and niacinamide soothing mask'
+    ],
+    postTreatment: [
+      'Do not touch face with unwashed hands or pick at healing extraction points',
+      'Wash pillowcases and clean phone screens regularly',
+      'Use non-comedogenic, oil-free moisturizer and prescribed dermatological topicals',
+      'Apply physical mineral sunscreen daily'
+    ],
+    benefits: [
+      'Rapidly calms painful red inflamed pimples and cystic nodules',
+      'Eradicates anaerobic bacteria deep within the follicular canal',
+      'Prevents permanent pitted scars and post-inflammatory dark marks',
+      'Balances excessive oil output while repairing damaged skin barrier'
+    ]
+  },
+  {
+    id: 'skin-brightening-treatment',
+    slug: 'skin-brightening-treatment',
+    title: 'Skin Brightening Treatment',
+    category: 'Skin Aesthetics',
+    tagline: 'Glutathione, Vitamin C & Kojic Dermal Infusion for Radiant Skin Glow',
+    technology: 'Transdermal Electroporation & Medical Antioxidant Depigmentation Complex',
+    description: 'Medical-grade brightening treatment combining glutathione, alpha arbutin, and pure ascorbic acid to diminish sun damage, erase tanning, and even skin tone.',
+    image: '/images/treatments/skin-aesthetics/skin_brightening.webp',
+    badge: 'Antioxidant Glow',
+    conditions: ['Melasma & Sun Spots', 'Uneven Skin Tone', 'Dull Skin', 'Tanning & Hyperpigmentation', 'Photo-Aging'],
+    what: 'Richfeel Skin Brightening Treatment is an intensive medical aesthetic procedure formulated to treat epidermal and dermal pigmentation. It employs transdermal electroporation to deliver master antioxidants (Glutathione, Vitamin C, Kojic Acid, and Alpha-Arbutin) deep into the basal cell layer where melanogenesis occurs.',
+    why: 'Intense sunlight and UV radiation in Gujarat trigger melanocytes to overproduce melanin, resulting in uneven tanning, stubborn sun spots, and patchy melasma. Unlike topical creams that stay on the surface, our transdermal infusion penetrates cell membranes to inhibit tyrosinase enzyme activity and lighten dark patches safely.',
+    beforeAfter: 'Visibly brighter complexion after the very first treatment, with a 60-80% lightening of sun tan and dark spots over a tailored 4-session course.',
+    howDiagnose: 'Digital UV pigment depth analysis to classify epidermal vs. dermal melasma and assess cellular oxidation.',
+    preTreatment: [
+      'Avoid bleaching, threading, or salon facials for 5 days before treatment',
+      'Avoid tanning outdoors for 48 hours prior',
+      'Disclose any topical steroid creams previously used'
+    ],
+    duringProcedure: [
+      'Enzymatic exfoliation to lift dull, oxidized dead keratin cells',
+      'Application of potent medical-grade depigmenting cocktail (Glutathione + Ascorbic Acid + Kojic Acid)',
+      'Needle-free electroporation and ultrasound sonophoresis for deep transdermal cellular infusion',
+      'Cryo-cooling lymphatic massage to lock actives into dermal layers',
+      'Application of brightening botanical peel-off alginate mask enriched with licorice extract',
+      'Broad-spectrum PA++++ physical photoprotection application'
+    ],
+    postTreatment: [
+      'Strict sun avoidance and reapplication of SPF 50+ every 3 hours',
+      'Avoid direct steam, sauna, or chemical bleaching for 7 days',
+      'Use prescribed maintenance depigmenting serums as advised by physician'
+    ],
+    benefits: [
+      'Inhibits melanin synthesis at the cellular tyrosinase level',
+      'Fades stubborn sun tan, dark patches, and post-inflammatory spots',
+      'Infuses powerful master antioxidants to reverse oxidative photoaging',
+      'Leaves the face luminous, evenly toned, and visibly refreshed'
+    ]
+  },
+  {
+    id: 'darma-korean-treatment',
+    slug: 'darma-korean-treatment',
+    title: 'Derma-Korean Treatment',
+    category: 'Skin Aesthetics',
+    tagline: 'Seoul Dermatology Protocol: Microneedle Meso-Therapy & PDRN Salmon DNA',
+    countryOfOrigin: 'South Korea',
+    technology: 'Automated Korean Microneedling & Medical PDRN Polydeoxyribonucleotide',
+    description: 'Advanced Korean clinical meso-infusion therapy utilizing micro-needling and PDRN salmon DNA to stimulate deep cellular collagen renewal, shrink pores, and tighten skin.',
+    image: '/images/treatments/skin-aesthetics/derma_korean.webp',
+    badge: 'Korean PDRN Tech',
+    conditions: ['Acne Scars & Texture', 'Open Enlarged Pores', 'Fine Lines & Wrinkles', 'Loss of Elasticity', 'Dull Tired Skin'],
+    what: 'The Derma-Korean Treatment (K-Derma Meso Infusion) is a cutting-edge clinical aesthetic protocol pioneered in Seoul, South Korea. It pairs precision automated microneedling with pharmaceutical-grade PDRN (Polydeoxyribonucleotide extracted from wild salmon DNA), essential amino acids, and cross-linked hyaluronic acid.',
+    why: 'As skin ages or heals from severe acne, dermal collagen matrix collapses, causing pitted scars, enlarged pores, and laxity. PDRN binds to adenosine A2A receptors in human fibroblasts, activating tissue regeneration, microvascular angiogenesis, and synthesis of Type I & III collagen from deep within.',
+    beforeAfter: 'Smooth, plump, and refined skin texture within 7 to 10 days post-procedure. Scars soften, pore sizes reduce significantly, and skin demonstrates remarkable bounce and firmness over 3 to 4 monthly sessions.',
+    howDiagnose: 'Dermal elasticity assessment, 3D skin texture topography analysis, and scar classification (ice-pick, rolling, boxcar).',
+    preTreatment: [
+      'Apply topical anesthetic numbing cream 30-40 minutes prior to session for 100% comfort',
+      'Avoid blood thinners (aspirin, vitamin E) for 3 days before procedure',
+      'Do not use active retinol or AHA/BHA for 5 days prior'
+    ],
+    duringProcedure: [
+      'Clinical skin sanitization and removal of topical numbing cream',
+      'Application of medical-grade Korean PDRN Salmon DNA and growth factor complex',
+      'Automated vertical micro-channeling using sterile surgical-grade titanium cartridges',
+      'Dermal meso-infusion ensuring 100% absorption of bioactive peptides into fibroblasts',
+      'Cryogenic LED soothing mask application to rapidly quench redness and stimulate healing',
+      'Post-procedure barrier recovery serum and protective peptide shield'
+    ],
+    postTreatment: [
+      'Avoid washing face for 8 hours after procedure',
+      'Use only sterile hydrating serum and gentle ceramide barrier cream for 48 hours',
+      'Avoid direct sunlight, sweaty cardio, and swimming pools for 72 hours',
+      'Always apply physical mineral SPF 50 sunscreen'
+    ],
+    benefits: [
+      'Stimulates true biological collagen synthesis and tissue regeneration',
+      'Smooths stubborn acne scars and refines coarse skin texture',
+      'Visibly shrinks open, gaping pores and improves skin tightness',
+      'Pioneered with authentic Korean medical aesthetic protocols'
+    ]
+  },
+  {
+    id: 'korean-glass-skin-treatment',
+    slug: 'korean-glass-skin-treatment',
+    title: 'Korean Glass Skin Treatment',
+    category: 'Skin Aesthetics',
+    tagline: 'Multi-Layer Dewy Hydration, Peptide Peeling & Cryo-Infusion for Crystal Clarity',
+    countryOfOrigin: 'South Korea',
+    technology: 'Korean Cryo-Electroporation, Phyto-Peptides & Hyaluronic Dermal Glaze',
+    description: 'Signature Korean 7-step aesthetic therapy designed to achieve translucent, ultra-smooth, poreless, and luminescent "glass-like" skin reflection.',
+    image: '/images/treatments/skin-aesthetics/korean_glass_skin.webp',
+    badge: 'Luminescent Glass Skin',
+    conditions: ['Dehydrated Skin', 'Rough Texture', 'Dull Skin', 'Large Pores', 'Lack of Radiance'],
+    what: 'The Korean Glass Skin Treatment is an internationally celebrated aesthetic protocol engineered in Korea to produce "Yuri Pibu" (Glass Skin) - skin so poreless, luminous, intensely hydrated, and translucent that it mirrors the clarity of clean glass.',
+    why: 'Dehydration, cellular sluggishness, and micro-flaking create uneven light refraction, making skin appear tired, dull, and chalky. The Korean 7-step clinical method combines gentle lactic micro-resurfacing, multi-molecular weight hyaluronic hydration, cryogenic electroporation, and a peptide glaze to restore maximum light reflection.',
+    beforeAfter: 'Spectacular, hyper-dewy, reflective "glass" glow immediately noticeable when leaving the clinic. Makeup glides on seamlessly, and skin retains a lit-from-within sheen for weeks.',
+    howDiagnose: 'Optical skin reflection analysis, dermal moisture retention testing, and barrier integrity diagnostic.',
+    preTreatment: [
+      'Arrive with clean skin free of waterproof makeup',
+      'Avoid harsh chemical exfoliants 48 hours prior',
+      'Suitable for all skin types, including sensitive and pre-event bridal skin'
+    ],
+    duringProcedure: [
+      'Step 1: Double clinical oil-gel cleansing to eliminate micro-particles and sebum',
+      'Step 2: Gentle Korean bubble enzyme exfoliation to melt dead surface keratin',
+      'Step 3: Aqua-peel pore purifying extraction focusing on T-zone congestion',
+      'Step 4: Transdermal infusion of 5-molecular-weight hyaluronic acid essence',
+      'Step 5: Cryo-electroporation device pass at -10°C to lock moisture into cells and tighten pores',
+      'Step 6: Luminescent Korean modeling rubber mask infused with botanical brightening agents',
+      'Step 7: Signature peptide dermal glaze and barrier-sealing physical SPF application'
+    ],
+    postTreatment: [
+      'Do not wash face for 6 hours to allow deep hydration layers to set',
+      'Avoid matte powders or heavy drying foundations for 24 hours to showcase natural dewiness',
+      'Maintain skin hydration by drinking plenty of water and using hydrating mists',
+      'Apply broad-spectrum sunscreen daily'
+    ],
+    benefits: [
+      'Achieves the coveted poreless, ultra-dewy Korean glass skin finish',
+      'Provides deep multi-layer cellular hydration that lasts for weeks',
+      'Infuses powerful botanical peptides to boost natural skin elasticity',
+      'Perfect instant pre-event, red-carpet, or bridal glow with zero peeling'
     ]
   },
   {
