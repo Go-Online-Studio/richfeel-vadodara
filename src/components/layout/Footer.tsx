@@ -93,7 +93,7 @@ export const Footer: React.FC<FooterProps> = ({ treatments }) => {
                   href="/treatments"
                   className="text-[#4ecdc4] font-semibold hover:underline inline-flex items-center justify-center md:justify-start gap-1 mt-1"
                 >
-                  <span>All Hair Treatments</span>
+                  <span>All Treatments</span>
                   <ArrowRight className="w-3 h-3" />
                 </Link>
               </li>
