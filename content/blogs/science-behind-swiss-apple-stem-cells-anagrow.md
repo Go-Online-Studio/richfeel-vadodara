@@ -12,7 +12,7 @@ authorTitle: "Pioneers of Trichology in India"
 authorRole: "Chief Trichologists"
 popular: true
 recent: true
-coverImage: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/blog_stem_cells.webp"
 ---
 
 ### What is Anagrow?

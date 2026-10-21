@@ -12,7 +12,7 @@ authorTitle: "Co-Founder & Certified Trichologist"
 authorRole: "Diagnostic Lead"
 popular: true
 recent: false
-coverImage: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/blog_trichogram_test.webp"
 ---
 
 ### Beyond the Naked Eye

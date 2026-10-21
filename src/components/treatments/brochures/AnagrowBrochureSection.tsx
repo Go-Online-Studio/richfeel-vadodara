@@ -13,8 +13,8 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
       {/* 1. HERO CALLOUT: 50/50 Flexbox Split with Macro Hair Image */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0c1f44] via-[#1c3872] to-[#0a6ebd] text-white p-6 sm:p-10 lg:p-12 shadow-xl border border-white/10">
         <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          {/* Left Column (50% on Desktop) */}
-          <div className="w-full lg:w-1/2 space-y-5">
+          {/* Left Column (50% on Desktop): order-2 on mobile so image is on top, order-1 on desktop */}
+          <div className="w-full lg:w-1/2 space-y-5 order-2 lg:order-1">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#4ecdc4] text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Clinical Innovation · PCT Rejuve MAX</span>
@@ -63,8 +63,8 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
             </div>
           </div>
 
-          {/* Right Column (50% on Desktop): Photorealistic Macro Hair Photography Container */}
-          <div className="w-full lg:w-1/2 flex flex-col items-center justify-center">
+          {/* Right Column (50% on Desktop): order-1 on mobile so image is on top, order-2 on desktop */}
+          <div className="w-full lg:w-1/2 flex flex-col items-center justify-center order-1 lg:order-2">
             <div className="relative w-full max-w-lg aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-slate-900 group">
               <img
                 src="/images/treatments/anagrow/anagrow_macro_hair.webp"
@@ -100,7 +100,7 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
               {/* Standard Uniform Image Container */}
               <div className="w-full aspect-[4/3] rounded-2xl bg-white border border-slate-100 p-2 overflow-hidden shadow-xs flex items-center justify-center">
                 <img
-                  src="/images/treatments/anagrow/anagrow_apple.jpg"
+                  src="/images/treatments/anagrow/anagrow_apple.webp"
                   alt="Swiss Apple Stem Cells (Uttwiler Spätlauber)"
                   className="w-full h-full object-contain"
                 />
@@ -141,7 +141,7 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
               {/* Standard Uniform Image Container */}
               <div className="w-full aspect-[4/3] rounded-2xl bg-white border border-slate-100 p-2 overflow-hidden shadow-xs flex items-center justify-center">
                 <img
-                  src="/images/treatments/anagrow/anagrow_argan.jpg"
+                  src="/images/treatments/anagrow/anagrow_argan.webp"
                   alt="Argan Tree Stem Cells (Argania Spinosa)"
                   className="w-full h-full object-contain"
                 />
@@ -182,7 +182,7 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
               {/* Standard Uniform Image Container */}
               <div className="w-full aspect-[4/3] rounded-2xl bg-white border border-slate-100 p-2 overflow-hidden shadow-xs flex items-center justify-center">
                 <img
-                  src="/images/treatments/anagrow/anagrow_pea.jpg"
+                  src="/images/treatments/anagrow/anagrow_pea.webp"
                   alt="Pea Sprout Extracts (Pisum Sativum)"
                   className="w-full h-full object-contain"
                 />
@@ -227,7 +227,7 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
               {/* Standard Uniform Image Container */}
               <div className="w-full aspect-[4/3] rounded-2xl bg-white border border-slate-100 p-2 overflow-hidden shadow-xs flex items-center justify-center">
                 <img
-                  src="/images/treatments/anagrow/anagrow_stemcells.jpg"
+                  src="/images/treatments/anagrow/anagrow_stemcells.webp"
                   alt="Generic Plant Stem Cells & Nano-Lipobelle Q10"
                   className="w-full h-full object-contain"
                 />
@@ -341,7 +341,7 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
           <div className="lg:col-span-5 flex flex-col items-center">
             <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-black/60 group">
               <img
-                src="/images/treatments/anagrow/anagrow_machine.jpg"
+                src="/images/treatments/anagrow/anagrow_machine.webp"
                 alt="High-end 3D industrial product render of clinical transdermal hair treatment machine"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />

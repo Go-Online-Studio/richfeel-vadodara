@@ -12,7 +12,7 @@ authorTitle: "Vadodara Trichology Centre"
 authorRole: "Scalp Care Specialist"
 popular: true
 recent: false
-coverImage: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/blog_tst_plus.webp"
 ---
 
 ### The Foundation of Scalp Micro-Circulation

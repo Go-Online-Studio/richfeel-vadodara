@@ -12,7 +12,7 @@ authorTitle: "Vadodara Trichology Centre"
 authorRole: "Hair Care Specialist"
 popular: false
 recent: false
-coverImage: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/blog_anadtox_repair.webp"
 ---
 
 ### The Hidden Cost of Hair Coloring

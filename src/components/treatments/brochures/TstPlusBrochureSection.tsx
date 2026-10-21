@@ -239,7 +239,7 @@ export const TstPlusBrochureSection: React.FC<TstPlusBrochureSectionProps> = ({ 
               {/* Realistic Clinical Diagnosis Photography Container */}
               <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-slate-100 shadow-xs bg-slate-50 group">
                 <img
-                  src="/images/treatments/tst-plus/tst_step1_diagnosis.jpg"
+                  src="/images/treatments/tst-plus/tst_step1_diagnosis.webp"
                   alt="Trichological Diagnosis with digital Capilloscope and hair follicle analysis"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -292,7 +292,7 @@ export const TstPlusBrochureSection: React.FC<TstPlusBrochureSectionProps> = ({ 
               {/* Realistic Austrian MLD & Photo-Bio Therapy Photography Container */}
               <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-slate-100 shadow-xs bg-slate-50 group">
                 <img
-                  src="/images/treatments/tst-plus/tst_step2_mld.jpg"
+                  src="/images/treatments/tst-plus/tst_step2_mld.webp"
                   alt="Austrian Manual Lymphatic Drainage and photo-bio follicle stimulation therapy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -349,7 +349,7 @@ export const TstPlusBrochureSection: React.FC<TstPlusBrochureSectionProps> = ({ 
               {/* Realistic Product Mockup Container */}
               <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-slate-100 shadow-xs bg-slate-50 group">
                 <img
-                  src="/images/treatments/tst-plus/tst_kit_mockup.jpg"
+                  src="/images/treatments/tst-plus/tst_kit_mockup.webp"
                   alt="Photorealistic product mockup of high-end clinical hair care kit with serum bottle and supplement box"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />

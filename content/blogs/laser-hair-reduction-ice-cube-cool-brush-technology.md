@@ -12,7 +12,7 @@ authorTitle: "Co-Founder & Aesthetic Cosmetologist"
 authorRole: "Medical Director"
 popular: true
 recent: true
-coverImage: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/blog_laser_ice.webp"
 ---
 
 ### What Makes ICE CUBE 2.0 Revolutionary?

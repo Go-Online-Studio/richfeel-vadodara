@@ -12,7 +12,7 @@ authorTitle: "Pioneer of Trichology in India"
 authorRole: "Chief Trichologist"
 popular: false
 recent: true
-coverImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/blog/blog_prp_gfc.webp"
 ---
 
 ### Understanding Biotin-Enriched PRP

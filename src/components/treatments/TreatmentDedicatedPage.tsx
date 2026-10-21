@@ -29,10 +29,10 @@ export const TreatmentDedicatedPage: React.FC<TreatmentDedicatedPageProps> = ({
     .slice(0, 3);
 
   return (
-    <div className="py-10 bg-[#f6f9fc] min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-4 sm:py-8 lg:py-10 pb-20 sm:pb-12 bg-[#f6f9fc] min-h-screen">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         {/* Breadcrumb & Back */}
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           <Link
             href="/treatments"
             className="inline-flex items-center gap-2 text-xs font-bold text-[#0a6ebd] hover:text-[#27448a] transition-colors cursor-pointer"
@@ -44,7 +44,7 @@ export const TreatmentDedicatedPage: React.FC<TreatmentDedicatedPageProps> = ({
 
         {/* Treatment Hero Card - Rendered for non-brochure treatments */}
         {!['anagrow', 'tst-plus', 'ana-d-tox'].includes(treatment.id) && (
-          <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-8 lg:p-10 mb-12">
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-sm p-3 sm:p-8 lg:p-10 mb-6 sm:mb-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
               {/* Content (7 cols on desktop) */}
               <div className="order-2 lg:order-1 lg:col-span-7 space-y-4 sm:space-y-5">
@@ -129,19 +129,19 @@ export const TreatmentDedicatedPage: React.FC<TreatmentDedicatedPageProps> = ({
 
         {/* Signature Clinical Technology Sections for Anagrow, TST+, and Ana-d-tox */}
         {treatment.id === 'anagrow' && (
-          <div className="mb-12">
+          <div className="mb-6 sm:mb-12">
             <AnagrowBrochureSection onOpenBooking={openBooking} />
           </div>
         )}
 
         {treatment.id === 'tst-plus' && (
-          <div className="mb-12">
+          <div className="mb-6 sm:mb-12">
             <TstPlusBrochureSection onOpenBooking={openBooking} />
           </div>
         )}
 
         {treatment.id === 'ana-d-tox' && (
-          <div className="mb-12">
+          <div className="mb-6 sm:mb-12">
             <AnadtoxBrochureSection onOpenBooking={openBooking} />
           </div>
         )}

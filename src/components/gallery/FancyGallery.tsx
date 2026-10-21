@@ -23,8 +23,8 @@ export const FancyGallery: React.FC<FancyGalleryProps> = () => {
       title: 'Stem Cell Follicle Regeneration',
       subtitle: 'Diffuse thinning reversal with Anagrow',
       category: 'Hair Restoration',
-      image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80',
-      fullImage: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1600&q=90',
+      image: '/images/gallery/gal_anagrow_regrowth.webp',
+      fullImage: '/images/gallery/gal_anagrow_regrowth.jpg',
       description: 'Patient after 12 sessions of Swiss Apple Stem Cell PCT Rejuve MAX and RF Anagain 10X transdermal stimulation.'
     },
     {
@@ -32,8 +32,8 @@ export const FancyGallery: React.FC<FancyGalleryProps> = () => {
       title: 'Ailesbury UK Aesthetic Hairline',
       subtitle: 'Natural temple & hairline restoration',
       category: 'Hair Transplant',
-      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80',
-      fullImage: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1600&q=90',
+      image: '/images/gallery/gal_hairline_transplant.webp',
+      fullImage: '/images/gallery/gal_hairline_transplant.jpg',
       description: 'Ailesbury UK technique: zero scalpel cuts, zero stitches, and zero linear scars. 8-month result showing natural density.'
     },
     {
@@ -41,8 +41,8 @@ export const FancyGallery: React.FC<FancyGalleryProps> = () => {
       title: 'Vadodara Consultation & Reception Suite',
       subtitle: 'Marvel Square, Sunpharma Road, Vadodara',
       category: 'Clinic',
-      image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
-      fullImage: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=90',
+      image: '/images/gallery/gal_clinic_lounge.webp',
+      fullImage: '/images/gallery/gal_clinic_lounge.jpg',
       description: 'Our world-class clinic environment designed for privacy, hygiene, and personalized trichological consultations.'
     },
     {
@@ -50,8 +50,8 @@ export const FancyGallery: React.FC<FancyGalleryProps> = () => {
       title: 'Painless Laser Hair Reduction (ICE CUBE 2.0)',
       subtitle: 'Silky smooth arms & legs with Cool Brush',
       category: 'Skin Aesthetics',
-      image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80',
-      fullImage: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1600&q=90',
+      image: '/images/gallery/gal_laser_smooth_skin.webp',
+      fullImage: '/images/gallery/gal_laser_smooth_skin.jpg',
       description: '90% permanent hair reduction achieved after 6 sessions with zero burns, zero redness, and elimination of ingrown hairs.'
     },
     {
@@ -59,8 +59,8 @@ export const FancyGallery: React.FC<FancyGalleryProps> = () => {
       title: 'Austrian MLD Scalp Detox (TST+)',
       subtitle: 'Eradication of persistent seborrheic dandruff',
       category: 'Scalp Therapy',
-      image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80',
-      fullImage: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1600&q=90',
+      image: '/images/gallery/gal_scalp_detox_clean.webp',
+      fullImage: '/images/gallery/gal_scalp_detox_clean.jpg',
       description: 'Microscopic scalp view showing complete clearance of oily crusts and restoration of healthy pink scalp tissue.'
     },
     {
@@ -68,8 +68,8 @@ export const FancyGallery: React.FC<FancyGalleryProps> = () => {
       title: 'Biotin-Enriched PRP Crown Densification',
       subtitle: 'Reactivation of sleeping follicles',
       category: 'Hair Restoration',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
-      fullImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=90',
+      image: '/images/gallery/gal_prp_crown_density.webp',
+      fullImage: '/images/gallery/gal_prp_crown_density.jpg',
       description: 'Marked thickening of vertex thinning after 4 sessions of autologous PRP enriched with micronized pharmaceutical biotin.'
     }
   ];

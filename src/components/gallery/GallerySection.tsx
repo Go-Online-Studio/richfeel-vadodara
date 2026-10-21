@@ -18,7 +18,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenBooking })
       title: 'Hair Regrowth with Anagrow & PCT Rejuve MAX',
       subtitle: 'Diffuse thinning reversal after 6 months',
       category: 'Hair Restoration',
-      image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80',
+      image: '/images/gallery/gal_anagrow_regrowth.webp',
       badge: '6 Months Protocol'
     },
     {
@@ -27,7 +27,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenBooking })
       title: 'Aesthetic Hairline Restoration',
       subtitle: 'Ailesbury UK Technique (No cuts, no stitches)',
       category: 'Hair Transplant',
-      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80',
+      image: '/images/gallery/gal_hairline_transplant.webp',
       badge: 'Ailesbury Protocol'
     },
     {
@@ -36,7 +36,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenBooking })
       title: 'Vadodara Reception & Consultation Suite',
       subtitle: 'Marvel Square, Sunpharma Road, Vadodara',
       category: 'Clinic Interior',
-      image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
+      image: '/images/gallery/gal_clinic_lounge.webp',
       badge: 'Vadodara Center'
     },
     {
@@ -45,7 +45,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenBooking })
       title: 'Laser Hair Reduction 2.0 (ICE CUBE)',
       subtitle: 'Smooth, hair-free skin with Cool Brush gliding',
       category: 'Skin Aesthetics',
-      image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80',
+      image: '/images/gallery/gal_laser_smooth_skin.webp',
       badge: '90% Reduction'
     },
     {
@@ -54,7 +54,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenBooking })
       title: 'Scalp Detox & Dandruff Elimination (TST+)',
       subtitle: 'Austrian MLD clearing persistent seborrhea',
       category: 'Scalp Therapy',
-      image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80',
+      image: '/images/gallery/gal_scalp_detox_clean.webp',
       badge: 'Austrian MLD'
     },
     {
@@ -63,7 +63,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenBooking })
       title: 'Capilloscopy & Trichogram Diagnostic Station',
       subtitle: 'High precision digital microscopic analysis',
       category: 'Diagnostic Suite',
-      image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80',
+      image: '/images/blog/blog_trichogram_test.webp',
       badge: 'Advanced Diagnostics'
     }
   ];
