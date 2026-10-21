@@ -130,7 +130,7 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
                 spaceBetween: 28,
               },
             }}
-            className="pb-12"
+            className="!pt-4 sm:!pt-5 pb-12"
           >
             {filtered.map((item) => (
               <SwiperSlide key={item.id} className="h-auto">
