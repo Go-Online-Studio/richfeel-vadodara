@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ShieldCheck, CheckCircle2, AlertTriangle, Sparkles, HeartPulse, Microscope, Activity, Droplets, Gift, Award, ArrowRight, Calendar, Phone } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, AlertTriangle, Sparkles, HeartPulse, Microscope, Activity, Droplets, Award, ArrowRight, Calendar, Phone } from 'lucide-react';
 
 interface TstPlusBrochureSectionProps {
   onOpenBooking: (concern?: string) => void;
@@ -24,17 +24,13 @@ export const TstPlusBrochureSection: React.FC<TstPlusBrochureSectionProps> = ({ 
             </h1>
 
             <p className="text-sm sm:text-base text-cyan-100 font-medium leading-relaxed">
-              A Revolutionary Patented Technique from Austria. TST+ (Tricho Scalp Treatment Plus) is an internationally celebrated 3-step programme engineered to ensure complete control over hair loss.
+              A Revolutionary Patented Technique from Austria. TST+ (Tricho Scalp Treatment Plus) is an internationally celebrated 2-step clinical programme engineered to ensure complete control over hair loss.
             </p>
 
             <div className="pt-2 flex flex-wrap gap-3 text-xs font-semibold text-white/90">
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-xs px-3.5 py-2 rounded-xl border border-white/15">
                 <CheckCircle2 className="w-4 h-4 text-[#4ecdc4] shrink-0" />
                 <span>Dr. Vodder Austrian MLD Protocol</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-xs px-3.5 py-2 rounded-xl border border-white/15">
-                <CheckCircle2 className="w-4 h-4 text-[#4ecdc4] shrink-0" />
-                <span>Free Home Care Kit Shaft Rx Included</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-xs px-3.5 py-2 rounded-xl border border-white/15">
                 <CheckCircle2 className="w-4 h-4 text-[#4ecdc4] shrink-0" />
@@ -210,22 +206,22 @@ export const TstPlusBrochureSection: React.FC<TstPlusBrochureSectionProps> = ({ 
         </div>
       </div>
 
-      {/* 3. THE 3-STEP COMPLETE CONTROL PROGRAMME: Equal Heights with Realistic Product Mockup */}
+      {/* 3. THE 2-STEP COMPLETE CONTROL PROGRAMME */}
       <div className="space-y-6">
         <div className="text-center max-w-3xl mx-auto space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-[#0a6ebd]">
             Comprehensive Clinical Protocol
           </span>
           <h3 className="text-2xl sm:text-3xl font-black text-[#27448a] tracking-tight">
-            TST+ is a 3-Step Programme To Ensure Complete Control Over Hair Loss
+            TST+ is a 2-Step Programme To Ensure Complete Control Over Hair Loss
           </h3>
           <p className="text-xs sm:text-sm text-slate-600">
-            A synergistic sequence unifying rigorous trichological diagnosis, Austrian clinical detoxification, and targeted home care:
+            A synergistic sequence unifying rigorous trichological diagnosis and Austrian clinical detoxification:
           </p>
         </div>
 
-        {/* 3-Step Grid with Equal Heights */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+        {/* 2-Step Grid with Equal Heights */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-5xl mx-auto">
           {/* STEP 1 */}
           <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-6 hover:border-blue-300 hover:shadow-md transition-all h-full">
             <div className="space-y-4">
@@ -325,64 +321,10 @@ export const TstPlusBrochureSection: React.FC<TstPlusBrochureSectionProps> = ({ 
                   <CheckCircle2 className="w-4 h-4 text-[#4ecdc4] shrink-0 mt-0.5" />
                   <span><strong>Austrian technique pioneered by Dr. Vodder</strong> called Manual Lymphatic Drainage for Detoxification &amp; Rejuvenation</span>
                 </li>
-                <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#4ecdc4] shrink-0 mt-0.5" />
-                  <span><strong>Special Hair Diet</strong> is served to aid strengthening of hair follicles and shaft</span>
-                </li>
               </ul>
             </div>
             <div className="p-3.5 rounded-xl bg-teal-50/70 border border-teal-100 text-xs text-teal-800 font-semibold">
               Pioneered by Dr. Vodder (Austria)
-            </div>
-          </div>
-
-          {/* STEP 3 */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-6 hover:border-emerald-300 hover:shadow-md transition-all h-full">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black uppercase tracking-wider">
-                  STEP 3
-                </span>
-                <Gift className="w-5 h-5 text-emerald-600" />
-              </div>
-
-              {/* Realistic Product Mockup Container */}
-              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-slate-100 shadow-xs bg-slate-50 group">
-                <img
-                  src="/images/treatments/tst-plus/tst_kit_mockup.webp"
-                  alt="Photorealistic product mockup of high-end clinical hair care kit with serum bottle and supplement box"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              <div>
-                <h4 className="text-lg sm:text-xl font-bold text-[#27448a]">
-                  Free Home Care Kit &amp; Ongoing Therapy
-                </h4>
-                <p className="text-xs text-slate-500 mt-1">Sustained clinical control at home</p>
-              </div>
-
-              <ul className="space-y-3 text-xs text-slate-700">
-                <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>Free Home Care Kit Shaft Rx</strong> is provided for application at home</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>External Tricho Active Therapy</strong>, special products are made available for external application</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>Special Hair Diet</strong> is suggested for further hair care and follicle nourishment</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Follow-up Trichogram checks to ensure hair loss arrest is maintained</span>
-                </li>
-              </ul>
-            </div>
-            <div className="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-100 text-xs text-emerald-800 font-semibold">
-              Includes Complimentary Free Home Care Kit Shaft Rx
             </div>
           </div>
         </div>

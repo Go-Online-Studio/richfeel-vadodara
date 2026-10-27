@@ -195,8 +195,12 @@ export const ConditionsView: React.FC<ConditionsViewProps> = ({
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute bottom-3 left-3">
-                      <span className="px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md text-[#0a6ebd] text-xs font-bold shadow-xs">
-                        {treatment.category}
+                      <span className={`px-2.5 py-1 rounded-md text-xs font-bold shadow-xs ${
+                        treatment.isComingSoon
+                          ? 'bg-amber-500 text-white'
+                          : 'bg-white/95 backdrop-blur-md text-[#0a6ebd]'
+                      }`}>
+                        {treatment.isComingSoon ? 'Launching Soon' : treatment.category}
                       </span>
                     </div>
                   </div>
@@ -205,12 +209,20 @@ export const ConditionsView: React.FC<ConditionsViewProps> = ({
                     <h4 className="text-base font-bold text-[#27448a] group-hover:text-[#0a6ebd] transition-colors">
                       {treatment.title}
                     </h4>
-                    <p className="text-xs font-medium text-[#0a6ebd]">
-                      {treatment.tagline}
-                    </p>
-                    <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
-                      {treatment.description}
-                    </p>
+                    {treatment.isComingSoon ? (
+                      <p className="text-xs font-bold text-amber-800">
+                        Launching Soon
+                      </p>
+                    ) : (
+                      <>
+                        <p className="text-xs font-medium text-[#0a6ebd]">
+                          {treatment.tagline}
+                        </p>
+                        <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
+                          {treatment.description}
+                        </p>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -220,7 +232,7 @@ export const ConditionsView: React.FC<ConditionsViewProps> = ({
                       href={`/treatments/${treatment.id}`}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0a6ebd] group-hover:translate-x-1 transition-all"
                     >
-                      <span>Explore Procedure</span>
+                      <span>{treatment.isComingSoon ? 'Launching Soon' : 'Explore Procedure'}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
 

@@ -148,14 +148,27 @@ export const Navbar: React.FC<NavbarProps> = ({ treatments }) => {
                     </h4>
                     <div className="space-y-2">
                       {skinTreatments.map((t) => (
-                        <Link
-                          key={t.id}
-                          href={`/treatments/${t.id}`}
-                          onClick={handleNavClick}
-                          className="w-full text-left text-xs font-medium text-slate-700 hover:text-[#0a6ebd] hover:translate-x-1 transition-all block cursor-pointer"
-                        >
-                          {t.title}
-                        </Link>
+                        <div key={t.id} className="relative group/navitem flex items-center justify-between">
+                          <Link
+                            href={`/treatments/${t.id}`}
+                            onClick={handleNavClick}
+                            title={t.isComingSoon ? `${t.title} - Launching Soon` : t.title}
+                            className="w-full text-left text-xs font-medium text-slate-700 hover:text-[#0a6ebd] hover:translate-x-1 transition-all flex items-center justify-between gap-1.5 cursor-pointer py-0.5"
+                          >
+                            <span className="truncate">{t.title}</span>
+                            {t.isComingSoon && (
+                              <span className="shrink-0 px-1.5 py-0.5 text-[9px] font-black uppercase rounded-full bg-amber-100 text-amber-800 border border-amber-300 shadow-2xs">
+                                Soon
+                              </span>
+                            )}
+                          </Link>
+                          {t.isComingSoon && (
+                            <div className="pointer-events-none absolute -top-8 left-0 hidden group-hover/navitem:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900 text-white text-[10px] font-bold shadow-xl border border-slate-700 whitespace-nowrap z-50 animate-in fade-in zoom-in-95 duration-150">
+                              <span>Launching Soon</span>
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -217,28 +230,47 @@ export const Navbar: React.FC<NavbarProps> = ({ treatments }) => {
               </Link>
 
               {aboutDropdown && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-2xl shadow-2xl border border-slate-100 p-3 space-y-1 animate-in fade-in slide-in-from-top-2 duration-150">
+                <div className="absolute top-full left-0 w-72 bg-white rounded-2xl shadow-2xl border border-slate-100 p-3 space-y-1 animate-in fade-in slide-in-from-top-2 duration-150">
                   <Link
-                    href="/about#heritage"
+                    href="/about/doctor"
                     onClick={handleNavClick}
-                    className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-[#0a6ebd] cursor-pointer block"
+                    className={`w-full text-left px-3 py-2.5 rounded-xl text-xs font-semibold transition-colors flex items-center justify-between cursor-pointer ${
+                      pathname === '/about/doctor'
+                        ? 'bg-blue-50 text-[#0a6ebd]'
+                        : 'text-slate-800 hover:bg-slate-50 hover:text-[#0a6ebd]'
+                    }`}
                   >
-                    Founders (Dr. Apoorva & Sonal Shah)
+                    <div>
+                      <div className="font-bold text-[#0a6ebd]">About Doctor (Vadodara Branch)</div>
+                      <div className="text-[11px] font-normal text-slate-500">Dr. Leena Patil, BHMS · WMTA</div>
+                    </div>
+                    <span className="px-1.5 py-0.5 text-[9px] font-bold uppercase rounded bg-blue-100 text-[#0a6ebd]">
+                      Doctor
+                    </span>
                   </Link>
-                  <Link
-                    href="/about#diagnostics"
-                    onClick={handleNavClick}
-                    className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-[#0a6ebd] cursor-pointer block"
-                  >
-                    Diagnostic Tests (Trichogram & Capilloscopy)
-                  </Link>
-                  <Link
-                    href="/about#awards"
-                    onClick={handleNavClick}
-                    className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-[#0a6ebd] cursor-pointer block"
-                  >
-                    Awards & Accolades
-                  </Link>
+                  <div className="border-t border-slate-100 my-1 pt-1 space-y-0.5">
+                    <Link
+                      href="/about#heritage"
+                      onClick={handleNavClick}
+                      className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-[#0a6ebd] cursor-pointer block"
+                    >
+                      Founders (Dr. Apoorva & Sonal Shah)
+                    </Link>
+                    <Link
+                      href="/about#diagnostics"
+                      onClick={handleNavClick}
+                      className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-[#0a6ebd] cursor-pointer block"
+                    >
+                      Diagnostic Tests (Trichogram & Capilloscopy)
+                    </Link>
+                    <Link
+                      href="/about#awards"
+                      onClick={handleNavClick}
+                      className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-[#0a6ebd] cursor-pointer block"
+                    >
+                      Awards & Accolades
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
@@ -481,9 +513,15 @@ export const Navbar: React.FC<NavbarProps> = ({ treatments }) => {
                               key={t.id}
                               href={`/treatments/${t.id}`}
                               onClick={handleNavClick}
-                              className="w-full text-left py-1.5 px-2 text-[11px] font-medium text-slate-700 hover:text-[#0a6ebd] block cursor-pointer"
+                              title={t.isComingSoon ? `${t.title} - Launching Soon` : t.title}
+                              className="w-full text-left py-1.5 px-2 text-[11px] font-medium text-slate-700 hover:text-[#0a6ebd] flex items-center justify-between cursor-pointer"
                             >
-                              {t.title}
+                              <span>{t.title}</span>
+                              {t.isComingSoon && (
+                                <span className="px-1.5 py-0.5 text-[9px] font-black uppercase rounded-full bg-amber-100 text-amber-800 border border-amber-300">
+                                  Soon
+                                </span>
+                              )}
                             </Link>
                           ))}
                         </div>
@@ -555,6 +593,16 @@ export const Navbar: React.FC<NavbarProps> = ({ treatments }) => {
 
                 {activeMobileSection === 'about' && (
                   <div className="pl-3 pr-2 py-2 space-y-1 bg-[#f8fafc] rounded-xl my-1 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
+                    <Link
+                      href="/about/doctor"
+                      onClick={handleNavClick}
+                      className="w-full text-left py-2 px-2.5 text-[#0a6ebd] font-bold flex items-center justify-between cursor-pointer hover:bg-white rounded-md"
+                    >
+                      <span>About Doctor (Vadodara Branch)</span>
+                      <span className="px-1.5 py-0.5 text-[9px] font-bold uppercase rounded bg-blue-100 text-[#0a6ebd]">
+                        Doctor
+                      </span>
+                    </Link>
                     <Link
                       href="/about#heritage"
                       onClick={handleNavClick}

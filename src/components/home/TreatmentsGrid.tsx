@@ -176,7 +176,7 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
                 <SwiperSlide key={item.id} className="h-auto">
                   <div
                     style={{ transform: 'translateZ(0)', willChange: 'transform' }}
-                    className="h-full bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-2xl hover:border-[#0a6ebd] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative z-10"
+                    className="h-full bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-2xl hover:border-[#0a6ebd] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group relative z-10"
                   >
                     <div>
                       {/* Image Display */}
@@ -190,7 +190,11 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
                           referrerPolicy="no-referrer"
                           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                         />
-                        {item.badge && (
+                        {item.isComingSoon ? (
+                          <span className="absolute bottom-3 left-3 bg-amber-500 text-white px-2.5 py-1 rounded-md text-[10px] font-bold shadow-xs">
+                            Launching Soon
+                          </span>
+                        ) : item.badge && (
                           <span className="absolute bottom-3 left-3 bg-[#27448a]/90 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-[10px] font-bold">
                             {item.badge}
                           </span>
@@ -207,60 +211,89 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
                           {item.title}
                         </h3>
 
-                        <p className="text-xs font-semibold text-slate-700 mb-1.5 line-clamp-1">
-                          {item.tagline}
-                        </p>
-
-                        <p className="text-xs text-slate-500 leading-relaxed mb-4 line-clamp-2">
-                          {item.description}
-                        </p>
-
-                        {/* Highlights */}
-                        {item.benefits && item.benefits.length > 0 && (
-                          <div className="space-y-1.5 pt-3 border-t border-slate-100">
-                            <div className="text-[11px] font-bold text-slate-900 mb-1">Key Highlights:</div>
-                            {item.benefits.slice(0, 2).map((benefit, bIdx) => (
-                              <div key={bIdx} className="flex items-start gap-1.5 text-xs text-slate-600 line-clamp-1">
-                                <Check className="w-3.5 h-3.5 text-[#0a6ebd] shrink-0 mt-0.5" />
-                                <span>{benefit}</span>
-                              </div>
-                            ))}
+                        {item.isComingSoon ? (
+                          <div className="my-4 py-3 px-3.5 rounded-xl bg-amber-50 border border-amber-200/80 text-center">
+                            <span className="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black uppercase tracking-wider">
+                              Launching Soon
+                            </span>
                           </div>
+                        ) : (
+                          <>
+                            <p className="text-xs font-semibold text-slate-700 mb-1.5 line-clamp-1">
+                              {item.tagline}
+                            </p>
+
+                            <p className="text-xs text-slate-500 leading-relaxed mb-4 line-clamp-2">
+                              {item.description}
+                            </p>
+
+                            {/* Highlights */}
+                            {item.benefits && item.benefits.length > 0 && (
+                              <div className="space-y-1.5 pt-3 border-t border-slate-100">
+                                <div className="text-[11px] font-bold text-slate-900 mb-1">Key Highlights:</div>
+                                {item.benefits.slice(0, 2).map((benefit, bIdx) => (
+                                  <div key={bIdx} className="flex items-start gap-1.5 text-xs text-slate-600 line-clamp-1">
+                                    <Check className="w-3.5 h-3.5 text-[#0a6ebd] shrink-0 mt-0.5" />
+                                    <span>{benefit}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </>
                         )}
                       </div>
                     </div>
 
                     {/* Card Actions Footer */}
                     <div className="p-5 pt-0 mt-2 flex items-center gap-2.5 relative z-20 pointer-events-auto">
-                      <Link
-                        href={`/treatments/${item.id}`}
-                        onClick={(e) => {
-                          if (onSelectTreatment) {
-                            e.preventDefault();
-                            onSelectTreatment(item.id);
-                          }
-                        }}
-                        style={{ transform: 'translateZ(0)', willChange: 'transform' }}
-                        className="flex-1 py-2.5 px-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#0a6ebd] group-hover:bg-[#0a6ebd] group-hover:text-white group-hover:border-transparent group-hover:shadow-md transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer text-center pointer-events-auto"
-                      >
-                        <span>View Procedure</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                      </Link>
+                      {item.isComingSoon ? (
+                        <Link
+                          href={`/treatments/${item.id}`}
+                          onClick={(e) => {
+                            if (onSelectTreatment) {
+                              e.preventDefault();
+                              onSelectTreatment(item.id);
+                            }
+                          }}
+                          style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+                          className="w-full py-2.5 px-3 rounded-xl bg-amber-50 border border-amber-200 text-xs font-bold text-amber-900 hover:bg-amber-100 hover:border-amber-300 transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer text-center pointer-events-auto"
+                        >
+                          <span>Launching Soon</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      ) : (
+                        <>
+                          <Link
+                            href={`/treatments/${item.id}`}
+                            onClick={(e) => {
+                              if (onSelectTreatment) {
+                                e.preventDefault();
+                                onSelectTreatment(item.id);
+                              }
+                            }}
+                            style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+                            className="flex-1 py-2.5 px-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#0a6ebd] group-hover:bg-[#0a6ebd] group-hover:text-white group-hover:border-transparent group-hover:shadow-md transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer text-center pointer-events-auto"
+                          >
+                            <span>View Procedure</span>
+                            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                          </Link>
 
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          if (onOpenBooking) {
-                            onOpenBooking();
-                          } else {
-                            openBooking(item.title);
-                          }
-                        }}
-                        style={{ transform: 'translateZ(0)', willChange: 'transform' }}
-                        className="py-2.5 px-3.5 rounded-xl bg-[#f6f9fc] hover:bg-[#27448a] hover:text-white hover:border-[#27448a] hover:shadow-md hover:scale-105 active:scale-95 border border-slate-200 text-slate-700 text-xs font-bold transition-all cursor-pointer shadow-xs whitespace-nowrap pointer-events-auto"
-                      >
-                        Book Session
-                      </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (onOpenBooking) {
+                                onOpenBooking();
+                              } else {
+                                openBooking(item.title);
+                              }
+                            }}
+                            style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+                            className="py-2.5 px-3.5 rounded-xl bg-[#f6f9fc] hover:bg-[#27448a] hover:text-white hover:border-[#27448a] hover:shadow-md hover:scale-105 active:scale-95 border border-slate-200 text-slate-700 text-xs font-bold transition-all cursor-pointer shadow-xs whitespace-nowrap pointer-events-auto"
+                          >
+                            Book Session
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
                 </SwiperSlide>

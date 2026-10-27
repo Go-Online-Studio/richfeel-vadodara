@@ -42,6 +42,70 @@ export const TreatmentDedicatedPage: React.FC<TreatmentDedicatedPageProps> = ({
           </Link>
         </div>
 
+        {/* Treatment Coming Soon View */}
+        {treatment.isComingSoon ? (
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-10 lg:p-12 mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+              <div className="order-2 lg:order-1 lg:col-span-7 space-y-6">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">
+                    {treatment.category}
+                  </span>
+                  <span className="text-xs font-extrabold px-3 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-300">
+                    Launching Soon
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#27448a] tracking-tight leading-tight">
+                    {treatment.title}
+                  </h1>
+                </div>
+
+                <div className="py-4 px-5 rounded-2xl bg-amber-50/70 border border-amber-200/80 max-w-lg">
+                  <p className="text-2xl font-black text-amber-900 tracking-tight">
+                    Launching Soon
+                  </p>
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-3">
+                  <button
+                    onClick={() => openBooking(`${treatment.title} - Launching Soon Enquiry`)}
+                    className="px-6 py-3 rounded-xl bg-gradient-brand text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer"
+                  >
+                    <Calendar className="w-4 h-4 text-[#4ecdc4]" />
+                    <span>Enquire for {treatment.title}</span>
+                  </button>
+
+                  <a
+                    href={`tel:${clinicInfo.rawPhones[0]}`}
+                    className="px-5 py-3 rounded-xl border border-blue-200 text-[#0a6ebd] hover:bg-blue-50/50 font-bold text-xs sm:text-sm transition-colors flex items-center gap-2"
+                  >
+                    <Phone className="w-4 h-4 text-[#0a6ebd]" />
+                    <span>Call Vadodara Clinic</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="order-1 lg:order-2 lg:col-span-5 w-full flex items-center justify-center">
+                <div className="w-full aspect-[4/3] relative rounded-2xl lg:rounded-3xl overflow-hidden bg-slate-100 shadow-md border border-slate-100">
+                  <img
+                    src={treatment.image}
+                    alt={treatment.title}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-[2px] flex items-center justify-center">
+                    <span className="px-5 py-2.5 rounded-2xl bg-amber-500 text-white font-black text-sm uppercase tracking-widest shadow-xl border border-amber-300">
+                      Launching Soon
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
         {/* Treatment Hero Card - Rendered for non-brochure treatments */}
         {!['anagrow', 'tst-plus', 'ana-d-tox'].includes(treatment.id) && (
           <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-sm p-3 sm:p-8 lg:p-10 mb-6 sm:mb-12">
@@ -358,6 +422,8 @@ export const TreatmentDedicatedPage: React.FC<TreatmentDedicatedPageProps> = ({
               </div>
             )}
           </div>
+        )}
+          </>
         )}
       </div>
     </div>

@@ -9,11 +9,11 @@ export const treatmentsData: Treatment[] = [
     tagline: 'First time in India - A Revolutionary Patented Technique from Austria',
     countryOfOrigin: 'Austria',
     technology: 'Dr. Vodder Austrian Manual Lymphatic Drainage (MLD) & Tricho Active Therapy',
-    description: 'First time in India: A revolutionary patented technique from Austria. TST+ is a 3-step programme engineered to ensure complete control over hair loss.',
+    description: 'First time in India: A revolutionary patented technique from Austria. TST+ is an advanced clinical programme engineered to ensure complete control over hair loss.',
     image: '/images/TST_plusCard.webp',
     badge: 'Austrian MLD Tech',
     conditions: ['Hair Fall', 'Scalp Congestion', 'Thinning Roots'],
-    what: 'Richfeel TST+ (Tricho Scalp Treatment Plus) is a revolutionary patented programme from Austria, brought to India by pioneer trichologists Dr. Apoorva Shah & Dr. Sonal Shah. It is a comprehensive 3-step clinical programme designed to control active hair loss, detoxify the scalp, and strengthen the hair follicle and shaft.',
+    what: 'Richfeel TST+ (Tricho Scalp Treatment Plus) is a revolutionary patented programme from Austria, brought to India by pioneer trichologists Dr. Apoorva Shah & Dr. Sonal Shah. It is a comprehensive 2-step clinical programme designed to control active hair loss, detoxify the scalp, and strengthen the hair follicle and shaft.',
     why: 'Hair loss occurs due to a combination of external and internal factors: pollution, improper diet, fashion & heat styling, chemical treatments, and internal health disorders (Anaemia, Thyroid, Post-Pregnancy). TST+ combines clinical trichological diagnosis, Austrian Manual Lymphatic Drainage (MLD) by Dr. Emil Vodder, high-frequency disinfection, and specialized in-clinic hair diet to halt hair loss at its root.',
     beforeAfter: 'Within 3 to 4 clinical sessions, patients experience a dramatic 60-70% decline in active daily shedding. By the 8th session, follicular anchorage is solidified and new baby vellus hairs transition into stronger terminal hairs.',
     howDiagnose: 'Diagnosed via Digital Capilloscopy to examine micro-lymphatic pooling and sebum blockage, coupled with a Trichogram to assess the Anagen/Telogen (A/T) ratio.',
@@ -29,8 +29,7 @@ export const treatmentsData: Treatment[] = [
       'Step 2 (cont.): Photo-Bio Therapy cold laser application to stimulate follicle cellular respiration',
       'Step 2 (cont.): Application of TST Root Rx & Hair Repair Serum for structural shaft fortification',
       'Step 2 (cont.): Austrian Manual Lymphatic Drainage (MLD) technique pioneered by Dr. Emil Vodder for deep lymphatic detoxification',
-      'Step 2 (cont.): Serving of specialized in-clinic Hair Diet to nourish active follicles',
-      'Step 3: Complimentary provision of Free Home Care Kit Shaft Rx for sustained at-home therapy'
+      'Step 2 (cont.): Serving of specialized in-clinic Hair Diet to nourish active follicles'
     ],
     postTreatment: [
       'Avoid harsh chemical coloring or bleaching for 48 hours',
@@ -41,7 +40,7 @@ export const treatmentsData: Treatment[] = [
       'Strengthens hair follicles and root anchors',
       'Protects hair shaft & follicles from environmental damage',
       'Disinfects, detoxifies & rejuvenates scalp lymphatic circulation',
-      'Includes Free Home Care Kit Shaft Rx for at-home application',
+      'Stops active daily hair loss and stimulates new hair growth'
     ]
   },
   {
@@ -57,7 +56,7 @@ export const treatmentsData: Treatment[] = [
     badge: 'Patented Stem Cell',
     conditions: ['Hair Thinning', 'Decreased Density', 'Lack of Growth', 'Scanty Hair'],
     what: 'Richfeel Anagrow is the world\'s first hair thinning treatment powered by Plant Stem Cell Extracts (PCT Rejuve MAX). Developed in scientific collaboration with Swiss scientist Dr. Fred Zülli (Mibelle Group Biochemistry, Switzerland) and Italian biomedical engineers Dr. Ferrari & Dr. Beatrix Ferrari (Milan, Italy), it fights all 5 signs of thinning hair without needles or surgery.',
-    why: 'The answer to hair thinning lies in stem cells: Epidermal stem cells in the outer root sheath stimulate shaft growth and delay aging, while Dermal stem cells in the dermal papilla and hair bulge regenerate new follicles. PCT Rejuve MAX revitalizes both niches with Swiss Apple, Argan Tree stem cells, Pea Sprout extracts, and Nano-Lipobelle Q10 nano-emulsions. The RF Anagain 10X transdermal machine uses Detoxification, Rejuvenation, and Vascularization to drive these bio-actives deep into the scalp.',
+    why: 'The answer to hair thinning lies in stem cells: Epidermal stem cells in the outer root sheath stimulate shaft growth and delay aging, while Dermal stem cells in the dermal papilla and hair bulge regenerate new follicles. PCT Rejuve MAX revitalizes both niches with Swiss Apple, Argan Tree stem cells, Pea Sprout extracts, and Nano-Lipobelle Q10 nano-emulsions. The treatment utilizes Detoxification, Laser Cap biostimulation, and Rejuvenation to drive these bio-actives deep into the scalp.',
     beforeAfter: 'Noticeable reduction in scalp visibility and increased hair shaft diameter within 8-12 weeks. Clinical studies confirm a 35% increase in hair density and rejuvenation of dormant follicles.',
     howDiagnose: 'Diagnosed using Follicular Count Test to measure follicular unit density per square cm, and Capilloscopy to verify dormant follicle patency.',
     preTreatment: [
@@ -67,8 +66,8 @@ export const treatmentsData: Treatment[] = [
     ],
     duringProcedure: [
       'Phase 1 - Detoxification: Gentle vacuum-assisted lymphatic drainage to clear sebum plugs and prepare follicle entry points',
-      'Phase 2 - Rejuvenation: Non-invasive RF electroporation driving PCT Rejuve MAX (Swiss Apple, Argan, Pea Sprout) directly into the follicle stem cell niche',
-      'Phase 3 - Vascularization: Micro-vascular capillary expansion to surge oxygen, amino acids, and nutrients to awakened roots',
+      'Phase 2 - Laser Cap: Low-Level Laser Therapy (LLLT) cap session to energize cellular mitochondria and prime micro-circulation',
+      'Phase 3 - Rejuvenation: Non-invasive RF electroporation driving PCT Rejuve MAX (Swiss Apple, Argan, Pea Sprout) directly into the follicle stem cell niche',
       'Post-treatment bio-protective serum application to seal transdermal channels'
     ],
     postTreatment: [
@@ -562,85 +561,44 @@ export const treatmentsData: Treatment[] = [
     slug: 'darma-korean-treatment',
     title: 'Derma-Korean Treatment',
     category: 'Skin Aesthetics',
-    tagline: 'Seoul Dermatology Protocol: Microneedle Meso-Therapy & PDRN Salmon DNA',
+    isComingSoon: true,
+    tagline: 'Launching Soon',
     countryOfOrigin: 'South Korea',
-    technology: 'Automated Korean Microneedling & Medical PDRN Polydeoxyribonucleotide',
-    description: 'Advanced Korean clinical meso-infusion therapy utilizing micro-needling and PDRN salmon DNA to stimulate deep cellular collagen renewal, shrink pores, and tighten skin.',
+    technology: 'Automated Korean Microneedling & Medical PDRN',
+    description: 'Launching Soon',
     image: '/images/treatments/skin-aesthetics/derma_korean.webp',
-    badge: 'Korean PDRN Tech',
-    conditions: ['Acne Scars & Texture', 'Open Enlarged Pores', 'Fine Lines & Wrinkles', 'Loss of Elasticity', 'Dull Tired Skin'],
-    what: 'The Derma-Korean Treatment (K-Derma Meso Infusion) is a cutting-edge clinical aesthetic protocol pioneered in Seoul, South Korea. It pairs precision automated microneedling with pharmaceutical-grade PDRN (Polydeoxyribonucleotide extracted from wild salmon DNA), essential amino acids, and cross-linked hyaluronic acid.',
-    why: 'As skin ages or heals from severe acne, dermal collagen matrix collapses, causing pitted scars, enlarged pores, and laxity. PDRN binds to adenosine A2A receptors in human fibroblasts, activating tissue regeneration, microvascular angiogenesis, and synthesis of Type I & III collagen from deep within.',
-    beforeAfter: 'Smooth, plump, and refined skin texture within 7 to 10 days post-procedure. Scars soften, pore sizes reduce significantly, and skin demonstrates remarkable bounce and firmness over 3 to 4 monthly sessions.',
-    howDiagnose: 'Dermal elasticity assessment, 3D skin texture topography analysis, and scar classification (ice-pick, rolling, boxcar).',
-    preTreatment: [
-      'Apply topical anesthetic numbing cream 30-40 minutes prior to session for 100% comfort',
-      'Avoid blood thinners (aspirin, vitamin E) for 3 days before procedure',
-      'Do not use active retinol or AHA/BHA for 5 days prior'
-    ],
-    duringProcedure: [
-      'Clinical skin sanitization and removal of topical numbing cream',
-      'Application of medical-grade Korean PDRN Salmon DNA and growth factor complex',
-      'Automated vertical micro-channeling using sterile surgical-grade titanium cartridges',
-      'Dermal meso-infusion ensuring 100% absorption of bioactive peptides into fibroblasts',
-      'Cryogenic LED soothing mask application to rapidly quench redness and stimulate healing',
-      'Post-procedure barrier recovery serum and protective peptide shield'
-    ],
-    postTreatment: [
-      'Avoid washing face for 8 hours after procedure',
-      'Use only sterile hydrating serum and gentle ceramide barrier cream for 48 hours',
-      'Avoid direct sunlight, sweaty cardio, and swimming pools for 72 hours',
-      'Always apply physical mineral SPF 50 sunscreen'
-    ],
-    benefits: [
-      'Stimulates true biological collagen synthesis and tissue regeneration',
-      'Smooths stubborn acne scars and refines coarse skin texture',
-      'Visibly shrinks open, gaping pores and improves skin tightness',
-      'Pioneered with authentic Korean medical aesthetic protocols'
-    ]
+    badge: 'Launching Soon',
+    conditions: ['Acne Scars & Texture', 'Open Enlarged Pores', 'Fine Lines & Wrinkles'],
+    what: 'Launching Soon',
+    why: 'Launching Soon',
+    beforeAfter: 'Launching Soon',
+    howDiagnose: 'Launching Soon',
+    preTreatment: [],
+    duringProcedure: [],
+    postTreatment: [],
+    benefits: []
   },
   {
     id: 'korean-glass-skin-treatment',
     slug: 'korean-glass-skin-treatment',
     title: 'Korean Glass Skin Treatment',
     category: 'Skin Aesthetics',
-    tagline: 'Multi-Layer Dewy Hydration, Peptide Peeling & Cryo-Infusion for Crystal Clarity',
+    isComingSoon: true,
+    tagline: 'Launching Soon',
     countryOfOrigin: 'South Korea',
-    technology: 'Korean Cryo-Electroporation, Phyto-Peptides & Hyaluronic Dermal Glaze',
-    description: 'Signature Korean 7-step aesthetic therapy designed to achieve translucent, ultra-smooth, poreless, and luminescent "glass-like" skin reflection.',
+    technology: 'Korean Cryo-Electroporation & Phyto-Peptides',
+    description: 'Launching Soon',
     image: '/images/treatments/skin-aesthetics/korean_glass_skin.webp',
-    badge: 'Luminescent Glass Skin',
-    conditions: ['Dehydrated Skin', 'Rough Texture', 'Dull Skin', 'Large Pores', 'Lack of Radiance'],
-    what: 'The Korean Glass Skin Treatment is an internationally celebrated aesthetic protocol engineered in Korea to produce "Yuri Pibu" (Glass Skin) - skin so poreless, luminous, intensely hydrated, and translucent that it mirrors the clarity of clean glass.',
-    why: 'Dehydration, cellular sluggishness, and micro-flaking create uneven light refraction, making skin appear tired, dull, and chalky. The Korean 7-step clinical method combines gentle lactic micro-resurfacing, multi-molecular weight hyaluronic hydration, cryogenic electroporation, and a peptide glaze to restore maximum light reflection.',
-    beforeAfter: 'Spectacular, hyper-dewy, reflective "glass" glow immediately noticeable when leaving the clinic. Makeup glides on seamlessly, and skin retains a lit-from-within sheen for weeks.',
-    howDiagnose: 'Optical skin reflection analysis, dermal moisture retention testing, and barrier integrity diagnostic.',
-    preTreatment: [
-      'Arrive with clean skin free of waterproof makeup',
-      'Avoid harsh chemical exfoliants 48 hours prior',
-      'Suitable for all skin types, including sensitive and pre-event bridal skin'
-    ],
-    duringProcedure: [
-      'Step 1: Double clinical oil-gel cleansing to eliminate micro-particles and sebum',
-      'Step 2: Gentle Korean bubble enzyme exfoliation to melt dead surface keratin',
-      'Step 3: Aqua-peel pore purifying extraction focusing on T-zone congestion',
-      'Step 4: Transdermal infusion of 5-molecular-weight hyaluronic acid essence',
-      'Step 5: Cryo-electroporation device pass at -10°C to lock moisture into cells and tighten pores',
-      'Step 6: Luminescent Korean modeling rubber mask infused with botanical brightening agents',
-      'Step 7: Signature peptide dermal glaze and barrier-sealing physical SPF application'
-    ],
-    postTreatment: [
-      'Do not wash face for 6 hours to allow deep hydration layers to set',
-      'Avoid matte powders or heavy drying foundations for 24 hours to showcase natural dewiness',
-      'Maintain skin hydration by drinking plenty of water and using hydrating mists',
-      'Apply broad-spectrum sunscreen daily'
-    ],
-    benefits: [
-      'Achieves the coveted poreless, ultra-dewy Korean glass skin finish',
-      'Provides deep multi-layer cellular hydration that lasts for weeks',
-      'Infuses powerful botanical peptides to boost natural skin elasticity',
-      'Perfect instant pre-event, red-carpet, or bridal glow with zero peeling'
-    ]
+    badge: 'Launching Soon',
+    conditions: ['Dehydrated Skin', 'Rough Texture', 'Dull Skin'],
+    what: 'Launching Soon',
+    why: 'Launching Soon',
+    beforeAfter: 'Launching Soon',
+    howDiagnose: 'Launching Soon',
+    preTreatment: [],
+    duringProcedure: [],
+    postTreatment: [],
+    benefits: []
   },
   {
     id: 'anti-dandruff-therapy',

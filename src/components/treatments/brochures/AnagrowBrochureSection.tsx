@@ -376,9 +376,9 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
                 02
               </div>
               <div className="space-y-1">
-                <h4 className="text-sm sm:text-base font-bold text-white">Process 2: Rejuvenation</h4>
+                <h4 className="text-sm sm:text-base font-bold text-white">Process 2: Laser Cap</h4>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Radiofrequency electroporation temporarily opens nano-aqueous micro-channels to deliver PCT Rejuve MAX directly into the follicular stem cell niche without pain.
+                  Low-Level Laser Therapy (LLLT) cap delivers therapeutic cold beam wavelengths to energize follicle mitochondria, boost cellular ATP, and activate micro-circulation.
                 </p>
               </div>
             </div>
@@ -389,9 +389,9 @@ export const AnagrowBrochureSection: React.FC<AnagrowBrochureSectionProps> = ({ 
                 03
               </div>
               <div className="space-y-1">
-                <h4 className="text-sm sm:text-base font-bold text-white">Process 3: Vascularization</h4>
+                <h4 className="text-sm sm:text-base font-bold text-white">Process 3: Rejuvenation</h4>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Stimulates micro-capillary vasodilation, flooding re-awakened follicle bulbs with oxygen, amino acids, and vital nutrients for sustained accelerated growth.
+                  Radiofrequency electroporation temporarily opens nano-aqueous micro-channels to deliver PCT Rejuve MAX directly into the follicular stem cell niche without pain.
                 </p>
               </div>
             </div>

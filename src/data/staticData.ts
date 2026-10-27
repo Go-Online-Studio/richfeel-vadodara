@@ -28,6 +28,20 @@ export const foundersInfo = {
   bio: `Dr. Apoorva Shah and Dr. Sonal Shah are names synonymous with hair and scalp care, not only in India but across the world. Featured in the Limca Book of Records as India's first certified Trichologist, they are considered to be the Pioneers of Trichology in India and are popularly referred to as the 'Shahs of Trichology'. At a time when India was witnessing a revolution in healthcare, they ventured into the profession in 1986 to pioneer the Richfeel Trichology Centre — India's first and only dedicated chain of hair & scalp clinics.`
 };
 
+export const vadodaraDoctorInfo = {
+  name: 'Dr. Leena Patil',
+  qualifications: 'BHMS',
+  roles: 'Counsellor | Clinical Cosmetologist | WMTA-Certified Trichologist',
+  title: 'Dr. Leena Patil, BHMS',
+  subtitle: 'Counsellor | Clinical Cosmetologist | WMTA-Certified Trichologist',
+  experience: '2 Years of Professional Experience in Hair & Skin Care',
+  clinic: 'Richfeel Hair & Skin Clinic, Vadodara Branch',
+  image: '/images/doctorProfile.webp',
+  certificationBody: 'World Medical Trichologists Association (WMTA, U.S.A)',
+  bio: 'Dr. Leena Patil is a qualified BHMS practitioner, Counsellor, Clinical Cosmetologist, and WMTA-certified Trichologist with two years of professional experience in hair and skin care. Currently associated with Richfeel Hair & Skin Clinic, she is committed to providing personalized consultations and client-focused care for hair, scalp, and skin concerns.',
+  approach: 'With a holistic approach and a focus on individual needs, Dr. Patil strives to guide clients toward suitable treatment solutions and support their journey toward healthier hair and skin through professional counselling and cosmetology care.'
+};
+
 export const diagnosticTests: DiagnosticTest[] = [
   {
     id: 'trichogram',
@@ -136,7 +150,7 @@ export const conditionCategories: ConditionCategory[] = [
       'Manage stress through mindfulness, adequate sleep, and targeted micronutrition',
       'Undergo regular Austrian MLD scalp detox sessions to stimulate lymphatic clearance'
     ],
-    recommendedTreatmentIds: ['tst-plus', 'hair-hydratherapy', 'advanced-prp']
+    recommendedTreatmentIds: ['tst-plus', 'anagrow', 'advanced-prp']
   },
   {
     id: 'baldness',
@@ -205,7 +219,7 @@ export const conditionCategories: ConditionCategory[] = [
       'Sanitize pillowcases, helmets, combs, and towels regularly in hot water',
       'Undergo in-clinic ultrasound keratostatic anti-dandruff therapy to eradicate stubborn reservoirs'
     ],
-    recommendedTreatmentIds: ['anti-dandruff-therapy', 'tst-plus']
+    recommendedTreatmentIds: ['anti-dandruff-therapy']
   },
   {
     id: 'acne-skin',
@@ -234,7 +248,6 @@ export const conditionCategories: ConditionCategory[] = [
       'Enlarged visible pores across the nose, cheeks, and forehead',
       'Rough, flaky surface texture that causes makeup to cake and crease'
     ],
-    howDiagnose: 'Comprehensive clinical skin typing (Fitzpatrick skin scale), hydration analysis, and Wood’s lamp UV pigmentation depth evaluation by our certified cosmetologist.',
     preventManagement: [
       'Apply broad-spectrum non-comedogenic SPF 50 sunscreen every morning',
       'Double-cleanse every evening to remove atmospheric grime and sebum',
@@ -277,7 +290,6 @@ export const conditionCategories: ConditionCategory[] = [
       'Dark pigmentation and rough texture under arms and in the bikini region',
       'Daily time burden and skin irritation from temporary hair removal methods'
     ],
-    howDiagnose: 'Skin Fitzpatrick typing, hair follicle thickness evaluation, and hormone history review by our aesthetic physician at Vadodara.',
     preventManagement: [
       'Cease aggressive waxing or threading which stretches sensitive skin and promotes ingrown hairs',
       'Exfoliate gently with chemical AHAs rather than harsh physical scrubs',

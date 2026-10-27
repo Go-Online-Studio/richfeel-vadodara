@@ -247,8 +247,14 @@ export default function AboutPage() {
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/contact"
+              href="/about/doctor"
               className="px-6 py-3.5 rounded-xl bg-white text-[#27448a] font-bold text-xs sm:text-sm shadow-xl hover:bg-cyan-50 transition-all cursor-pointer"
+            >
+              About Doctor (Vadodara Branch)
+            </Link>
+            <Link
+              href="/contact"
+              className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/20 transition-all cursor-pointer"
             >
               Get Directions & Hours
             </Link>

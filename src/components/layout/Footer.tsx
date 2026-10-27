@@ -135,6 +135,11 @@ export const Footer: React.FC<FooterProps> = ({ treatments }) => {
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-300 mb-6">
               <li>
+                <Link href="/about/doctor" className="hover:text-white transition-colors text-[#4ecdc4] font-semibold">
+                  About Doctor (Vadodara Branch)
+                </Link>
+              </li>
+              <li>
                 <Link href="/gallery" className="hover:text-white transition-colors">
                   Before & After Gallery
                 </Link>

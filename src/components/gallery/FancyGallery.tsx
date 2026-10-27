@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Maximize2, Sparkles, Calendar, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { ZoomIn, Sparkles, Calendar } from 'lucide-react';
 import { GalleryItem } from '@/types';
 import { ScrollableFilterContainer } from '@/components/common/ScrollableFilterContainer';
 import { useConsultation } from '@/context/ConsultationContext';
@@ -16,6 +16,7 @@ interface FancyGalleryProps {
 export const FancyGallery: React.FC<FancyGalleryProps> = () => {
   const { openBooking } = useConsultation();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const gridRef = useRef<HTMLDivElement>(null);
 
   const categories = ['All', 'Hair Restoration', 'Hair Transplant', 'Scalp Therapy', 'Skin Aesthetics', 'Clinic'];
 
@@ -80,7 +81,67 @@ export const FancyGallery: React.FC<FancyGalleryProps> = () => {
     ? items
     : items.filter((item) => item.category === selectedCategory);
 
-  // Initialize Fancybox on gallery anchors
+  // Initialize and re-initiate Masonry on mount, filter changes, image loads, and resize
+  useEffect(() => {
+    let msnryInstance: any = null;
+    let imgLoadedInstance: any = null;
+    let isCancelled = false;
+
+    const initMasonry = async () => {
+      if (typeof window === 'undefined' || !gridRef.current) return;
+
+      try {
+        const MasonryModule = await import('masonry-layout');
+        const imagesLoadedModule = await import('imagesloaded');
+        const Masonry = ((MasonryModule as any).default || MasonryModule) as any;
+        const imagesLoaded = ((imagesLoadedModule as any).default || imagesLoadedModule) as any;
+
+        if (isCancelled || !gridRef.current) return;
+
+        // Initialize Masonry with responsive percentage positioning
+        msnryInstance = new Masonry(gridRef.current, {
+          itemSelector: '.masonry-item',
+          columnWidth: '.masonry-sizer',
+          percentPosition: true,
+          transitionDuration: '0.25s',
+          resize: true,
+        });
+
+        // Trigger immediate layout
+        msnryInstance.layout();
+
+        // Re-layout as each image finishes loading
+        imgLoadedInstance = imagesLoaded(gridRef.current);
+        imgLoadedInstance.on('progress', () => {
+          if (!isCancelled && msnryInstance) {
+            msnryInstance.layout();
+          }
+        });
+        imgLoadedInstance.on('always', () => {
+          if (!isCancelled && msnryInstance) {
+            msnryInstance.layout();
+          }
+        });
+      } catch (err) {
+        console.error('Error initializing Masonry layout:', err);
+      }
+    };
+
+    initMasonry();
+
+    return () => {
+      isCancelled = true;
+      if (imgLoadedInstance && typeof imgLoadedInstance.off === 'function') {
+        imgLoadedInstance.off('progress');
+        imgLoadedInstance.off('always');
+      }
+      if (msnryInstance && typeof msnryInstance.destroy === 'function') {
+        msnryInstance.destroy();
+      }
+    };
+  }, [filteredItems]);
+
+  // Initialize Fancybox on gallery anchors and rebind on filter changes
   useEffect(() => {
     Fancybox.bind('[data-fancybox="richfeel-gallery"]', {
       theme: 'dark',
@@ -147,56 +208,54 @@ export const FancyGallery: React.FC<FancyGalleryProps> = () => {
           </ScrollableFilterContainer>
         </div>
 
-        {/* Fancybox Visual Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6">
+        {/* Responsive Masonry Grid (Free Natural Height, Managed Column Widths) */}
+        <div ref={gridRef} className="masonry-container relative -mx-2 sm:-mx-3 clear-both">
+          {/* Column Sizer for Masonry Calculation (1 col on mobile, 2 on sm, 3 on lg) */}
+          <div className="masonry-sizer w-full sm:w-1/2 lg:w-1/3" />
+
           {filteredItems.map((item) => (
-            <a
+            <div
               key={item.id}
-              href={item.fullImage}
-              data-fancybox="richfeel-gallery"
-              data-caption={`<b>${item.title}</b> — <span style="opacity: 0.85">${item.category} · ${item.subtitle}</span>`}
-              className="group bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 block cursor-pointer"
+              className="masonry-item w-full sm:w-1/2 lg:w-1/3 p-2 sm:p-3 float-left"
             >
-              {/* Photo Container with Sleek Hover Zoom */}
-              <div className="aspect-[4/3] sm:aspect-[16/11] relative overflow-hidden bg-slate-900">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <a
+                href={item.fullImage}
+                data-fancybox="richfeel-gallery"
+                data-caption={`<b>${item.title}</b> — <span style="opacity: 0.85">${item.category} · ${item.subtitle}</span>`}
+                style={{ cursor: 'zoom-in' }}
+                className="group block bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-zoom-in"
+              >
+                {/* Photo Container: NO fixed aspect ratio, natural image height */}
+                <div className="relative overflow-hidden bg-slate-900 rounded-2xl" style={{ cursor: 'zoom-in' }}>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    className="w-full h-auto block object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
 
-                {/* Category Badge on top-left */}
-                <div className="absolute top-2.5 left-2.5 z-10">
-                  <span className="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-bold shadow-xs border border-white/10">
-                    {item.category}
-                  </span>
-                </div>
-
-                {/* Dark Vignette & Hover Fullscreen Trigger */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-
-                {/* Centered Expand Icon on hover */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-md text-[#27448a] shadow-xl flex items-center justify-center scale-90 group-hover:scale-100 transition-transform">
-                    <Maximize2 className="w-5 h-5" />
+                  {/* Lens-Plus Hover Overlay */}
+                  <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none backdrop-blur-[1px]">
+                    <div className="w-12 h-12 rounded-full bg-white/95 text-[#27448a] shadow-2xl border border-white/60 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                      <ZoomIn className="w-5 h-5 stroke-[2.3]" />
+                    </div>
                   </div>
-                </div>
 
-                {/* Minimal Overlay Caption on Image */}
-                <div className="absolute bottom-0 inset-x-0 p-3 sm:p-4 text-white z-10">
-                  <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-200 transition-colors drop-shadow-sm leading-snug">
-                    {item.title}
-                  </h3>
-                  <div className="flex items-center justify-between mt-1 text-[11px] text-cyan-100/90 font-medium">
-                    <span>{item.subtitle}</span>
-                    <span className="text-[10px] text-white/80 group-hover:text-cyan-200 flex items-center gap-0.5">
-                      View full size <ChevronRight className="w-3 h-3 inline" />
+                  {/* Minimal Bottom Vignette Gradient */}
+                  <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none" />
+
+                  {/* Minimal Bottom Bar: Title & Tag in Flexbox */}
+                  <div className="absolute bottom-0 inset-x-0 p-3 sm:p-3.5 z-10 flex items-center justify-between gap-2.5">
+                    <h3 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-200 transition-colors drop-shadow-sm leading-snug truncate flex-1 min-w-0">
+                      {item.title}
+                    </h3>
+                    <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-semibold border border-white/15 whitespace-nowrap shrink-0 shadow-xs">
+                      {item.category}
                     </span>
                   </div>
                 </div>
-              </div>
-            </a>
+              </a>
+            </div>
           ))}
         </div>
 

@@ -150,7 +150,11 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                       />
-                      {item.badge && (
+                      {item.isComingSoon ? (
+                        <span className="absolute bottom-3 left-3 bg-amber-500 text-white px-2.5 py-1 rounded-md text-[10px] font-bold pointer-events-none shadow-xs">
+                          Launching Soon
+                        </span>
+                      ) : item.badge && (
                         <span className="absolute bottom-3 left-3 bg-[#27448a]/90 backdrop-blur-sm text-white px-2.5 py-1 rounded-md text-[10px] font-bold pointer-events-none">
                           {item.badge}
                         </span>
@@ -165,9 +169,15 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
                       <h3 className="text-base font-bold text-[#27448a] mb-1.5 group-hover:text-[#0a6ebd] transition-colors line-clamp-1">
                         {item.title}
                       </h3>
-                      <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
-                        {item.tagline}
-                      </p>
+                      {item.isComingSoon ? (
+                        <p className="text-xs font-bold text-amber-800">
+                          Launching Soon
+                        </p>
+                      ) : (
+                        <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+                          {item.tagline}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -178,7 +188,7 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
                       style={{ transform: 'translateZ(0)', willChange: 'transform' }}
                       className="w-full py-2.5 px-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#0a6ebd] group-hover:bg-[#0a6ebd] group-hover:text-white group-hover:border-transparent transition-all flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer pointer-events-auto"
                     >
-                      <span>View Treatment Page</span>
+                      <span>{item.isComingSoon ? 'Launching Soon' : 'View Treatment Page'}</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>

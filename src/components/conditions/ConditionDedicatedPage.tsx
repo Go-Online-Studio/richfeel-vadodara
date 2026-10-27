@@ -134,16 +134,16 @@ export const ConditionDedicatedPage: React.FC<ConditionDedicatedPageProps> = ({
 
         {/* Symptoms & Trichology Diagnostic Flow */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-          {/* Key Symptoms & Clinical Indicators (6 cols) */}
-          <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-4">
+          {/* Key Symptoms & Clinical Indicators */}
+          <div className={`${!['unwanted-hair', 'acne-skin'].includes(condition.id) ? 'lg:col-span-6' : 'lg:col-span-12'} bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-4`}>
             <h2 className="text-xl font-bold text-[#27448a] flex items-center gap-2">
               <AlertCircle className="w-5 h-5 text-[#0a6ebd]" />
               <span>Recognize the Warning Signs</span>
             </h2>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Early detection prevents irreversible miniaturization. Look for these key diagnostic indicators of {condition.name}:
+              Early detection prevents irreversible damage. Look for these key diagnostic indicators of {condition.name}:
             </p>
-            <div className="space-y-3 pt-2">
+            <div className={`pt-2 ${!['unwanted-hair', 'acne-skin'].includes(condition.id) ? 'space-y-3' : 'grid grid-cols-1 sm:grid-cols-2 gap-3'}`}>
               {condition.symptoms?.map((symptom, idx) => (
                 <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-[#f6f9fc] border border-slate-100">
                   <CheckCircle2 className="w-4 h-4 text-[#0a6ebd] shrink-0 mt-0.5" />
@@ -155,45 +155,47 @@ export const ConditionDedicatedPage: React.FC<ConditionDedicatedPageProps> = ({
             </div>
           </div>
 
-          {/* Diagnostic Methodology at Vadodara (6 cols) */}
-          <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-4">
-            <h2 className="text-xl font-bold text-[#27448a] flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-[#4ecdc4]" />
-              <span>How We Diagnose at Vadodara Centre</span>
-            </h2>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Unlike generic clinics that guess, Richfeel utilizes clinical hardware to identify root causes:
-            </p>
+          {/* Diagnostic Methodology at Vadodara (6 cols) - Hidden for unwanted-hair and acne-skin */}
+          {!['unwanted-hair', 'acne-skin'].includes(condition.id) && (
+            <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-4">
+              <h2 className="text-xl font-bold text-[#27448a] flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-[#4ecdc4]" />
+                <span>How We Diagnose at Vadodara Centre</span>
+              </h2>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Unlike generic clinics that guess, Richfeel utilizes clinical hardware to identify root causes:
+              </p>
 
-            <div className="space-y-4 pt-2">
-              <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-1">
-                <div className="text-xs font-bold text-[#0a6ebd]">
-                  1. Digital Capilloscopy Analysis
+              <div className="space-y-4 pt-2">
+                <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-1">
+                  <div className="text-xs font-bold text-[#0a6ebd]">
+                    1. Digital Capilloscopy Analysis
+                  </div>
+                  <p className="text-xs text-slate-600">
+                    High-magnification dermatoscope examining micro-circulation, sebum plugs, and scalp erythema.
+                  </p>
                 </div>
-                <p className="text-xs text-slate-600">
-                  High-magnification dermatoscope examining micro-circulation, sebum plugs, and scalp erythema.
-                </p>
-              </div>
 
-              <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-1">
-                <div className="text-xs font-bold text-[#0a6ebd]">
-                  2. Trichogram A/T Ratio Test
+                <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-1">
+                  <div className="text-xs font-bold text-[#0a6ebd]">
+                    2. Trichogram A/T Ratio Test
+                  </div>
+                  <p className="text-xs text-slate-600">
+                    Scientific measurement calculating anagen to telogen follicle proportions.
+                  </p>
                 </div>
-                <p className="text-xs text-slate-600">
-                  Scientific measurement calculating anagen to telogen follicle proportions.
-                </p>
-              </div>
 
-              <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-1">
-                <div className="text-xs font-bold text-[#0a6ebd]">
-                  3. Internal Tricho-Nutritional Profiling
+                <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-1">
+                  <div className="text-xs font-bold text-[#0a6ebd]">
+                    3. Internal Tricho-Nutritional Profiling
+                  </div>
+                  <p className="text-xs text-slate-600">
+                    Screening for systemic hormonal imbalances, vitamin D/B12 deficiencies, and ferritin levels.
+                  </p>
                 </div>
-                <p className="text-xs text-slate-600">
-                  Screening for systemic hormonal imbalances, vitamin D/B12 deficiencies, and ferritin levels.
-                </p>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Recommended Clinical Treatments */}
@@ -225,8 +227,12 @@ export const ConditionDedicatedPage: React.FC<ConditionDedicatedPageProps> = ({
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute bottom-3 left-3">
-                      <span className="px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md text-[#0a6ebd] text-xs font-bold shadow-xs">
-                        {treatment.category}
+                      <span className={`px-2.5 py-1 rounded-md text-xs font-bold shadow-xs ${
+                        treatment.isComingSoon
+                          ? 'bg-amber-500 text-white'
+                          : 'bg-white/95 backdrop-blur-md text-[#0a6ebd]'
+                      }`}>
+                        {treatment.isComingSoon ? 'Launching Soon' : treatment.category}
                       </span>
                     </div>
                   </div>
@@ -235,12 +241,20 @@ export const ConditionDedicatedPage: React.FC<ConditionDedicatedPageProps> = ({
                     <h3 className="text-lg font-bold text-[#27448a] group-hover:text-[#0a6ebd] transition-colors">
                       {treatment.title}
                     </h3>
-                    <p className="text-xs font-medium text-[#0a6ebd]">
-                      {treatment.tagline}
-                    </p>
-                    <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
-                      {treatment.description}
-                    </p>
+                    {treatment.isComingSoon ? (
+                      <p className="text-xs font-bold text-amber-800">
+                        Launching Soon
+                      </p>
+                    ) : (
+                      <>
+                        <p className="text-xs font-medium text-[#0a6ebd]">
+                          {treatment.tagline}
+                        </p>
+                        <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
+                          {treatment.description}
+                        </p>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -250,7 +264,7 @@ export const ConditionDedicatedPage: React.FC<ConditionDedicatedPageProps> = ({
                       href={`/treatments/${treatment.id}`}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0a6ebd] group-hover:translate-x-1 transition-all"
                     >
-                      <span>Explore Procedure</span>
+                      <span>{treatment.isComingSoon ? 'Launching Soon' : 'Explore Procedure'}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
 

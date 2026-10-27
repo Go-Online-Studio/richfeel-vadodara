@@ -31,6 +31,7 @@ export interface Treatment {
   image: string;
   badge?: string;
   conditions: string[];
+  isComingSoon?: boolean;
   // Deep Page Sections:
   what: string;
   why: string;
@@ -77,7 +78,7 @@ export interface ConditionCategory {
   types: string[];
   causes: string[];
   symptoms: string[];
-  howDiagnose: string;
+  howDiagnose?: string;
   preventManagement: string[];
   recommendedTreatmentIds: string[];
   description?: string;
