@@ -93,12 +93,20 @@ export interface ConsultationRequest {
   notes?: string;
 }
 
+export type GalleryCategory =
+  | 'Anagrow Treatment'
+  | 'Anagain Treatment'
+  | 'Female hair transplant'
+  | 'Non surgical'
+  | 'Clinic'
+  | 'Invasive Treatment';
+
 export interface GalleryItem {
   id: string;
   title: string;
-  subtitle: string;
-  category: 'Hair Restoration' | 'Scalp Therapy' | 'Skin Aesthetics' | 'Hair Transplant' | 'Clinic';
+  subtitle?: string;
+  category: GalleryCategory | string;
   image: string;
   fullImage: string;
-  description: string;
+  description?: string;
 }
