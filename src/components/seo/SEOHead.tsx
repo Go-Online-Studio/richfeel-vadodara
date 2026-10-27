@@ -27,7 +27,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     // Dynamic metadata based on current view
     if (currentView === 'treatment-page' && treatment) {
       title = `${treatment.title} in Vadodara | Richfeel Trichology Clinic`;
-      description = `${treatment.description} Learn about procedure steps, before & after expectations, and pre-care at Marvel Square, Sunpharma Road.`;
+      description = `${treatment.description} Learn about procedure steps, before & after expectations, and pre-care at our Vadodara clinic.`;
       canonicalUrl = `https://richfeelvadodara.com/treatments/${treatment.slug}`;
       ogImage = treatment.image;
     } else if (currentView === 'condition-page' && condition) {

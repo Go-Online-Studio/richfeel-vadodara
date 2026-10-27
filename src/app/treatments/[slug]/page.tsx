@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: TreatmentPageProps): Promise<
 
   return {
     title: `${treatment.title} in Vadodara | Richfeel Trichology Clinic`,
-    description: `${treatment.description} Learn about procedure steps, before & after expectations, and pre-care at Marvel Square, Sunpharma Road.`,
+    description: `${treatment.description} Learn about procedure steps, before & after expectations, and pre-care at our Vadodara clinic.`,
     alternates: {
       canonical: canonicalUrl,
     },

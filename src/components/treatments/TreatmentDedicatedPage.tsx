@@ -320,7 +320,7 @@ export const TreatmentDedicatedPage: React.FC<TreatmentDedicatedPageProps> = ({
                   Consult With A Certified Trichologist
                 </h4>
                 <p className="text-xs text-cyan-100 leading-relaxed">
-                  Visit our Marvel Square clinic on Sunpharma Road for video-microscopic scalp assessment before beginning this treatment.
+                  Visit our clinic for video-microscopic scalp assessment before beginning this treatment.
                 </p>
                 <button
                   onClick={() => openBooking(treatment.title)}
@@ -381,13 +381,13 @@ export const TreatmentDedicatedPage: React.FC<TreatmentDedicatedPageProps> = ({
             {/* Clinic Info Box */}
             <div className="bg-gradient-brand text-white rounded-3xl p-6 shadow-md space-y-3">
               <span className="text-[11px] font-bold text-[#4ecdc4] uppercase tracking-wider block">
-                Vadodara Centre · Marvel Square
+                Vadodara Centre
               </span>
               <h4 className="text-lg font-bold">
                 Consult With A Certified Trichologist
               </h4>
               <p className="text-xs text-cyan-100 leading-relaxed">
-                Visit our clinic on Sunpharma Road for video-microscopic scalp assessment before beginning this treatment.
+                Visit our clinic for video-microscopic scalp assessment before beginning this treatment.
               </p>
               <button
                 onClick={() => openBooking(treatment.title)}

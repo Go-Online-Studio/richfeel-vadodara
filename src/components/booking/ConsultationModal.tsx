@@ -32,7 +32,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
     setSubmitted(true);
     // WhatsApp auto link
-    const msg = `Hello Richfeel Vadodara, I would like to book a consultation at Marvel Square. Name: ${formData.name}, Phone: ${formData.phone}, Concern: ${formData.concern}, Date: ${formData.preferredDate || 'Earliest available'}, Slot: ${formData.timeSlot}`;
+    const msg = `Hello Richfeel Vadodara, I would like to book a consultation. Name: ${formData.name}, Phone: ${formData.phone}, Concern: ${formData.concern}, Date: ${formData.preferredDate || 'Earliest available'}, Slot: ${formData.timeSlot}`;
     const waUrl = `https://wa.me/917490040063?text=${encodeURIComponent(msg)}`;
     window.open(waUrl, '_blank');
   };
@@ -51,7 +51,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
               Book Doctor Consultation
             </h3>
             <p className="text-xs text-cyan-100 mt-0.5">
-              Marvel Square, Sunpharma Road, Vadodara
+              Visit our clinic · Vadodara
             </p>
           </div>
 

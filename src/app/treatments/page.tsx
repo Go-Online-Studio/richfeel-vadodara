@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '15+ Hair & Skin Treatments | Richfeel Vadodara',
     description:
-      'Explore patented stem cell hair rejuvenation, scalp detox, and laser reduction therapies at Marvel Square, Sunpharma Road, Vadodara.',
+      'Explore patented stem cell hair rejuvenation, scalp detox, and laser reduction therapies at our Vadodara clinic.',
     url: 'https://richfeelvadodara.com/treatments',
   },
 };
