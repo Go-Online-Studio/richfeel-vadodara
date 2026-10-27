@@ -65,7 +65,7 @@ export const ContactSection: React.FC = () => {
                   Vadodara Centre Info
                 </h3>
                 <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">
-                  Open Today · 10 AM - 8 PM
+                  Open Today · 10 AM - 7:30 PM
                 </span>
               </div>
 

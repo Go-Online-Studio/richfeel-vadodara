@@ -100,7 +100,7 @@ export default function RootLayout({
           'Sunday',
         ],
         opens: '10:00',
-        closes: '20:00',
+        closes: '19:30',
       },
     ],
     medicalSpecialty: [

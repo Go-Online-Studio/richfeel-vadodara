@@ -9,7 +9,7 @@ interface GallerySectionProps {
 }
 
 export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenBooking }) => {
-  const [activeTab, setActiveTab] = useState<'all' | 'results' | 'clinic'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'results'>('all');
 
   const galleryItems = [
     {
@@ -31,15 +31,6 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenBooking })
       badge: 'Ailesbury Protocol'
     },
     {
-      id: 'g-3',
-      type: 'clinic',
-      title: 'Vadodara Reception & Consultation Suite',
-      subtitle: 'Marvel Square, Sunpharma Road, Vadodara',
-      category: 'Clinic Interior',
-      image: '/images/gallery/gal_clinic_lounge.webp',
-      badge: 'Vadodara Center'
-    },
-    {
       id: 'g-4',
       type: 'results',
       title: 'Laser Hair Reduction 2.0 (ICE CUBE)',
@@ -56,15 +47,6 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenBooking })
       category: 'Scalp Therapy',
       image: '/images/gallery/gal_scalp_detox_clean.webp',
       badge: 'Austrian MLD'
-    },
-    {
-      id: 'g-6',
-      type: 'clinic',
-      title: 'Capilloscopy & Trichogram Diagnostic Station',
-      subtitle: 'High precision digital microscopic analysis',
-      category: 'Diagnostic Suite',
-      image: '/images/blog/blog_trichogram_test.webp',
-      badge: 'Advanced Diagnostics'
     }
   ];
 
@@ -112,16 +94,6 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenBooking })
               }`}
             >
               Treatment Outcomes
-            </button>
-            <button
-              onClick={() => setActiveTab('clinic')}
-              className={`px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
-                activeTab === 'clinic'
-                  ? 'bg-gradient-brand text-white shadow-xs'
-                  : 'text-slate-600 hover:text-[#27448a]'
-              }`}
-            >
-              Clinic Infrastructure
             </button>
           </ScrollableFilterContainer>
         </div>

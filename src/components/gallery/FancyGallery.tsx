@@ -24,7 +24,6 @@ export const FancyGallery: React.FC<FancyGalleryProps> = () => {
     'Anagain Treatment',
     'Female hair transplant',
     'Non surgical',
-    'Clinic',
     'Invasive Treatment',
   ];
 
@@ -388,63 +387,7 @@ export const FancyGallery: React.FC<FancyGalleryProps> = () => {
       description: 'Ultra-realistic micro-skin base showing authentic scalp transparency',
     },
 
-    // --- 5. CLINIC ---
-    {
-      id: 'clinic-1',
-      title: 'Clinic Team & Staff',
-      subtitle: 'Richfeel Vadodara Specialists',
-      category: 'Clinic',
-      image: '/images/gallery/Clinic/Thumb/ClinicGroupPic.webp',
-      fullImage: '/images/gallery/Clinic/ClinicGroupPic.jpeg',
-      description: 'Our experienced team of certified trichologists and patient care staff in Vadodara',
-    },
-    {
-      id: 'clinic-2',
-      title: 'Founder & Doctor Group Pic',
-      subtitle: 'Dr. Apoorva Shah & Clinical Team',
-      category: 'Clinic',
-      image: '/images/gallery/Clinic/Thumb/ClinicGuestPic_1.webp',
-      fullImage: '/images/gallery/Clinic/ClinicGuestPic_1.jpeg',
-      description: 'Richfeel founder Dr. Apoorva Shah with the Vadodara medical team',
-    },
-    {
-      id: 'clinic-3',
-      title: 'Founder & Doctor Group Pic',
-      subtitle: 'Dr. Apoorva Shah with Dr. Leena Patil',
-      category: 'Clinic',
-      image: '/images/gallery/Clinic/Thumb/ClinicGuestPic_2.webp',
-      fullImage: '/images/gallery/Clinic/ClinicGuestPic_2.jpeg',
-      description: 'Richfeel founder Dr. Apoorva Shah with senior trichologist Dr. Leena Patil',
-    },
-    {
-      id: 'clinic-4',
-      title: 'Clinic Brand Display',
-      subtitle: 'Richfeel Vadodara, Marvel Square, Sunpharma Road',
-      category: 'Clinic',
-      image: '/images/gallery/Clinic/Thumb/Clinic_Advertising_banner.webp',
-      fullImage: '/images/gallery/Clinic/Clinic_Advertising_banner.jpeg',
-      description: 'Official Richfeel Trichology Centre at Marvel Square, Sunpharma Road, Vadodara',
-    },
-    {
-      id: 'clinic-5',
-      title: 'Dr. Leena Patil',
-      subtitle: 'Certified Senior Trichologist',
-      category: 'Clinic',
-      image: '/images/gallery/Clinic/Thumb/Dr_Leena_Patil_Profile_Image.webp',
-      fullImage: '/images/gallery/Clinic/Dr_Leena_Patil_Profile_Image.jpeg',
-      description: 'Expert consultation and individualized clinical treatment planning by Dr. Leena Patil',
-    },
-    {
-      id: 'clinic-6',
-      title: 'Reception & Consultation Area',
-      subtitle: 'Marvel Square Clinical Suite',
-      category: 'Clinic',
-      image: '/images/gallery/Clinic/Thumb/ReceptionArea.webp',
-      fullImage: '/images/gallery/Clinic/ReceptionArea.jpeg',
-      description: 'Modern reception suite with advanced Trichogram scalp assessment diagnostics',
-    },
-
-    // --- 6. INVASIVE TREATMENT ---
+    // --- 5. INVASIVE TREATMENT ---
     {
       id: 'invasive-1',
       title: 'Widening of Parting Age 20-30 Yrs',
@@ -555,7 +498,7 @@ export const FancyGallery: React.FC<FancyGalleryProps> = () => {
             <span>Visual Gallery</span>
           </div>
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#27448a] tracking-tight">
-            Real Results &amp; Clinic Visuals
+            Real Results &amp; Transformations
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
             Click any photo to open full-screen high-resolution view with zoom and navigation.

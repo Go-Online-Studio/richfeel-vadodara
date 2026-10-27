@@ -174,7 +174,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   >
                     <option value="Morning (10 AM - 1 PM)">10 AM - 1 PM</option>
                     <option value="Afternoon (1 PM - 5 PM)">1 PM - 5 PM</option>
-                    <option value="Evening (5 PM - 8 PM)">5 PM - 8 PM</option>
+                    <option value="Evening (5 PM - 7:30 PM)">5 PM - 7:30 PM</option>
                   </select>
                 </div>
               </div>

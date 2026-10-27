@@ -13,7 +13,7 @@ export const clinicInfo = {
   rawPhones: ['917490040063', '917490035002'],
   email: 'richfeelbaroda24@gmail.com',
   website: 'https://richfeelvadodara.com',
-  workingHours: 'Mon - Sun: 10:00 AM - 8:00 PM',
+  workingHours: 'Mon - Sun: 10:00 AM - 7:30 PM',
   consultationFee: 'Complimentary Initial Assessment',
   whatsappUrl: 'https://wa.me/917490040063?text=Hello%20Richfeel%20Vadodara%2C%20I%20would%20like%20to%20book%20a%20consultation.',
   googleMapsUrl: 'https://maps.app.goo.gl/zTiEoMz2phsFqeH67'
