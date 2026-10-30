@@ -16,7 +16,8 @@ export const clinicInfo = {
   workingHours: 'Mon - Sun: 10:00 AM - 7:30 PM',
   consultationFee: 'Complimentary Initial Assessment',
   whatsappUrl: 'https://wa.me/917490040063?text=Hello%20Richfeel%20Vadodara%2C%20I%20would%20like%20to%20book%20a%20consultation.',
-  googleMapsUrl: 'https://maps.app.goo.gl/zTiEoMz2phsFqeH67'
+  googleMapsUrl: 'https://maps.app.goo.gl/zTiEoMz2phsFqeH67',
+  googleSheetScriptUrl: 'https://script.google.com/macros/s/AKfycbwTy6Rvwad8qNl_tXLV5LbZR0bToVG8r7sqMoI5tzk_J-o8Iw1TrY8eyJGIWh34F0UsEg/exec'
 };
 
 export const foundersInfo = {

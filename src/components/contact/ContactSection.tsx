@@ -13,10 +13,15 @@ import {
   Building2,
   Car,
   Sparkles,
-  Compass
+  Compass,
+  Calendar,
+  Loader2,
+  ArrowRight
 } from 'lucide-react';
 import { clinicInfo } from '../../data/staticData';
-import { useWhatsAppUrl, buildWhatsAppUrl } from '@/lib/whatsapp';
+import { useWhatsAppUrl, buildWhatsAppUrl, isMobileDevice } from '@/lib/whatsapp';
+import { submitLeadToGoogleSheet, formatWhatsAppBookingMessage, LeadFormData } from '@/lib/googleSheet';
+import { treatmentOptionsGroups, defaultTreatmentOption } from '@/data/treatmentOptions';
 
 export const ContactSection: React.FC = () => {
   const directWhatsAppUrl = useWhatsAppUrl();
@@ -24,22 +29,68 @@ export const ContactSection: React.FC = () => {
     name: '',
     phone: '',
     email: '',
-    concern: 'Hair Fall & Thinning',
+    treatment: '',
+    preferredDate: '',
+    timeSlot: 'Morning (10:00 AM - 1:00 PM)',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [generatedWhatsAppUrl, setGeneratedWhatsAppUrl] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) return;
+    if (!formData.name.trim() || !formData.phone.trim() || !formData.treatment.trim()) return;
 
-    // Simulate direct inquiry submission
+    setIsSubmitting(true);
+
+    const leadData: LeadFormData = {
+      name: formData.name.trim(),
+      phone: formData.phone.trim(),
+      email: formData.email.trim(),
+      treatment: formData.treatment,
+      preferredDate: formData.preferredDate || 'Earliest available',
+      timeSlot: formData.timeSlot,
+      message: formData.message.trim(),
+      source: 'Contact Page Form',
+      submittedAt: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+    };
+
+    // 1. Submit lead to Google Sheet first
+    await submitLeadToGoogleSheet(leadData);
+
+    // 2. Format prefilled WhatsApp message & dynamic URL
+    const waMsg = formatWhatsAppBookingMessage(leadData);
+    const waUrl = buildWhatsAppUrl('917490040063', waMsg);
+    setGeneratedWhatsAppUrl(waUrl);
+
+    // 3. Mark success
+    setIsSubmitting(false);
     setSubmitted(true);
-    // Open WhatsApp with prefilled message
-    const msg = `Hello Richfeel Vadodara, My name is ${formData.name}. Phone: ${formData.phone}. My concern is: ${formData.concern}. Notes: ${formData.message || 'I would like to book a consultation.'}`;
-    const waUrl = buildWhatsAppUrl('917490040063', msg);
-    window.open(waUrl, '_blank');
+
+    // 4. Redirect or open WhatsApp
+    if (typeof window !== 'undefined') {
+      const isMobile = isMobileDevice();
+      if (isMobile) {
+        window.location.href = waUrl;
+      } else {
+        window.open(waUrl, '_blank');
+      }
+    }
+
+    // 5. Reset form inputs after sending data to Sheet and WhatsApp
+    setFormData({
+      name: '',
+      phone: '',
+      email: '',
+      treatment: '',
+      preferredDate: '',
+      timeSlot: 'Morning (10:00 AM - 1:00 PM)',
+      message: ''
+    });
   };
+
+  const todayStr = new Date().toISOString().split('T')[0];
 
   return (
     <div className="py-16 bg-[#f6f9fc] min-h-screen">
@@ -186,21 +237,64 @@ export const ContactSection: React.FC = () => {
               </div>
 
               {submitted ? (
-                <div className="p-8 rounded-2xl bg-blue-50 border border-blue-200 text-center space-y-3">
-                  <CheckCircle2 className="w-12 h-12 text-[#0a6ebd] mx-auto" />
-                  <h4 className="text-lg font-bold text-[#27448a]">Thank You, {formData.name}!</h4>
-                  <p className="text-xs text-slate-600 max-w-md mx-auto">
-                    Your appointment request has been initiated. A copy has been preloaded into WhatsApp for instant confirmation with our Vadodara clinic team.
-                  </p>
+                <div className="p-8 rounded-2xl bg-blue-50/70 border border-blue-200/80 text-center space-y-4 animate-in zoom-in-95 duration-200">
+                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center shadow-inner">
+                    <CheckCircle2 className="w-9 h-9" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 block mb-1">
+                      Saved In Clinic System
+                    </span>
+                    <h4 className="text-xl font-black text-[#27448a]">
+                      Thank You, {formData.name}!
+                    </h4>
+                    <p className="text-xs text-slate-600 max-w-md mx-auto mt-1 leading-relaxed">
+                      Your appointment details have been successfully recorded in our clinic sheet. Opening WhatsApp now for direct slot confirmation with our Vadodara team.
+                    </p>
+                  </div>
+
+                  <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+                    {generatedWhatsAppUrl && (
+                      <a
+                        href={generatedWhatsAppUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="set-url-target w-full sm:w-auto px-6 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all"
+                      >
+                        <span>Continue to WhatsApp Chat</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </a>
+                    )}
+                    <a
+                      href={`tel:${clinicInfo.rawPhones[0]}`}
+                      className="w-full sm:w-auto px-5 py-3 rounded-xl border border-blue-200 text-[#0a6ebd] hover:bg-white font-bold text-xs flex items-center justify-center gap-2 transition-colors"
+                    >
+                      <Phone className="w-4 h-4" />
+                      <span>Call {clinicInfo.phones[0]}</span>
+                    </a>
+                  </div>
+
                   <button
-                    onClick={() => setSubmitted(false)}
-                    className="mt-4 text-xs font-bold text-[#0a6ebd] underline cursor-pointer"
+                    onClick={() => {
+                      setSubmitted(false);
+                      setFormData({
+                        name: '',
+                        phone: '',
+                        email: '',
+                        treatment: '',
+                        preferredDate: '',
+                        timeSlot: 'Morning (10:00 AM - 1:00 PM)',
+                        message: ''
+                      });
+                    }}
+                    className="pt-2 text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer block mx-auto"
                   >
-                    Submit another inquiry
+                    Submit Another Inquiry
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Row 1: Name and Phone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-xs font-semibold text-slate-700 block mb-1">
@@ -231,6 +325,7 @@ export const ContactSection: React.FC = () => {
                     </div>
                   </div>
 
+                  {/* Row 2: Email and Treatment */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-xs font-semibold text-slate-700 block mb-1">
@@ -247,30 +342,66 @@ export const ContactSection: React.FC = () => {
 
                     <div>
                       <label className="text-xs font-semibold text-slate-700 block mb-1">
-                        Primary Clinical Concern
+                        Primary Treatment or Concern *
                       </label>
                       <select
-                        value={formData.concern}
-                        onChange={(e) => setFormData({ ...formData, concern: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#0a6ebd]"
+                        required
+                        value={formData.treatment}
+                        onChange={(e) => setFormData({ ...formData, treatment: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#0a6ebd] bg-white cursor-pointer"
                       >
-                        <option value="Hair Fall & Thinning">Hair Fall & Thinning</option>
-                        <option value="Male / Female Pattern Baldness">Male / Female Pattern Baldness</option>
-                        <option value="Stubborn Dandruff & Scalp Itch">Stubborn Dandruff & Scalp Itch</option>
-                        <option value="Laser Hair Reduction 2.0">Laser Hair Reduction 2.0 (ICE CUBE)</option>
-                        <option value="Advance Hydra Facial / Medi-Facial">Advance Hydra Facial / Medi-Facial</option>
-                        <option value="Hair Colour Damage (Ana-d-tox)">Hair Colour Damage (Ana-d-tox)</option>
-                        <option value="Hair Transplant Consultation">Hair Transplant Consultation</option>
+                        <option value="" disabled>-- Select Your Treatment or Concern * --</option>
+                        {treatmentOptionsGroups.map((group) => (
+                          <optgroup key={group.category} label={group.category}>
+                            {group.options.map((opt) => (
+                              <option key={opt} value={opt}>
+                                {opt}
+                              </option>
+                            ))}
+                          </optgroup>
+                        ))}
                       </select>
                     </div>
                   </div>
 
+                  {/* Row 3: Preferred Date and Time Slot */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700 block mb-1">
+                        Preferred Date
+                      </label>
+                      <input
+                        type="date"
+                        min={todayStr}
+                        value={formData.preferredDate}
+                        onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#0a6ebd]"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700 block mb-1">
+                        Preferred Time Slot
+                      </label>
+                      <select
+                        value={formData.timeSlot}
+                        onChange={(e) => setFormData({ ...formData, timeSlot: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#0a6ebd] bg-white cursor-pointer"
+                      >
+                        <option value="Morning (10:00 AM - 1:00 PM)">Morning (10:00 AM - 1:00 PM)</option>
+                        <option value="Afternoon (1:00 PM - 5:00 PM)">Afternoon (1:00 PM - 5:00 PM)</option>
+                        <option value="Evening (5:00 PM - 7:30 PM)">Evening (5:00 PM - 7:30 PM)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Row 4: Condition or Preferred Day/Time Notes */}
                   <div>
                     <label className="text-xs font-semibold text-slate-700 block mb-1">
-                      Describe Your Condition or Preferred Day/Time
+                      Describe Your Condition or Query (Optional)
                     </label>
                     <textarea
-                      rows={4}
+                      rows={3}
                       placeholder="Tell us about how long you've experienced hair loss or your skin goals..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -278,12 +409,23 @@ export const ContactSection: React.FC = () => {
                     />
                   </div>
 
+                  {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-xl bg-gradient-brand text-white font-bold text-xs shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    disabled={isSubmitting}
+                    className="w-full py-3.5 rounded-xl bg-gradient-brand text-white font-bold text-xs sm:text-sm shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-4 h-4" />
-                    <span>Submit Appointment Request</span>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin text-white" />
+                        <span>Saving to Clinic System...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        <span>Submit Appointment Request</span>
+                      </>
+                    )}
                   </button>
                 </form>
               )}
