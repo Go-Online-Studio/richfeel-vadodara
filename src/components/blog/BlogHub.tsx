@@ -6,6 +6,7 @@ import { ArrowRight, Clock, Calendar, Sparkles, Share2, Search, BookOpen, Chevro
 import { BlogPost } from '@/types';
 import { ScrollableFilterContainer } from '@/components/common/ScrollableFilterContainer';
 import { useConsultation } from '@/context/ConsultationContext';
+import { isMobileDevice } from '@/lib/whatsapp';
 
 interface BlogHubProps {
   blogs: BlogPost[];
@@ -44,10 +45,13 @@ export const BlogHub: React.FC<BlogHubProps> = ({ blogs }) => {
         });
       } catch (err) {}
     } else if (typeof window !== 'undefined') {
-      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
+      const baseUrl = isMobileDevice()
+        ? 'https://api.whatsapp.com/send'
+        : 'https://web.whatsapp.com/send';
+      const shareUrl = `${baseUrl}?text=${encodeURIComponent(
         post.title + ' - Richfeel Vadodara Clinical Article: ' + window.location.origin + '/blog/' + post.slug
       )}`;
-      window.open(whatsappUrl, '_blank');
+      window.open(shareUrl, '_blank');
     }
   };
 

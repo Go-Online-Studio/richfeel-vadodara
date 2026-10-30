@@ -41,7 +41,7 @@ export default function AboutPage() {
       </section>
 
       {/* 2. Detailed Clinical Narrative & Founders Story */}
-      <section id="heritage" className="py-20 bg-white border-b border-slate-200/80">
+      <section id="heritage" className="py-20 bg-white border-b border-slate-200/80 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Visual Portrait */}
@@ -125,7 +125,7 @@ export default function AboutPage() {
       </section>
 
       {/* 3. Diagnostic Science (Dedicated Insight) */}
-      <section id="diagnostics" className="py-20 bg-[#f6f9fc] border-b border-slate-200/80">
+      <section id="diagnostics" className="py-20 bg-[#f6f9fc] border-b border-slate-200/80 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block mb-2">
@@ -180,7 +180,7 @@ export default function AboutPage() {
       </section>
 
       {/* 4. Awards & Accolades */}
-      <section id="awards" className="py-20 bg-white border-b border-slate-200/80">
+      <section id="awards" className="py-20 bg-white border-b border-slate-200/80 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0a6ebd] block mb-2">

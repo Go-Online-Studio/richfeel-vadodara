@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { MapPin, Phone, Mail, Award, ArrowRight } from 'lucide-react';
 import { clinicInfo } from '@/data/staticData';
 import { Treatment } from '@/types';
+import { useWhatsAppUrl } from '@/lib/whatsapp';
 
 interface FooterProps {
   treatments: Treatment[];
@@ -12,6 +13,7 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ treatments }) => {
+  const whatsappUrl = useWhatsAppUrl();
   const hairTreatments = treatments.filter((t) => t.category === 'Hair Restoration');
   const scalpTreatments = treatments.filter((t) => t.category === 'Scalp Therapy');
   const skinTreatments = treatments.filter((t) => t.category === 'Skin Aesthetics');
@@ -159,10 +161,11 @@ export const Footer: React.FC<FooterProps> = ({ treatments }) => {
             <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 max-w-xs mx-auto md:mx-0">
               <span className="text-[11px] text-slate-400 block mb-2">WhatsApp Direct Connect:</span>
               <a
-                href={clinicInfo.whatsappUrl}
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] text-xs font-semibold hover:bg-[#25D366]/30 transition-colors"
+                data-whatsapp="true"
+                className="set-url-target inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] text-xs font-semibold hover:bg-[#25D366]/30 transition-colors"
               >
                 Chat on WhatsApp
               </a>

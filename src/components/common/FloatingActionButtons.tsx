@@ -3,9 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, ArrowUp } from 'lucide-react';
 import { clinicInfo } from '@/data/staticData';
+import { useWhatsAppUrl } from '@/lib/whatsapp';
 
 export const FloatingActionButtons: React.FC = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const whatsappUrl = useWhatsAppUrl();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,11 +51,12 @@ export const FloatingActionButtons: React.FC = () => {
 
       {/* WhatsApp FAB: Circle button with official WhatsApp SVG */}
       <a
-        href={clinicInfo.whatsappUrl}
+        href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
+        data-whatsapp="true"
         style={{ transform: 'translateZ(0)', willChange: 'transform' }}
-        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-lg sm:shadow-xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer pointer-events-auto"
+        className="set-url-target w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-lg sm:shadow-xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer pointer-events-auto"
         aria-label="Chat on WhatsApp"
         title="WhatsApp Vadodara Clinic"
       >

@@ -16,8 +16,10 @@ import {
   Compass
 } from 'lucide-react';
 import { clinicInfo } from '../../data/staticData';
+import { useWhatsAppUrl, buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export const ContactSection: React.FC = () => {
+  const directWhatsAppUrl = useWhatsAppUrl();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -35,7 +37,7 @@ export const ContactSection: React.FC = () => {
     setSubmitted(true);
     // Open WhatsApp with prefilled message
     const msg = `Hello Richfeel Vadodara, My name is ${formData.name}. Phone: ${formData.phone}. My concern is: ${formData.concern}. Notes: ${formData.message || 'I would like to book a consultation.'}`;
-    const waUrl = `https://wa.me/917490040063?text=${encodeURIComponent(msg)}`;
+    const waUrl = buildWhatsAppUrl('917490040063', msg);
     window.open(waUrl, '_blank');
   };
 
@@ -144,10 +146,11 @@ export const ContactSection: React.FC = () => {
             {/* Direct WhatsApp Action Button */}
             <div className="pt-6 mt-6 border-t border-slate-100">
               <a
-                href={clinicInfo.whatsappUrl}
+                href={directWhatsAppUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs flex items-center justify-center gap-2.5 shadow-sm hover:shadow-md transition-all cursor-pointer"
+                data-whatsapp="true"
+                className="set-url-target w-full py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs flex items-center justify-center gap-2.5 shadow-sm hover:shadow-md transition-all cursor-pointer"
               >
                 <svg
                   viewBox="0 0 31 30"

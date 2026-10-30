@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { X, Calendar, Phone, MessageSquare, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { clinicInfo } from '../../data/staticData';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -33,7 +34,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
     setSubmitted(true);
     // WhatsApp auto link
     const msg = `Hello Richfeel Vadodara, I would like to book a consultation. Name: ${formData.name}, Phone: ${formData.phone}, Concern: ${formData.concern}, Date: ${formData.preferredDate || 'Earliest available'}, Slot: ${formData.timeSlot}`;
-    const waUrl = `https://wa.me/917490040063?text=${encodeURIComponent(msg)}`;
+    const waUrl = buildWhatsAppUrl('917490040063', msg);
     window.open(waUrl, '_blank');
   };
 

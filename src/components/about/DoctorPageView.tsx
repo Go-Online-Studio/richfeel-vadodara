@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { clinicInfo, vadodaraDoctorInfo } from '@/data/staticData';
 import { useConsultation } from '@/context/ConsultationContext';
+import { useWhatsAppUrl } from '@/lib/whatsapp';
 
 export const DoctorPageView: React.FC = () => {
   const { openBooking } = useConsultation();
@@ -26,10 +27,10 @@ export const DoctorPageView: React.FC = () => {
     openBooking(`Doctor Consultation with ${vadodaraDoctorInfo.title} (Vadodara Branch)`);
   };
 
-  const doctorWhatsAppMessage = encodeURIComponent(
-    `Hello Dr. Leena Patil, I would like to book a consultation at Richfeel Vadodara Branch.`
+  const doctorWhatsAppUrl = useWhatsAppUrl(
+    clinicInfo.rawPhones[0],
+    'Hello Dr. Leena Patil, I would like to book a consultation at Richfeel Vadodara Branch.'
   );
-  const doctorWhatsAppUrl = `https://wa.me/${clinicInfo.rawPhones[0]}?text=${doctorWhatsAppMessage}`;
 
   const credentials = [
     {
@@ -125,7 +126,8 @@ export const DoctorPageView: React.FC = () => {
                   href={doctorWhatsAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-3.5 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/40 text-[#25D366] text-xs sm:text-sm font-bold transition-all flex items-center gap-2"
+                  data-whatsapp="true"
+                  className="set-url-target px-5 py-3.5 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/40 text-[#25D366] text-xs sm:text-sm font-bold transition-all flex items-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>Chat on WhatsApp</span>
@@ -287,7 +289,8 @@ export const DoctorPageView: React.FC = () => {
                     href={doctorWhatsAppUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold shadow-md transition-all flex items-center justify-center gap-2"
+                    data-whatsapp="true"
+                    className="set-url-target w-full py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold shadow-md transition-all flex items-center justify-center gap-2"
                   >
                     <MessageCircle className="w-4 h-4" />
                     <span>Chat on WhatsApp</span>

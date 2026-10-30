@@ -2,11 +2,13 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowLeft, Clock, Calendar, Share2, CheckCircle2, ChevronRight, BookOpen, User, Phone, Sparkles, Menu, X } from 'lucide-react';
 import { BlogPost, Treatment } from '@/types';
 import { BlogSidebar } from './BlogSidebar';
 import { clinicInfo } from '@/data/staticData';
 import { useConsultation } from '@/context/ConsultationContext';
+import { isMobileDevice } from '@/lib/whatsapp';
 
 interface BlogDetailProps {
   post: BlogPost;
@@ -23,6 +25,7 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({
   allBlogs,
   treatments,
 }) => {
+  const router = useRouter();
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const { openBooking } = useConsultation();
 
@@ -40,7 +43,10 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({
         });
       } catch (err) {}
     } else if (typeof window !== 'undefined') {
-      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
+      const baseUrl = isMobileDevice()
+        ? 'https://api.whatsapp.com/send'
+        : 'https://web.whatsapp.com/send';
+      const whatsappUrl = `${baseUrl}?text=${encodeURIComponent(
         post.title + ' - ' + window.location.href
       )}`;
       window.open(whatsappUrl, '_blank');
@@ -199,10 +205,10 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({
               allBlogs={allBlogs}
               treatments={treatments}
               onSelectBlog={(slug) => {
-                if (typeof window !== 'undefined') window.location.href = `/blog/${slug}`;
+                router.push(`/blog/${slug}`);
               }}
               onSelectTreatment={(id) => {
-                if (typeof window !== 'undefined') window.location.href = `/treatments/${id}`;
+                router.push(`/treatments/${id}`);
               }}
               onOpenBooking={() => openBooking(post.title)}
             />
@@ -230,11 +236,11 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({
               treatments={treatments}
               onSelectBlog={(slug) => {
                 setMobileDrawerOpen(false);
-                if (typeof window !== 'undefined') window.location.href = `/blog/${slug}`;
+                router.push(`/blog/${slug}`);
               }}
               onSelectTreatment={(id) => {
                 setMobileDrawerOpen(false);
-                if (typeof window !== 'undefined') window.location.href = `/treatments/${id}`;
+                router.push(`/treatments/${id}`);
               }}
               onOpenBooking={() => {
                 setMobileDrawerOpen(false);

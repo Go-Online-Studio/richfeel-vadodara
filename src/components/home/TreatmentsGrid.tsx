@@ -29,6 +29,7 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
 }) => {
   const [activeCategory, setActiveCategory] = useState<'All' | 'Hair Restoration' | 'Scalp Therapy' | 'Skin Aesthetics'>('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [swiperInstance, setSwiperInstance] = useState<any>(null);
   const { openBooking } = useConsultation();
 
   const categories: Array<'All' | 'Hair Restoration' | 'Scalp Therapy' | 'Skin Aesthetics'> = [
@@ -69,12 +70,14 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
           <div className="flex items-center gap-2 self-start md:self-end shrink-0">
             <button
               className="treatments-grid-prev p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-[#0a6ebd] hover:text-white hover:border-[#0a6ebd] hover:shadow-md hover:scale-105 active:scale-95 text-slate-800 shadow-xs transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-white disabled:hover:text-slate-800"
+              onClick={() => swiperInstance?.slidePrev()}
               aria-label="Previous treatment slide"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               className="treatments-grid-next p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-[#0a6ebd] hover:text-white hover:border-[#0a6ebd] hover:shadow-md hover:scale-105 active:scale-95 text-slate-800 shadow-xs transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-white disabled:hover:text-slate-800"
+              onClick={() => swiperInstance?.slideNext()}
               aria-label="Next treatment slide"
             >
               <ChevronRight className="w-5 h-5" />
@@ -133,6 +136,7 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
           <div className="cursor-grab active:cursor-grabbing pb-4">
             <Swiper
               key={`${activeCategory}-${searchQuery}`}
+              onSwiper={setSwiperInstance}
               modules={[Navigation, Pagination, A11y, Autoplay]}
               autoplay={{
                 delay: 3500,

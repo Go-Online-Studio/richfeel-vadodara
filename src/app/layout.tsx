@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 import { ConsultationProvider } from '@/context/ConsultationContext';
 import { GlobalConsultationModal } from '@/components/booking/GlobalConsultationModal';
 import { FloatingActionButtons } from '@/components/common/FloatingActionButtons';
+import { WhatsAppUrlSync } from '@/components/common/WhatsAppUrlSync';
 import { treatmentsData } from '@/data/treatments';
 
 export const metadata: Metadata = {
@@ -135,6 +136,7 @@ export default function RootLayout({
           <Footer treatments={treatmentsData} />
           <GlobalConsultationModal />
           <FloatingActionButtons />
+          <WhatsAppUrlSync />
         </ConsultationProvider>
       </body>
     </html>

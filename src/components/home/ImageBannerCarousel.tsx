@@ -16,6 +16,9 @@ interface BannerSlide {
   ctaText: string;
   actionView: string;
   actionExtra?: string;
+  secondaryCtaText?: string;
+  secondaryActionView?: string;
+  secondaryActionExtra?: string;
 }
 
 interface ImageBannerCarouselProps {
@@ -76,8 +79,10 @@ export const ImageBannerCarousel: React.FC<ImageBannerCarouselProps> = () => {
       mobileSubtitle: 'Dr. Apoorva Shah & Dr. Sonal Shah · India’s 1st Certified Trichologists.',
       desktopImage: '/images/Banner4.webp',
       mobileImage: '/images/BannerMob4.webp',
-      ctaText: 'Free Assessment',
-      actionView: 'booking'
+      ctaText: 'Meet The Founders',
+      actionView: 'about',
+      secondaryCtaText: 'Free Assessment',
+      secondaryActionView: 'booking'
     }
   ];
 
@@ -111,12 +116,24 @@ export const ImageBannerCarousel: React.FC<ImageBannerCarouselProps> = () => {
   const handleActionClick = (slide: BannerSlide) => {
     if (slide.actionView === 'booking') {
       openBooking('Banner Free Assessment');
+    } else if (slide.actionView === 'about') {
+      router.push('/about');
     } else if (slide.actionView === 'treatment-page' && slide.actionExtra) {
       router.push(`/treatments/${slide.actionExtra}`);
     } else if (slide.actionView === 'treatments') {
       router.push('/treatments');
     } else {
       router.push('/');
+    }
+  };
+
+  const handleSecondaryClick = (slide: BannerSlide) => {
+    if (slide.secondaryActionView === 'about') {
+      router.push('/about');
+    } else if (slide.secondaryActionView === 'treatment-page' && slide.secondaryActionExtra) {
+      router.push(`/treatments/${slide.secondaryActionExtra}`);
+    } else {
+      openBooking(slide.secondaryCtaText ? `Banner ${slide.secondaryCtaText}` : 'Hero Banner Consultation');
     }
   };
 
@@ -198,11 +215,11 @@ export const ImageBannerCarousel: React.FC<ImageBannerCarouselProps> = () => {
             </button>
 
             <button
-              onClick={() => openBooking('Hero Banner Consultation')}
+              onClick={() => handleSecondaryClick(active)}
               style={{ transform: 'translateZ(0)', willChange: 'transform' }}
               className="px-3.5 sm:px-4 md:px-5 py-2.5 sm:py-2.5 md:py-3 rounded-xl bg-white/15 hover:bg-white/30 hover:border-white/50 hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] text-white font-bold text-xs sm:text-xs md:text-sm backdrop-blur-md border border-white/25 transition-all cursor-pointer pointer-events-auto"
             >
-              Consultation
+              {active.secondaryCtaText || 'Consultation'}
             </button>
           </div>
         </div>

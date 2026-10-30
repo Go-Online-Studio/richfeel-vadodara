@@ -25,6 +25,7 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
   treatments,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [swiperInstance, setSwiperInstance] = useState<any>(null);
 
   const categories = ['All', 'Hair Restoration', 'Scalp Therapy', 'Skin Aesthetics'];
 
@@ -53,12 +54,14 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
           <div className="flex items-center gap-2 self-start md:self-end">
             <button
               className="treatments-swiper-prev p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-[#0a6ebd] hover:text-white hover:border-[#0a6ebd] hover:shadow-md hover:scale-105 active:scale-95 text-slate-800 shadow-xs transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-white disabled:hover:text-slate-800"
+              onClick={() => swiperInstance?.slidePrev()}
               aria-label="Previous treatment slide"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               className="treatments-swiper-next p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-[#0a6ebd] hover:text-white hover:border-[#0a6ebd] hover:shadow-md hover:scale-105 active:scale-95 text-slate-800 shadow-xs transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-white disabled:hover:text-slate-800"
+              onClick={() => swiperInstance?.slideNext()}
               aria-label="Next treatment slide"
             >
               <ChevronRight className="w-5 h-5" />
@@ -93,6 +96,7 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
         <div className="cursor-grab active:cursor-grabbing pb-4">
           <Swiper
             key={selectedCategory}
+            onSwiper={setSwiperInstance}
             modules={[Navigation, Pagination, A11y, Autoplay]}
             autoplay={{
               delay: 3500,
@@ -136,7 +140,7 @@ export const TreatmentsCarouselSection: React.FC<TreatmentsCarouselSectionProps>
               <SwiperSlide key={item.id} className="h-auto">
                 <div
                   style={{ transform: 'translateZ(0)', willChange: 'transform' }}
-                  className="h-full bg-[#f6f9fc] rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-2xl hover:border-[#0a6ebd] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative z-10"
+                  className="h-full bg-[#f6f9fc] rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-2xl hover:border-[#0a6ebd] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group relative z-10"
                 >
                   <div>
                     {/* Treatment Image Display (Clean 4:3 Aspect Ratio) */}
