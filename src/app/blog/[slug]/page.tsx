@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   const canonicalUrl = `https://richfeelvadodara.com/blog/${post.slug}`;
+  const absoluteCoverImage = post.coverImage?.startsWith('http')
+    ? post.coverImage
+    : `https://richfeelvadodara.com${post.coverImage?.startsWith('/') ? '' : '/'}${post.coverImage || 'images/richfeel-vadodara-og-banner.jpg'}`;
 
   return {
     title: `${post.title} | Richfeel Vadodara Knowledge Hub`,
@@ -40,7 +43,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       type: 'article',
       images: [
         {
-          url: post.coverImage,
+          url: absoluteCoverImage,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -51,7 +54,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: [post.coverImage],
+      images: [absoluteCoverImage],
     },
   };
 }
@@ -65,22 +68,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const allBlogs = await getAllBlogPosts();
+  const absoluteCoverImage = post.coverImage?.startsWith('http')
+    ? post.coverImage
+    : `https://richfeelvadodara.com${post.coverImage?.startsWith('/') ? '' : '/'}${post.coverImage || 'images/richfeel-vadodara-og-banner.jpg'}`;
 
   const articleSchema = {
     '@context': 'https://schema.org',
-    '@type': 'MedicalWebPage',
+    '@type': ['MedicalWebPage', 'BlogPosting'],
     headline: post.title,
     description: post.excerpt,
-    image: post.coverImage,
+    image: absoluteCoverImage,
+    datePublished: '2026-10-12',
+    dateModified: '2026-10-30',
     author: {
       '@type': 'Person',
       name: post.author.name,
       jobTitle: post.author.title,
     },
     publisher: {
-      '@type': 'MedicalOrganization',
+      '@type': 'MedicalClinic',
       name: 'Richfeel Trichology Centre Vadodara',
       url: 'https://richfeelvadodara.com',
+      logo: 'https://richfeelvadodara.com/images/RichfeelsLogo.webp',
     },
     mainEntityOfPage: `https://richfeelvadodara.com/blog/${post.slug}`,
   };

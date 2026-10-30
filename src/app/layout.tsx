@@ -16,18 +16,18 @@ export const metadata: Metadata = {
     template: '%s | Richfeel Vadodara',
   },
   description:
-    'Premier hair restoration, trichology treatments, and skin aesthetics clinic in Vadodara, Gujarat. Pioneered by Dr. Apoorva Shah & Dr. Sonal Shah.',
+    'Premier hair restoration, scientific trichology, and advanced skin aesthetics clinic in Vadodara, Gujarat. Pioneered by Dr. Apoorva Shah & Dr. Sonal Shah.',
   openGraph: {
     title: 'Richfeel Vadodara - Hair Restoration & Skin Aesthetics Clinic',
     description:
-      'Premier hair restoration, trichology treatments, and skin aesthetics clinic in Vadodara, Gujarat. Pioneered by Dr. Apoorva Shah & Dr. Sonal Shah.',
+      'Premier hair restoration, scientific trichology, and advanced skin aesthetics clinic in Vadodara, Gujarat. Pioneered by Dr. Apoorva Shah & Dr. Sonal Shah.',
     url: 'https://richfeelvadodara.com',
     siteName: 'Richfeel Vadodara',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80',
+        url: 'https://richfeelvadodara.com/images/richfeel-vadodara-og-banner.jpg',
         width: 1200,
         height: 630,
         alt: 'Richfeel Vadodara Hair & Scalp Clinic',
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Richfeel Vadodara - Hair Restoration & Skin Aesthetics Clinic',
     description:
-      'Premier hair restoration, trichology treatments, and skin aesthetics clinic in Vadodara, Gujarat.',
-    images: ['https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80'],
+      'Premier hair restoration, scientific trichology, and advanced skin aesthetics clinic in Vadodara, Gujarat.',
+    images: ['https://richfeelvadodara.com/images/richfeel-vadodara-og-banner.jpg'],
   },
   alternates: {
     canonical: 'https://richfeelvadodara.com',
@@ -68,16 +68,18 @@ export default function RootLayout({
 }) {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'MedicalClinic',
+    '@type': ['MedicalClinic', 'HealthAndBeautyBusiness'],
     name: 'Richfeel Trichology Centre Vadodara',
-    image: 'https://richfeelvadodara.com/images/RichfeelsLogo.webp',
+    image: 'https://richfeelvadodara.com/images/richfeel-vadodara-og-banner.jpg',
+    logo: 'https://richfeelvadodara.com/images/RichfeelsLogo.webp',
     '@id': 'https://richfeelvadodara.com/#clinic',
     url: 'https://richfeelvadodara.com',
     telephone: '+917490040063',
     priceRange: '₹₹',
+    email: 'richfeelbaroda24@gmail.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '101, Marvel Square, Sunpharma Road, Opp. Gokulesh Complex',
+      streetAddress: 'FF/09/10/11, Marvel Square, Sunpharma Road, Opp. Gokulesh Complex',
       addressLocality: 'Vadodara',
       addressRegion: 'Gujarat',
       postalCode: '390012',
@@ -108,6 +110,32 @@ export default function RootLayout({
       'Dermatology',
       'PlasticSurgery',
       'Trichology',
+    ],
+    founder: [
+      {
+        '@type': 'Person',
+        name: 'Dr. Apoorva Shah',
+        jobTitle: "Pioneer Trichologist & Co-Founder",
+        award: 'Limca Book of Records Honoree - India\'s First Certified Trichologist',
+      },
+      {
+        '@type': 'Person',
+        name: 'Dr. Sonal Shah',
+        jobTitle: "Pioneer Trichologist & Co-Founder",
+        award: 'Limca Book of Records Honoree - India\'s First Certified Trichologist',
+      },
+    ],
+    employee: [
+      {
+        '@type': 'Physician',
+        name: 'Dr. Leena Patil',
+        jobTitle: 'Resident Trichologist & Clinical Cosmetologist',
+        alumniOf: 'BHMS',
+        hasCredential: 'WMTA Certified Trichologist (World Medical Trichology Association)',
+      },
+    ],
+    sameAs: [
+      'https://maps.app.goo.gl/zTiEoMz2phsFqeH67',
     ],
   };
 

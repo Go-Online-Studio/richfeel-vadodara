@@ -167,6 +167,7 @@ export const ImageBannerCarousel: React.FC<ImageBannerCarouselProps> = () => {
               alt={slide.title}
               referrerPolicy="no-referrer"
               loading={idx === 0 ? 'eager' : 'lazy'}
+              fetchPriority={idx === 0 ? 'high' : 'auto'}
               className="w-full h-full object-cover object-top filter brightness-[0.88]"
             />
           </picture>

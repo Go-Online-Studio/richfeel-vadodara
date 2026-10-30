@@ -15,14 +15,64 @@ export const metadata: Metadata = {
     description:
       'Learn about India’s premier hair and scalp institution founded in 1986. Diagnostic Trichogram science and patented treatments.',
     url: 'https://richfeelvadodara.com/about',
+    images: [
+      {
+        url: 'https://richfeelvadodara.com/images/richfeel-vadodara-og-banner.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'About Richfeel Vadodara Founders Heritage',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Richfeel Vadodara | Pioneers of Trichology & Clinic Heritage',
+    description:
+      'Discover the 38+ year clinical legacy of Dr. Apoorva Shah and Dr. Sonal Shah at Richfeel Vadodara.',
+    images: ['https://richfeelvadodara.com/images/richfeel-vadodara-og-banner.jpg'],
   },
 };
 
 export default function AboutPage() {
   const diagnosticIcons = [Microscope, ShieldCheck, Sparkles];
 
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About Richfeel Vadodara - Pioneers of Trichology',
+    description:
+      '38+ years clinical legacy of Dr. Apoorva Shah & Dr. Sonal Shah. India\'s first certified trichologists featured in the Limca Book of Records.',
+    mainEntity: {
+      '@type': 'MedicalOrganization',
+      name: 'Richfeel Trichology Centre',
+      foundingDate: '1986',
+      founder: [
+        {
+          '@type': 'Person',
+          name: 'Dr. Apoorva Shah',
+          jobTitle: 'Founder & Pioneer Trichologist',
+          award: 'Limca Book of Records Honoree',
+        },
+        {
+          '@type': 'Person',
+          name: 'Dr. Sonal Shah',
+          jobTitle: 'Co-Founder & Pioneer Trichologist',
+          award: 'Limca Book of Records Honoree',
+        },
+      ],
+      areaServed: {
+        '@type': 'AdministrativeArea',
+        name: 'Vadodara, Gujarat',
+      },
+    },
+  };
+
   return (
     <div className="bg-[#f6f9fc] min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
       {/* 1. Hero Header */}
       <section className="bg-[#101e3d] text-white py-20 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

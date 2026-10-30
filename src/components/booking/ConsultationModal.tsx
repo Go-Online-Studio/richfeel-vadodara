@@ -76,6 +76,18 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
     }
   }, [defaultConcern, isOpen]);
 
+  // Handle ESC key press to close modal
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        handleResetAndClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleResetAndClose = () => {
@@ -153,6 +165,11 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-consultation-title"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          handleResetAndClose();
+        }
+      }}
     >
       {/* Dialog box with mobile constraint and inner scroll */}
       <div className="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-200 overflow-hidden flex flex-col my-auto max-h-[92vh] sm:max-h-[88vh]">

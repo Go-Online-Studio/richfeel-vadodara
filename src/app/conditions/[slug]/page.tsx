@@ -25,6 +25,9 @@ export async function generateMetadata({ params }: ConditionPageProps): Promise<
   }
 
   const canonicalUrl = `https://richfeelvadodara.com/conditions/${condition.id}`;
+  const absoluteImageUrl = condition.image?.startsWith('http')
+    ? condition.image
+    : `https://richfeelvadodara.com${condition.image?.startsWith('/') ? '' : '/'}${condition.image || 'images/richfeel-vadodara-og-banner.jpg'}`;
 
   return {
     title: `${condition.name} Treatment & Causes in Vadodara | Richfeel`,
@@ -38,7 +41,7 @@ export async function generateMetadata({ params }: ConditionPageProps): Promise<
       url: canonicalUrl,
       images: [
         {
-          url: condition.image,
+          url: absoluteImageUrl,
           width: 1200,
           height: 630,
           alt: condition.name,
@@ -49,7 +52,7 @@ export async function generateMetadata({ params }: ConditionPageProps): Promise<
       card: 'summary_large_image',
       title: `${condition.name} Treatment in Vadodara | Richfeel`,
       description: condition.what || condition.tagline || condition.name,
-      images: [condition.image],
+      images: [absoluteImageUrl],
     },
   };
 }
@@ -62,11 +65,16 @@ export default async function ConditionDetailPage({ params }: ConditionPageProps
     notFound();
   }
 
+  const absoluteImageUrl = condition.image?.startsWith('http')
+    ? condition.image
+    : `https://richfeelvadodara.com${condition.image?.startsWith('/') ? '' : '/'}${condition.image || 'images/richfeel-vadodara-og-banner.jpg'}`;
+
   const conditionSchema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalCondition',
     name: condition.name,
     description: condition.what || condition.tagline,
+    image: absoluteImageUrl,
     possibleTreatment: treatmentsData
       .filter((t) => condition.recommendedTreatmentIds.includes(t.id))
       .map((t) => ({

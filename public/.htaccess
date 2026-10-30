@@ -1,0 +1,94 @@
+# =====================================================================
+# Richfeel Trichology Centre Vadodara - Production Apache Configuration
+# Canonical Domain: https://richfeelvadodara.com
+# Target Host: Hostinger (LiteSpeed / Apache)
+# =====================================================================
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Enforce HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://richfeelvadodara.com/$1 [R=301,L]
+
+  # 2. Enforce non-www canonical domain
+  RewriteCond %{HTTP_HOST} ^www\.richfeelvadodara\.com$ [NC]
+  RewriteRule ^(.*)$ https://richfeelvadodara.com/$1 [R=301,L]
+
+  # 3. Strip trailing slashes from URLs (except actual directories)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [R=301,L]
+
+  # 4. If the exact file or directory exists, serve it immediately
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 5. Clean URLs: Map extensionless paths to corresponding static .html files
+  # Deep nested routes (3 levels)
+  RewriteCond %{DOCUMENT_ROOT}/$1/$2/$3.html -f
+  RewriteRule ^([^/]+)/([^/]+)/([^/]+)/?$ $1/$2/$3.html [L]
+
+  # Two-level routes (e.g. /treatments/anagrow -> /treatments/anagrow.html)
+  RewriteCond %{DOCUMENT_ROOT}/$1/$2.html -f
+  RewriteRule ^([^/]+)/([^/]+)/?$ $1/$2.html [L]
+
+  # Top-level routes (e.g. /about -> /about.html)
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^([^/]+)/?$ $1.html [L]
+</IfModule>
+
+# Custom 404 Error Document
+ErrorDocument 404 /404.html
+
+# Security Headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self)"
+</IfModule>
+
+# Browser Caching Policy
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 week"
+
+  # Media Assets
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+
+  # Static Bundled Assets (Next.js chunk hashes prevent stale cache)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/x-javascript "access plus 1 year"
+
+  # Webfonts
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+
+  # Static HTML Documents (re-validate promptly)
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Gzip Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+

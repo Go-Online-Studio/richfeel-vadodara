@@ -1,208 +1,256 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Core Pages -->
+  <!-- Core Static Pages -->
   <url>
     <loc>https://richfeelvadodara.com/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/conditions</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/about</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://richfeelvadodara.com/about/doctor</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://richfeelvadodara.com/gallery</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://richfeelvadodara.com/contact</loc>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/blog</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://richfeelvadodara.com/contact</loc>
-    <lastmod>2026-10-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
-  <!-- Dedicated Treatment Pages -->
+  <!-- 19 Dedicated Treatments -->
   <url>
     <loc>https://richfeelvadodara.com/treatments/tst-plus</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/anagrow</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/hair-transplant</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/non-surgical-hair-system</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/advanced-prp</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/advanced-gfc</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/ana-d-tox</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/laser-hair-reduction</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://richfeelvadodara.com/treatments/hydra-facial</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/advance-hydra-facial</loc>
-    <lastmod>2026-10-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/medi-facial</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/chemical-peels</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://richfeelvadodara.com/treatments/carbon-facial</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://richfeelvadodara.com/treatments/acne-treatment</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://richfeelvadodara.com/treatments/skin-brightening-treatment</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://richfeelvadodara.com/treatments/darma-korean-treatment</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://richfeelvadodara.com/treatments/derma-korean-treatment</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://richfeelvadodara.com/treatments/korean-glass-skin-treatment</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/anti-dandruff-therapy</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/hair-hydratherapy</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/treatments/photo-bio-therapy</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.85</priority>
   </url>
 
-  <!-- Condition Guides -->
+  <!-- 6 Clinical Conditions -->
   <url>
     <loc>https://richfeelvadodara.com/conditions/hair-fall</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/conditions/baldness</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/conditions/dandruff</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/conditions/acne-skin</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/conditions/unwanted-hair</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/conditions/color-damage</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Blog Articles -->
+  <!-- 6 Medical Blog Articles -->
   <url>
     <loc>https://richfeelvadodara.com/blog/science-behind-swiss-apple-stem-cells-anagrow</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/blog/tst-plus-austrian-mld-technique-hair-fall</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://richfeelvadodara.com/blog/laser-hair-reduction-ice-cube-cool-brush-technology</loc>
-    <lastmod>2026-10-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://richfeelvadodara.com/blog/advanced-prp-vs-gfc-growth-factor-concentrate</loc>
-    <lastmod>2026-10-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://richfeelvadodara.com/blog/ana-d-tox-protect-repair-hair-color-damage</loc>
-    <lastmod>2026-10-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://richfeelvadodara.com/blog/diagnostic-trichology-tests-trichogram-capilloscopy</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://richfeelvadodara.com/blog/advanced-prp-vs-gfc-growth-factor-concentrate</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://richfeelvadodara.com/blog/ana-d-tox-protect-repair-hair-color-damage</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://richfeelvadodara.com/blog/laser-hair-reduction-ice-cube-cool-brush-technology</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
 </urlset>
