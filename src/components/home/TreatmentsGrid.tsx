@@ -249,7 +249,7 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
                     </div>
 
                     {/* Card Actions Footer */}
-                    <div className="p-5 pt-0 mt-2 flex items-center gap-2.5 relative z-20 pointer-events-auto">
+                    <div className="p-5 pt-0 mt-2 flex-col md:flex-row flex items-center gap-2.5 relative z-20 pointer-events-auto">
                       {item.isComingSoon ? (
                         <Link
                           href={`/treatments/${item.id}`}
@@ -276,7 +276,7 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
                               }
                             }}
                             style={{ transform: 'translateZ(0)', willChange: 'transform' }}
-                            className="flex-1 py-2.5 px-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#0a6ebd] group-hover:bg-[#0a6ebd] group-hover:text-white group-hover:border-transparent group-hover:shadow-md transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer text-center pointer-events-auto"
+                            className="flex-1 py-2.5 px-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#0a6ebd] group-hover:bg-[#0a6ebd] group-hover:text-white group-hover:border-transparent group-hover:shadow-md transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer text-center pointer-events-auto w-full md:w-auto"
                           >
                             <span>View Procedure</span>
                             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -292,7 +292,7 @@ export const TreatmentsGrid: React.FC<TreatmentsGridProps> = ({
                               }
                             }}
                             style={{ transform: 'translateZ(0)', willChange: 'transform' }}
-                            className="py-2.5 px-3.5 rounded-xl bg-[#f6f9fc] hover:bg-[#27448a] hover:text-white hover:border-[#27448a] hover:shadow-md hover:scale-105 active:scale-95 border border-slate-200 text-slate-700 text-xs font-bold transition-all cursor-pointer shadow-xs whitespace-nowrap pointer-events-auto"
+                            className="py-2.5 px-3.5 rounded-xl bg-[#f6f9fc] hover:bg-[#27448a] hover:text-white hover:border-[#27448a] hover:shadow-md hover:scale-105 active:scale-95 border border-slate-200 text-slate-700 text-xs font-bold transition-all cursor-pointer shadow-xs whitespace-nowrap pointer-events-auto w-full md:w-auto"
                           >
                             Book Session
                           </button>
