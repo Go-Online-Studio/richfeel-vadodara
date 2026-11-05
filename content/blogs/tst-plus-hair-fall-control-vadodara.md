@@ -9,7 +9,7 @@ topicTag: "Scalp Health"
 excerpt: "Tricho Scalp Treatment Plus (TST+) deeply detoxifies the scalp, balances pH levels, and unclogs blocked follicles to control severe hair fall."
 publishDate: "November 2026"
 readTime: "5 min read"
-authorName: "Richfeel Trichology Team"
+authorName: "Team Richfeel"
 authorTitle: "Scalp Therapy Specialists"
 authorRole: "Certified Trichologist"
 popular: false

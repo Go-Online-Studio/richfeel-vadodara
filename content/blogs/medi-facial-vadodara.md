@@ -9,7 +9,7 @@ topicTag: "Medi Facial"
 excerpt: "Customized medical skin care addressing pigmentation, acne scars, and collagen loss with dermatological active serums."
 publishDate: "November 2026"
 readTime: "5 min read"
-authorName: "Richfeel Aesthetic Team"
+authorName: "Team Richfeel"
 authorTitle: "Clinical Cosmetologists"
 authorRole: "Aesthetic Doctor"
 popular: false

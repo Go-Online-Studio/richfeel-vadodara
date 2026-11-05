@@ -9,7 +9,7 @@ topicTag: "Hair Transplant"
 excerpt: "Restoring your hair and self-confidence is a journey that requires clinical precision, advanced technology, and artistic mastery with permanent FUE hair restoration."
 publishDate: "November 2026"
 readTime: "6 min read"
-authorName: "Richfeel Trichology Team"
+authorName: "Team Richfeel"
 authorTitle: "Hair Restoration Specialists"
 authorRole: "Certified Hair Specialist"
 popular: true

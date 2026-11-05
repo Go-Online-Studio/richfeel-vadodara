@@ -9,7 +9,7 @@ topicTag: "Laser Stimulation"
 excerpt: "Photo Bio Therapy uses low-level laser wavelengths to boost cellular ATP synthesis, reverse miniaturization, and stimulate scalp circulation."
 publishDate: "November 2026"
 readTime: "5 min read"
-authorName: "Richfeel Trichology Team"
+authorName: "Team Richfeel"
 authorTitle: "Phototherapy Specialists"
 authorRole: "Trichology Technologist"
 popular: false

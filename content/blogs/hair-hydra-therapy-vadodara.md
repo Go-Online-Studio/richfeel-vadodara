@@ -9,7 +9,7 @@ topicTag: "Scalp Hydration"
 excerpt: "Lock essential moisture into thirsty hair follicles and eliminate brittle breakage with clinical micro-infusion Hair Hydra Therapy."
 publishDate: "November 2026"
 readTime: "5 min read"
-authorName: "Richfeel Trichology Team"
+authorName: "Team Richfeel"
 authorTitle: "Scalp Hydration Specialists"
 authorRole: "Clinical Trichologist"
 popular: false

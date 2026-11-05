@@ -9,7 +9,7 @@ topicTag: "Hair Regrowth"
 excerpt: "Derived from organic pea sprouts, Anagain reactivates dermal papilla signaling to jumpstart new follicular growth without surgical downtime."
 publishDate: "November 2026"
 readTime: "5 min read"
-authorName: "Richfeel Trichology Team"
+authorName: "Team Richfeel"
 authorTitle: "Follicular Biology Specialists"
 authorRole: "Certified Trichologist"
 popular: false

@@ -9,7 +9,7 @@ topicTag: "Dandruff Care"
 excerpt: "Target sticky, fungal, and chronic dandruff with medical-grade scalp therapy designed by certified trichologists at Richfeel Vadodara."
 publishDate: "November 2026"
 readTime: "5 min read"
-authorName: "Richfeel Trichology Team"
+authorName: "Team Richfeel"
 authorTitle: "Clinical Scalp Therapists"
 authorRole: "Certified Trichologist"
 popular: false

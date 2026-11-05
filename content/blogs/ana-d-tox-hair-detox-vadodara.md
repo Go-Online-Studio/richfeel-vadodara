@@ -9,7 +9,7 @@ topicTag: "Dandruff Treatment"
 excerpt: "Ana-D-Tox uses ultrasonic frequencies and medical botanical extracts to deep-cleanse crusty dandruff, excess sebum, and chemical residues."
 publishDate: "November 2026"
 readTime: "5 min read"
-authorName: "Richfeel Trichology Team"
+authorName: "Team Richfeel"
 authorTitle: "Scalp Detox Specialists"
 authorRole: "Trichology Consultant"
 popular: true

@@ -9,7 +9,7 @@ topicTag: "PRP Therapy"
 excerpt: "Platelet-rich plasma therapy reactivates dormant hair follicles and reverses active shedding with autologous blood growth factors."
 publishDate: "November 2026"
 readTime: "5 min read"
-authorName: "Richfeel Trichology Team"
+authorName: "Team Richfeel"
 authorTitle: "Regenerative Scalp Specialists"
 authorRole: "Certified Trichologist"
 popular: true

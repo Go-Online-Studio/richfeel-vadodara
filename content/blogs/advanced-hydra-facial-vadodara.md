@@ -9,7 +9,7 @@ topicTag: "Hydra Facial"
 excerpt: "Experience clinical 3-step vortex-fusion dermal exfoliation, vacuum extraction, and antioxidant serum hydration for radiant glass skin."
 publishDate: "November 2026"
 readTime: "5 min read"
-authorName: "Richfeel Aesthetic Team"
+authorName: "Team Richfeel"
 authorTitle: "Aesthetic Dermatologists"
 authorRole: "Cosmetic Physician"
 popular: true

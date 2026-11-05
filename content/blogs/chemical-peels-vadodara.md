@@ -9,7 +9,7 @@ topicTag: "Chemical Peels"
 excerpt: "Dermatologically calibrated AHA, BHA, and TCA chemical peels safely exfoliate damaged skin layers to eliminate pigmentation and acne scars."
 publishDate: "November 2026"
 readTime: "5 min read"
-authorName: "Richfeel Aesthetic Team"
+authorName: "Team Richfeel"
 authorTitle: "Dermal Peeling Specialists"
 authorRole: "Consultant Dermatologist"
 popular: true

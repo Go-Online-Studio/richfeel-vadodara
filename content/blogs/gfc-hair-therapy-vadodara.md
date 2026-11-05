@@ -9,7 +9,7 @@ topicTag: "GFC Therapy"
 excerpt: "Growth Factor Concentrate (GFC) therapy is a revolutionary approach utilizing your body's pure growth factors to stimulate thicker, healthier hair."
 publishDate: "November 2026"
 readTime: "6 min read"
-authorName: "Richfeel Trichology Team"
+authorName: "Team Richfeel"
 authorTitle: "Advanced Trichologists"
 authorRole: "Chief Medical Officer"
 popular: true

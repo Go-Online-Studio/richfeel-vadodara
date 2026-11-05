@@ -64,7 +64,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
         publishDate: data.publishDate || 'Recent',
         readTime: data.readTime || '5 min read',
         author: {
-          name: data.authorName || (data.author && data.author.name) || 'Richfeel Clinical Team',
+          name: 'Team Richfeel',
           title: data.authorTitle || (data.author && data.author.title) || 'Trichology Specialist',
           role: data.authorRole || (data.author && data.author.role) || 'Certified Trichologist',
         },

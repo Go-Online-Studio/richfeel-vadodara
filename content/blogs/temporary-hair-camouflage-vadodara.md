@@ -9,7 +9,7 @@ topicTag: "Hair Thickener"
 excerpt: "Statically charged keratin micro-fibers bond seamlessly to native hair strands, concealing thinning patches and widening partings instantly."
 publishDate: "November 2026"
 readTime: "4 min read"
-authorName: "Richfeel Trichology Team"
+authorName: "Team Richfeel"
 authorTitle: "Aesthetic Hair Specialists"
 authorRole: "Cosmetic Trichologist"
 popular: false

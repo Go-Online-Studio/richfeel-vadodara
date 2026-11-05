@@ -9,7 +9,7 @@ topicTag: "Laser Hair Removal"
 excerpt: "Enjoy permanent, painless reduction of unwanted body and facial hair with gold-standard diode laser technology and contact sapphire cooling."
 publishDate: "November 2026"
 readTime: "5 min read"
-authorName: "Richfeel Aesthetic Team"
+authorName: "Team Richfeel"
 authorTitle: "Laser & Aesthetic Physicians"
 authorRole: "Certified Laser Specialist"
 popular: true

@@ -9,7 +9,7 @@ topicTag: "Stem Cell Therapy"
 excerpt: "Anagrow harnesses rare Swiss apple stem cell extracts and Italian transdermal RF technology to reverse progressive hair thinning without needles."
 publishDate: "November 2026"
 readTime: "5 min read"
-authorName: "Richfeel Trichology Team"
+authorName: "Team Richfeel"
 authorTitle: "Stem Cell Research Specialists"
 authorRole: "Senior Trichology Consultant"
 popular: true
