@@ -55,6 +55,8 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
         id: data.id || `blog-${slug}`,
         slug: slug,
         title: data.title || '',
+        seoTitle: data.seoTitle || data.title || '',
+        metaDescription: data.metaDescription || data.excerpt || '',
         category: data.category || 'Hair Restoration',
         topicTag: data.topicTag || 'Clinical Care',
         excerpt: data.excerpt || '',
