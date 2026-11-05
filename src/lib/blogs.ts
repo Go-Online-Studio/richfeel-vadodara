@@ -10,7 +10,7 @@ const blogsDirectory = path.join(process.cwd(), 'content', 'blogs');
 
 export function getAllBlogSlugs(): string[] {
   if (!fs.existsSync(blogsDirectory)) {
-    return (fallbackBlogs as BlogPost[]).map((b) => b.slug);
+    return Array.isArray(fallbackBlogs) ? (fallbackBlogs as BlogPost[]).map((b) => b.slug) : [];
   }
   const fileNames = fs.readdirSync(blogsDirectory);
   const slugs: string[] = [];
@@ -25,12 +25,16 @@ export function getAllBlogSlugs(): string[] {
     }
   }
 
-  return slugs.length > 0 ? slugs : (fallbackBlogs as BlogPost[]).map((b) => b.slug);
+  if (slugs.length > 0) {
+    return slugs;
+  }
+
+  return Array.isArray(fallbackBlogs) ? (fallbackBlogs as BlogPost[]).map((b) => b.slug) : [];
 }
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
   if (!fs.existsSync(blogsDirectory)) {
-    return fallbackBlogs as BlogPost[];
+    return Array.isArray(fallbackBlogs) ? (fallbackBlogs as BlogPost[]) : [];
   }
 
   const fileNames = fs.readdirSync(blogsDirectory);
@@ -64,16 +68,16 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
         },
         popular: Boolean(data.popular),
         recent: Boolean(data.recent),
-        coverImage: data.coverImage || 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80',
+        coverImage: data.coverImage || '/images/richfeel-vadodara-og-banner.jpg',
       });
     }
   }
 
-  if (posts.length === 0) {
-    return fallbackBlogs as BlogPost[];
+  if (posts.length > 0) {
+    return posts;
   }
 
-  return posts;
+  return Array.isArray(fallbackBlogs) ? (fallbackBlogs as BlogPost[]) : [];
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {

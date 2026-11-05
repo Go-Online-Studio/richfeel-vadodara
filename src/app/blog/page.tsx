@@ -5,14 +5,14 @@ import { getAllBlogPosts } from '@/lib/blogs';
 export const metadata: Metadata = {
   title: 'Clinical Trichology & Aesthetics Knowledge Hub | Medical Articles',
   description:
-    'Evidence-based articles on hair loss causes, Swiss apple stem cell therapy, Austrian scalp detox, and laser reduction by certified trichologists.',
+    'Evidence-based medical articles and clinical guides on hair restoration, scalp diagnostics, and skin aesthetics by certified trichologists at Richfeel Vadodara.',
   alternates: {
     canonical: 'https://richfeelvadodara.com/blog',
   },
   openGraph: {
     title: 'Clinical Trichology & Aesthetics Knowledge Hub | Richfeel Vadodara',
     description:
-      'Evidence-based articles on hair loss causes, Swiss apple stem cell therapy, and Austrian scalp detox.',
+      'Evidence-based articles on hair restoration, scalp care, stem cell science, and aesthetic dermatology.',
     url: 'https://richfeelvadodara.com/blog',
     images: [
       {
@@ -42,15 +42,19 @@ export default async function BlogPage() {
     description:
       'Evidence-based articles on hair loss causes, Swiss apple stem cell therapy, Austrian scalp detox, and laser reduction by certified trichologists.',
     url: 'https://richfeelvadodara.com/blog',
-    mainEntity: {
-      '@type': 'ItemList',
-      itemListElement: blogs.map((b, idx) => ({
-        '@type': 'ListItem',
-        position: idx + 1,
-        url: `https://richfeelvadodara.com/blog/${b.slug}`,
-        name: b.title,
-      })),
-    },
+    ...(blogs.length > 0
+      ? {
+          mainEntity: {
+            '@type': 'ItemList',
+            itemListElement: blogs.map((b, idx) => ({
+              '@type': 'ListItem',
+              position: idx + 1,
+              url: `https://richfeelvadodara.com/blog/${b.slug}`,
+              name: b.title,
+            })),
+          },
+        }
+      : {}),
   };
 
   return (
