@@ -3,31 +3,28 @@ import { BlogHub } from '@/components/blog/BlogHub';
 import { getAllBlogPosts } from '@/lib/blogs';
 
 export const metadata: Metadata = {
-  title: 'Clinical Trichology & Aesthetics Knowledge Hub | Medical Articles',
-  description:
-    'Evidence-based medical articles and clinical guides on hair restoration, scalp diagnostics, and skin aesthetics by certified trichologists at Richfeel Vadodara.',
+  title: 'Blogs Coming Soon | Richfeel Vadodara',
+  description: 'We are working on informative blogs and articles. Stay tuned!',
   alternates: {
     canonical: 'https://richfeelvadodara.com/blog',
   },
   openGraph: {
-    title: 'Clinical Trichology & Aesthetics Knowledge Hub | Richfeel Vadodara',
-    description:
-      'Evidence-based articles on hair restoration, scalp care, stem cell science, and aesthetic dermatology.',
+    title: 'Blogs Coming Soon | Richfeel Vadodara',
+    description: 'We are working on informative blogs and articles. Stay tuned!',
     url: 'https://richfeelvadodara.com/blog',
     images: [
       {
         url: 'https://richfeelvadodara.com/images/richfeel-vadodara-og-banner.jpg',
         width: 1200,
         height: 630,
-        alt: 'Richfeel Vadodara Trichology Knowledge Hub',
+        alt: 'Richfeel Vadodara Knowledge Hub',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Clinical Trichology & Aesthetics Knowledge Hub | Richfeel Vadodara',
-    description:
-      'Evidence-based articles on hair loss, stem cells, scalp detox, and aesthetics.',
+    title: 'Blogs Coming Soon | Richfeel Vadodara',
+    description: 'We are working on informative blogs and articles. Stay tuned!',
     images: ['https://richfeelvadodara.com/images/richfeel-vadodara-og-banner.jpg'],
   },
 };
@@ -35,35 +32,5 @@ export const metadata: Metadata = {
 export default async function BlogPage() {
   const blogs = await getAllBlogPosts();
 
-  const blogHubSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: 'Clinical Trichology & Aesthetics Knowledge Hub',
-    description:
-      'Evidence-based articles on hair loss causes, Swiss apple stem cell therapy, Austrian scalp detox, and laser reduction by certified trichologists.',
-    url: 'https://richfeelvadodara.com/blog',
-    ...(blogs.length > 0
-      ? {
-          mainEntity: {
-            '@type': 'ItemList',
-            itemListElement: blogs.map((b, idx) => ({
-              '@type': 'ListItem',
-              position: idx + 1,
-              url: `https://richfeelvadodara.com/blog/${b.slug}`,
-              name: b.title,
-            })),
-          },
-        }
-      : {}),
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogHubSchema) }}
-      />
-      <BlogHub blogs={blogs} />
-    </>
-  );
+  return <BlogHub blogs={blogs} />;
 }
