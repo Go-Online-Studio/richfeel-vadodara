@@ -1,26 +1,36 @@
-# How to Add a New Blog Post
+# How to Add Clinical Blog Posts in the Future
 
-Simply create a new `.md` markdown file in this folder (`content/blogs/your-blog-slug.md`).
-The filename (without `.md`) or the `slug` field in the frontmatter will become the live URL (`/blog/your-blog-slug`).
+When you are ready to publish articles on the Knowledge Hub:
+
+1. **Add Markdown Files**:
+   Create `.md` markdown files in this directory (`content/blogs/your-blog-slug.md`).
+   The filename (or `slug` in the frontmatter) defines the URL (`/blog/your-blog-slug`).
+
+2. **Re-enable the Dynamic Post Route**:
+   Copy `src/components/blog/BlogPostPageTemplate.txt` to:
+   `src/app/blog/[slug]/page.tsx`
+   *(Next.js with `output: 'export'` requires at least one post to generate `/blog/[slug]`. Since all sample blogs were removed, this route is temporarily archived until your first real blog is added).*
+
+---
 
 ### Template / Schema Example:
 
 ```markdown
 ---
-id: "blog-7"
+id: "blog-1"
 slug: "your-custom-slug"
-title: "Your Catchy Blog Post Title"
+title: "Your Catchy Medical Guide Title"
 category: "Hair Restoration"
 topicTag: "Stem Cell Therapy"
-excerpt: "A concise 1-2 sentence preview summary of what this article covers for Google and social previews."
+excerpt: "A concise 1-2 sentence preview summary of what this article covers for Google search and social share cards."
 publishDate: "November 2026"
 readTime: "5 min read"
 authorName: "Dr. Apoorva Shah"
 authorTitle: "Pioneers of Trichology in India"
 authorRole: "Chief Trichologist"
-popular: false
+popular: true
 recent: true
-coverImage: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80"
+coverImage: "/images/richfeel-vadodara-og-banner.jpg"
 ---
 
 ### Introduction
